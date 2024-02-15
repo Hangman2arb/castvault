@@ -4,7 +4,7 @@ module Language
   included do
     before_action :set_locale
 
-    SUPPORTED_LANGUAGES = Setting::PLATFORM_LANGUAGES.keys
+    SUPPORTED_LANGUAGES = User::PLATFORM_LANGUAGES.keys
 
     private
 

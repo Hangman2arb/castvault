@@ -9,5 +9,6 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
   %body
-    = render NavbarComponent.new
+    = render FlashMessageComponent.new( message: flash.first.nil? ? nil : flash.first[1], type: flash.first.nil? ? nil : flash.first[0], delay: 10000 )
+    = render NavbarComponent.new()
     = yield

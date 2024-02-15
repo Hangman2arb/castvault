@@ -5,11 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |user|
       if user.persisted?
-        begin
-          user.create_default_setting(request.remote_ip)
-        rescue Net::SMTPFatalError => e
-          Rails.logger.error "Falló el envío de correo electrónico: #{e.message}"
-        end
+        SetUserTimeZoneAndLanguageJob.perform_later(user.id, request.remote_ip)
       end
     end
   end
