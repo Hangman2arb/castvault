@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Castvault
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+  %body
+    = render FlashMessageComponent.new( message: flash.first.nil? ? nil : flash.first[1], type: flash.first.nil? ? nil : flash.first[0], delay: 10000 )
+    = render NavbarComponent.new
+    = yield
