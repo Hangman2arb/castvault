@@ -1,4 +1,5 @@
 class Manager::ProfilesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @title = 'Perfiles'
     @description = 'Consulta todos los perfiles registrados a través de tus formularios.'
@@ -11,7 +12,7 @@ class Manager::ProfilesController < ApplicationController
 
     query = FindProfiles.new(current_user).call(params).load_async
     @total_count = query.count
-    @pagy, @profiles = pagy_countless(query, items: 12)
+    @pagy, @profiles = pagy_countless(query, items: 24)
   end
 
   def create

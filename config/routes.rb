@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   namespace :manager do
+    get 'settings/index'
     root 'dashboard#index', menu_option_id: 'dashboard'
     resources :profiles, only: [:index, :create, :edit, :update, :destroy, :show], menu_option_id: 'profiles'
     resources :forms, menu_option_id: 'forms' do
@@ -23,5 +24,8 @@ Rails.application.routes.draw do
       get 'search_available_for', to: 'forms#search_available_for'
     end
     resources :instructions, only: [:index], menu_option_id: 'instructions'
+    resources :settings, only: [:index], menu_option_id: 'settings'
+    patch 'settings', to: 'settings#update', as: :update_settings
+    patch 'settings/password_change', to: 'settings#password_change', as: :password_change
   end
 end

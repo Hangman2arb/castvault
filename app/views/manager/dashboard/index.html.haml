@@ -13,11 +13,11 @@
     .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Formulario más usado
       %p.mt-2.flex.items-baseline.gap-x-2
-        %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_most_profiles.name} (#{@form_with_most_profiles.profiles.count})"
+        %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_most_profiles&.name} (#{@form_with_most_profiles&.profiles&.count})"
     .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Formulario menos usado
       %p.mt-2.flex.items-baseline.gap-x-2
-        %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_less_profiles.name} (#{@form_with_less_profiles.profiles.count})"
+        %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_less_profiles&.name} (#{@form_with_less_profiles&.profiles&.count})"
 
 .mx-auto.max-w-7xl
   .grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-3

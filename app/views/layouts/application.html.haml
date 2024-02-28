@@ -15,5 +15,5 @@
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
   %body.h-full
     = render FlashMessageComponent.new( message: flash.first.nil? ? nil : flash.first[1], type: flash.first.nil? ? nil : flash.first[0], delay: 10000 )
-    = render SidebarComponent.new() do
+    = render SidebarComponent.new(current_user: current_user) do
       = yield

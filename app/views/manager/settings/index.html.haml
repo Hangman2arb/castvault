@@ -1,0 +1,89 @@
+= render HeaderComponent.new(title: @title, description: @description)
+
+.divide-y.mt-10{class: "divide-white/5"}
+  .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
+    %div
+      %h2.text-base.font-semibold.leading-7.text-white Personal Information
+      %p.mt-1.text-sm.leading-6.text-gray-400 Use a permanent address where you can receive mail.
+    = form_with(model: current_user, url: manager_update_settings_path, method: :patch, local: true, class: 'md:col-span-2' ) do |form|
+      .grid.grid-cols-1.gap-x-6.gap-y-8.sm:max-w-xl.sm:grid-cols-6
+        .col-span-full.flex.items-center.gap-x-8{ data: { controller: "image-preview" } }
+          %img.h-24.w-24.flex-none.rounded-lg.bg-gray-800.object-cover{ alt: "Profile photo", src: (current_user.profile_photo.attached? ? url_for(current_user.profile_photo) : image_url('no_image.png')), data: { image_preview_target: "preview" }}
+          %div
+            = form.file_field :profile_photo, direct_upload: true, class: 'hidden', data: { image_preview_target: "source", action: "change->image-preview#updatePreview" }
+            %button.rounded-md.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm{ class: 'bg-white/10 hover:bg-white/20', type: "button", data: { action: "image-preview#triggerUpload" } }
+              = 'Change avatar'
+            %p.mt-2.text-xs.leading-5.text-gray-400 JPG, GIF or PNG. 1MB max.
+
+        .sm:col-span-3
+          = form.label :first_name, class: 'block text-sm font-medium leading-6 text-white'
+          = form.text_field :first_name, autocomplete: 'given-name', class: 'mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10'
+        .sm:col-span-3
+          = form.label :last_name, class: 'block text-sm font-medium leading-6 text-white'
+          = form.text_field :last_name, autocomplete: 'family-name', class: 'mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10'
+        .col-span-full
+          = form.label :email, class: 'block text-sm font-medium leading-6 text-white'
+          = form.email_field :email, autocomplete: 'email', class: 'mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10'
+        .col-span-full
+          = form.label :language, class: 'block text-sm font-medium leading-6 text-white'
+          = form.select :language, options_for_select(User::PLATFORM_LANGUAGES.invert, current_user.language), {}, {class: 'mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10 [&_*]:text-black'}
+        .col-span-full
+          = form.label :time_zone, class: 'block text-sm font-medium leading-6 text-white'
+          = form.select :time_zone, options_for_select(ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] }, current_user.time_zone), {}, {class: 'mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10 [&_*]:text-black'}
+      .mt-8.flex
+        = form.submit 'Save', class: 'rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+
+  .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
+    %div
+      %h2.text-base.font-semibold.leading-7.text-white Change password
+      %p.mt-1.text-sm.leading-6.text-gray-400 Update your password associated with your account.
+    = form_with(model: current_user, url: manager_password_change_path, method: :patch, local: true, class: 'md:col-span-2', data: {turbo:false}) do |form|
+      .grid.grid-cols-1.gap-x-6.gap-y-8.sm:max-w-xl.sm:grid-cols-6
+        - current_password_error = current_user.errors.include?(:current_password) ? "Not a valid current password" : nil
+        - password_error = current_user.errors.include?(:password) ? "Password criteria not met" : nil
+        - password_confirmation_error = current_user.errors.include?(:password_confirmation) ? "Passwords do not match" : nil
+
+        .col-span-full
+          = form.label :current_password, 'Current password', class: 'block text-sm font-medium leading-6 text-white'
+          .relative.mt-2.rounded-md.shadow-sm
+            = form.password_field :current_password, autocomplete: false, class: "#{'ring-red-300 text-red-900 placeholder:text-red-300' if current_password_error} mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5", "aria-describedby" => "current_password-error", "aria-invalid" => "#{current_password_error.present?}"
+            - if current_password_error
+              %p#current_password-error.mt-2.text-sm.text-red-600= current_password_error
+
+        .col-span-full
+          = form.label :password, 'New password', class: 'block text-sm font-medium leading-6 text-white'
+          .relative.mt-2.rounded-md.shadow-sm
+            = form.password_field :password, autocomplete: false, class: "#{'ring-red-300 text-red-900 placeholder:text-red-300' if password_error} mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5", "aria-describedby" => "password-error", "aria-invalid" => "#{password_error.present?}"
+            - if password_error
+              %p#password-error.mt-2.text-sm.text-red-600
+                = password_error
+
+        .col-span-full
+          = form.label :password_confirmation, 'Confirm password', class: 'block text-sm font-medium leading-6 text-white'
+          .relative.mt-2.rounded-md.shadow-sm
+            = form.password_field :password_confirmation, autocomplete: false, class: "#{'ring-red-300 text-red-900 placeholder:text-red-300' if password_confirmation_error} mt-2 block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5", "aria-describedby" => "password_confirmation-error", "aria-invalid" => "#{password_confirmation_error.present?}"
+            - if password_confirmation_error
+              %p#password_confirmation-error.mt-2.text-sm.text-red-600= password_confirmation_error
+      .mt-8.flex
+        = form.submit 'Save', class: 'rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+
+  .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
+    %div
+      %h2.text-base.font-semibold.leading-7.text-white Log out other sessions
+      %p.mt-1.text-sm.leading-6.text-gray-400 Please enter your password to confirm you would like to log out of your other sessions across all of your devices.
+    .md:col-span-2
+      .mt-8.flex
+        = render ButtonComponent.new( text: t('sidebar_component.log_out'),
+                                    action: destroy_user_session_path,
+                                    bg_color: 'bg-dark',
+                                    bg_color_hover: 'bg-shadowy-300',
+                                    text_color: 'text-light',
+                                    text_color_hover: 'text-light',
+                                    additional_attributes: { type: 'button', method: :delete, data: { turbo_confirm: t('settings.log_out_message') } } )
+
+  .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
+    %div
+      %h2.text-base.font-semibold.leading-7.text-white Delete account
+      %p.mt-1.text-sm.leading-6.text-gray-400 No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
+    %form.flex.items-start.md:col-span-2
+      %button.rounded-md.bg-red-500.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-red-400{type: "submit"} Yes, delete my account

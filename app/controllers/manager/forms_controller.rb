@@ -1,4 +1,5 @@
 class Manager::FormsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @title = t('forms_controller.index_title')
     @description = t('forms_controller.index_description')

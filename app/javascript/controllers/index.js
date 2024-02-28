@@ -16,6 +16,9 @@ application.register("field-checkbox", FieldCheckboxController)
 import FormShowController from "./form_show_controller"
 application.register("form-show", FormShowController)
 
+import ImagePreviewController from "./image_preview_controller"
+application.register("image-preview", ImagePreviewController)
+
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 

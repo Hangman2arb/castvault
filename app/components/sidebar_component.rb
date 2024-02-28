@@ -1,11 +1,13 @@
 class SidebarComponent < ViewComponent::Base
-  def initialize
+  def initialize(current_user:)
     @menu_items = [
       { route: "/manager", text: "Dashboard", icon: "speedometer2", menu_option_id: "dashboard" },
       { route: "/manager/profiles", text: "Perfiles", icon: "people-fill", menu_option_id: "profiles" },
       { route: "/manager/forms", text: "Formulario", icon: "ui-checks", menu_option_id: "forms" },
-      { route: "/manager/instructions", text: "Instrucciones", icon: "journals", menu_option_id: "instructions" },
+      # { route: "/manager/instructions", text: "Instrucciones", icon: "journals", menu_option_id: "instructions" },
+      { route: "/manager/settings", text: "Settings", icon: "gear", menu_option_id: "settings" },
     ]
+    @current_user = current_user
   end
 
   def menu_item_class(menu_option_id)

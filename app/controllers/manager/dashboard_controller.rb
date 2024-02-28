@@ -1,4 +1,5 @@
 class Manager::DashboardController < ApplicationController
+  before_action :authenticate_user!
   def index
     @title = 'Dashboard'
     @description = 'Ten una vista global de todos tus datos.'
@@ -20,13 +21,13 @@ class Manager::DashboardController < ApplicationController
     @profiles_by_gender = @profiles.group(:gender).count.transform_keys do |key|
       I18n.t("genders.#{key}", default: key.to_s.humanize)
     end
-    @hair_type_distribution = Profile.group(:hair_type).count.transform_keys do |key|
+    @hair_type_distribution = @profiles.group(:hair_type).count.transform_keys do |key|
       I18n.t("hair_types.#{key}", default: key.to_s.humanize)
     end
-    @hair_color_distribution = Profile.group(:hair_color).count.transform_keys do |key|
+    @hair_color_distribution = @profiles.group(:hair_color).count.transform_keys do |key|
       I18n.t("hair_colors.#{key}", default: key.to_s.humanize)
     end
-    @eye_color_distribution = Profile.group(:eye_color).count.transform_keys do |key|
+    @eye_color_distribution = @profiles.group(:eye_color).count.transform_keys do |key|
       I18n.t("eye_colors.#{key}", default: key.capitalize)
     end
 

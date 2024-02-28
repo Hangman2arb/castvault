@@ -11,6 +11,16 @@
         .mt-2
           = f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_email"
 
+      .flex.gap-x-4
+        .field.flex-1
+          %label.block.text-sm.font-medium.leading-6.text-white{for: "user_first_name"} First name
+          .mt-2
+            = f.text_field :first_name, required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_first_name"
+        .field.flex-1
+          %label.block.text-sm.font-medium.leading-6.text-white{for: "user_last_name"} Last name
+          .mt-2
+            = f.text_field :last_name, required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_last_name"
+
       .field
         %label.block.text-sm.font-medium.leading-6.text-white{for: "user_password"} Password
         .mt-2
