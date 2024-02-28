@@ -1,0 +1,302 @@
+
+es:
+  activerecord:
+    errors:
+      models:
+        form:
+          attributes:
+            name:
+              blank: "El campo nombre no puede estar vacío"
+      messages:
+        blank: "no puede estar vacío"
+
+  devise:
+    confirmations:
+      confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
+      send_instructions: "Recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+    failure:
+      already_authenticated: "Ya iniciaste sesión."
+      inactive: "Tu cuenta aún no ha sido activada."
+      invalid: "Email y/o contraseña inválidos."
+      locked: "Tu cuenta está bloqueada."
+      last_attempt: "Tienes un intento más antes que tu cuenta sea bloqueada."
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: "Tu sesión ha expirado. Inicia sesión nuevamente."
+      unauthenticated: "Tienes que registrarte o iniciar sesión antes de continuar."
+      unconfirmed: "Tienes que confirmar tu cuenta antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmación"
+      reset_password_instructions:
+        subject: "Instrucciones de cambio de contraseña"
+      unlock_instructions:
+        subject: "Instrucciones de desbloqueo"
+      email_changed:
+        subject: "Email modificado"
+      password_change:
+        subject: "Contraseña modificada"
+    omniauth_callbacks:
+      failure: "No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: \"%{reason}\"."
+      success: "Te autentificaste correctamente con tu cuenta de %{kind}."
+    passwords:
+      no_token: "No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece."
+      send_instructions: "Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
+      updated: "Tu contraseña fue modificada correctamente. Has iniciado sesión."
+      updated_not_active: "Tu contraseña fue modificada correctamente."
+    registrations:
+      destroyed: "Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!"
+      signed_up: "Bienvenido! Te has registrado correctamente."
+      signed_up_but_inactive: "Te has registrado correctamente, pero tu cuenta aun no ha sido activada."
+      signed_up_but_locked: "Te has registrado correctamente, pero tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Te hemos enviado un email con instrucciones para que confirmes tu cuenta."
+      update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
+      updated: "Actualizaste tu cuenta correctamente."
+      updated_but_not_signed_in: "Actualizaste tu cuenta correctamente, pero tienes que iniciar sesión nuevamente porque tu contraseña ha cambiado."
+    sessions:
+      signed_in: "Iniciaste sesión correctamente."
+      signed_out: "Cerraste sesión correctamente."
+      already_signed_out: "Se cerró sesión correctamente."
+    unlocks:
+      send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
+      send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
+      unlocked: "Tu cuenta ha sido desbloqueada. Inicia sesión para continuar."
+
+  errors:
+    attributes:
+      name:
+        blank: "El campo nombre no puede estar vacío"
+    messages:
+      blank: "no puede estar vacío"
+      already_confirmed: "ya fue confirmada. Intenta ingresar."
+      confirmation_period_expired: "necesita ser confirmada dentro de %{period}, por favor pide una nueva"
+      expired: "ha expirado, por favor pide una nueva"
+      not_found: "no encontrado"
+      not_locked: "no ha sido bloqueada"
+      not_saved:
+        one: "Ha ocurrido 1 error:"
+        other: "Han ocurrido %{count} errores:"
+
+  landing_pricing_component:
+    annually: Anual
+    choose_plan: Elige un plan asequible lleno de las mejores características para atraer a tu audiencia, crear lealtad del cliente e impulsar las ventas.
+    features:
+      basic:
+        '0': Administra 1 Grupo de Telegram
+        '1': Métricas y datos avanzados
+        '2': Gestión de Grupos, Permisos y Usuarios
+        '3': Mensajes automáticos
+        '4': Integra tu propio ChatBOT con IA
+        '5': Obtén reportes diarios de estado y predictivos
+      elite:
+        '0': Administra 10 Grupo de Telegram
+        '1': Métricas y datos avanzados
+        '2': Gestión de Grupos, Permisos y Usuarios
+        '3': Mensajes automáticos
+        '4': Integra tu propio ChatBOT con IA
+        '5': Obtén reportes diarios de estado y predictivos
+      pro:
+        '0': Administra 3 Grupo de Telegram
+        '1': Métricas y datos avanzados
+        '2': Gestión de Grupos, Permisos y Usuarios
+        '3': Mensajes automáticos
+        '4': Integra tu propio ChatBOT con IA
+        '5': Obtén reportes diarios de estado y predictivos
+    for_everyone: para todos.
+    get_a_discount: Obtén un 15% de descuento con el plan anual
+    get_started: Comienza con el plan %{product_name} por %{price}
+    monthly: Mensual
+    monthly_description:
+      basic: Este plan te permite gestionar <b>1 grupo</b> de Telegram. Con todas las características que hacen a Metricgram la mejor herramienta para administrar comunidades en Telegram.
+      elite: Este plan te permite gestionar <b>10 grupos</b> de Telegram. Perfecto para grupos de administradores que dirijan hasta 10 comunidades diferentes.
+      pro: Este plan te permite gestionar <b>3 grupos</b> de Telegram. Perfecto para personas que tienen varias comunidades en Telegram o un grupo pequeño de administradores.
+    most_popular: Más Popular
+    payment_frequency: Frecuencia de pago
+    per_month: "/mes"
+    per_year: "/año"
+    pricing: Precios
+    simple_pricing: Precio simple,
+    size_message: No importa el tamaño de tu negocio, nuestro software funcionará bien para ti.
+    yearly_description:
+      basic: Este plan te permite gestionar <b>1 grupo</b> de Telegram. Con todas las características que hacen a Metricgram la mejor herramienta para administrar comunidades en Telegram.
+      elite: Este plan te permite gestionar <b>10 grupos</b> de Telegram. Perfecto para grupos de administradores que dirijan hasta 10 comunidades diferentes.
+      pro: Este plan te permite gestionar <b>3 grupos</b> de Telegram. Perfecto para personas que tienen varias comunidades en Telegram o un grupo pequeño de administradores.
+    discount_applied: Recibe 2 Meses totalmente GRATIS contratando el plan Anual.
+
+  fields:
+    id: Identificador
+    name: Nombre
+    surname: Apellidos
+    birthdate: Fecha de Nacimiento
+    ethnicity: Etnia
+    gender: Género
+    city: Ciudad
+    email: Correo Electrónico
+    phone: Teléfono
+    agency: Agencia
+    agent_name: Nombre del Agente
+    agent_email: Correo Electrónico del Agente
+    agent_phone: Teléfono del Agente
+    height: Altura
+    shirt_size: Talla de Camisa
+    pants_size: Talla de Pantalón
+    shoe_size: Talla de Zapato
+    hair_type: Tipo de Cabello
+    hair_color: Color de Cabello
+    eye_color: Color de Ojos
+    passport: Pasaporte
+    driving_license: Licencia de Conducir
+    food_allergies: Alergias Alimentarias
+    web: Sitio Web
+    twitter: Twitter
+    facebook: Facebook
+    instagram: Instagram
+    tik_tok: TikTok
+    is_an_actor: Es Actor/Actriz
+    languages: Idiomas
+    skills: Habilidades
+    face_photo: Foto de Cara
+    body_photo: Foto de Cuerpo
+    video_book: Videobook
+    available_for: Disponible Para
+    created_at: Creado el
+    updated_at: Actualizado el
+
+  forms_controller:
+    edit_title: Editar Formulario
+    new_description: Selecciona los campos que necesites que tus perfiles rellenen.
+    new_title: Nuevo Formulario
+    index_description: Listado de formularios existentes
+    index_title: Formularios
+    no_forms_yet: Sin formularios
+    no_forms_yet_description: Todavía no has creado ningún formulario, puedes crear tu primer formulario pulsando en "Crear Formulario"
+    new_form: Crear Formulario
+    form_created: Formulario creado con éxito!
+    form_updated: Formulario actualizado con éxito!
+    form_deleted: Formulario eliminado.
+    form_not_deleted: Hubo algún problema al eliminar el formulario. Contacte con el administrador.
+    destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
+    section:
+      basic_information: Información Básica
+      contact_information: Información de Contacto
+      measurements: Medidas
+      additional_information: Información Adicional
+      social_media: Redes Sociales
+      pictures_and_media: Fotos y videos
+      features: Habilidades
+    multiselect_texts:
+      available_for:
+        performing_arts: Artes Escénicas
+        tv: Televisión
+        fiction: Ficción
+        advertising: Publicidad
+      languages:
+        en: English
+        fr: Français
+        de: Deutsch
+        es: Español
+        it: Italiano
+        ru: Русский
+        pl: Polski
+        nl: Nederlands
+        tr: Türkçe
+        sv: Svenska
+
+  labels:
+    back_button: Atrás
+    save: Guardar
+    search: Buscar
+    send: Enviar
+    update: Actualizar
+    yes: Si
+    no: No
+
+  data_table_component:
+    action: Acciones
+    actions: Acciones
+    chat_name: Enviar a
+    created_at: Fecha
+    daily_summary: Resumen
+    date: Fecha
+    first_name: Nombre
+    group: Grupo
+    group_title: Grupo
+    info: Información
+    is_bot: "¿Es un Bot?"
+    key: Clave
+    language_code: Idioma
+    max_user_usages: Max Mensajes/Día
+    members_count: Miembros
+    message: Mensaje
+    message_count: Mensajes Registrados
+    name: Nombre
+    parse_mode: Tipo
+    prompt: Prompt
+    scheduled_at: Programado para
+    status: Estado
+    submissions_count: Veces Enviado
+    telegram: ID
+    telegram_type: Tipo de chat
+    telegram_user_name: Nombre de Usuario
+    text: Mensaje
+    title: Título
+    topic_name: Tema
+    user_status: Estado
+    username: Alias
+    updated_at: Actualizado el
+
+  profiles_controller:
+    without_agency: Sin agencia
+    search_terms:
+      name: Nombre
+      city: Ciudad
+
+  eye_colors:
+    amber: "Ámbar"
+    blue: "Azul"
+    brown: "Marrón"
+    gray: "Gris"
+    green: "Verde"
+    hazel: "Avellana"
+
+  ethnicities:
+    asian: "Asiático"
+    black_african: "Negro/Africano"
+    caucasian: "Caucásico"
+    hispanic_latino: "Hispano/Latino"
+    middle_eastern: "Medio Oriental"
+    native_american: "Nativo Americano"
+    pacific_islander: "Isleño del Pacífico"
+    mixed: "Mixto"
+    other: "Otro"
+  genders:
+    male: "Masculino"
+    female: "Femenino"
+    non_binary: "No Binario"
+  hair_types:
+    bald: "Calvo"
+    straight: "Liso"
+    open_wave: "Ondulado Abierto"
+    wavy: "Ondulado"
+    curly: "Rizado"
+    very_curly: "Muy Rizado"
+    coiled: "En Espiral"
+    very_coiled: "Muy En Espiral"
+    zigzag_coiled: "En Zigzag"
+  hair_colors:
+    blonde: "Rubio"
+    light_brown: "Marrón Claro"
+    red: "Rojo"
+    medium_brown: "Marrón Medio"
+    dark_brown: "Marrón Oscuro"
+    black: "Negro"
+    gray: "Gris"
+    white: "Blanco"
+
+
+  javascript:
+    confirm:
+      cancel_button: Cancelar
+      confirm_button: Confirmar
+      title: Confirmación

@@ -1,0 +1,5 @@
+= send(@method, @action, type: @button_type, class: "#{@w_full ? 'w-full' : 'inline-flex items-center'} rounded-full #{@bg_color} px-4 py-3 text-md font-medium #{@text_color} transition duration-200 cursor-pointer hover:#{@bg_color_hover} hover:#{@text_color_hover} hover:transition-all", **@additional_attributes) do
+  - if @icon
+    = render BootstrapIconWithTextComponent.new(icon: @icon, text: @text, extra_classes: @icon_extra_classes)
+  - else
+    = @text

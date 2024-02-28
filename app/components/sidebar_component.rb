@@ -1,0 +1,14 @@
+class SidebarComponent < ViewComponent::Base
+  def initialize
+    @menu_items = [
+      { route: "/manager", text: "Dashboard", icon: "speedometer2", menu_option_id: "dashboard" },
+      { route: "/manager/profiles", text: "Perfiles", icon: "people-fill", menu_option_id: "profiles" },
+      { route: "/manager/forms", text: "Formulario", icon: "ui-checks", menu_option_id: "forms" },
+      { route: "/manager/instructions", text: "Instrucciones", icon: "journals", menu_option_id: "instructions" },
+    ]
+  end
+
+  def menu_item_class(menu_option_id)
+    menu_option_id == params[:menu_option_id] ? "bg-gray-800 text-white" : "text-gray-400 hover:text-white hover:bg-gray-800"
+  end
+end

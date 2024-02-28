@@ -1,0 +1,142 @@
+- if @for_manager
+  .bg-light.py-4.mt-8.rounded-lg.sm:py-8{data: {controller: 'periodicity-selector'} }
+    .mx-auto.max-w-7xl.px-6.lg:px-8
+      .mt-8.flex.justify-center
+        %fieldset.grid.grid-cols-2.gap-x-1.rounded-full.p-1.text-center.text-xs.font-semibold.leading-5.ring-1.ring-inset.ring-shadowy-100
+          %legend.sr-only= t('landing_pricing_component.payment_frequency')
+          %label.bg-primary.text-white.cursor-pointer.rounded-full.py-1{class: "px-2.5", data: { type: 'for_manager', periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
+            %input.sr-only{name: "frequency", type: "radio", value: "monthly"}
+            %span= t('landing_pricing_component.monthly')
+          %label.text-white.cursor-pointer.rounded-full.py-1{class: "px-2.5", data: { type: 'for_manager', periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
+            %input.sr-only{name: "frequency", type: "radio", value: "annually"}
+            %span= t('landing_pricing_component.annually')
+      #montlyPrices{ data: { periodicity_selector_target: "monthlyPrices" } }
+        .text-center.font-semibold.mt-4.text-sm.text-primary
+          = t('landing_pricing_component.get_a_discount')
+        .isolate.mx-auto.mt-10.grid.max-w-md.grid-cols-1.gap-8.lg:mx-0.lg:max-w-none.lg:grid-cols-3
+          - @prices_monthly.each_with_index do |price, index|
+            .rounded-3xl.p-8.xl:p-10.ring-1{ class: rounded_classes(index) }
+              .flex.items-center.justify-between.gap-x-4
+                %h3#tier-freelancer.text-lg.font-semibold.leading-8{class: manager_plan_classes(index)}
+                  = price.product.name
+                - if index == 1
+                  %p.rounded-full.py-1.text-xs.font-semibold.leading-5.text-primary{class: "bg-primary/10 px-2.5"}
+                    = t('landing_pricing_component.most_popular')
+              %p.mt-4.text-sm.leading-6.text-white
+                = price.product.description
+              %p.mt-6.flex.items-baseline.gap-x-1
+                %span.text-4xl.font-bold.tracking-tight.text-white
+                  = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n %u")
+                %span.text-sm.font-semibold.leading-6.text-white
+                  = t('landing_pricing_component.per_month')
+              = button_to t('menu_options.subscribe'),
+                checkout_stripe_checkout_path(id: price.id),
+                class: 'w-full',
+                method: :post,
+                form_class: manager_link_classes(index),
+                "aria-label" => t('landing_pricing_component.get_started', product_name: price.product.name, price: number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n %u")),
+                data: { turbo: 'false' }
+              %ul.mt-8.space-y-3.text-sm.leading-6.text-white.xl:mt-10{role: "list"}
+                - @features[price.product.name.downcase].each do |feature|
+                  %li.flex.gap-x-3
+                    = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: 'h-6 w-5 flex-none text-primary')
+                    = feature
+
+      .hidden.isolate.mx-auto.mt-10.grid.max-w-md.grid-cols-1.gap-8.lg:mx-0.lg:max-w-none.lg:grid-cols-3{ data: { periodicity_selector_target: "annuallyPrices" } }
+        - @prices_yearly.each_with_index do |price, index|
+          .rounded-3xl.p-8.xl:p-10.ring-1{class: rounded_classes(index)}
+            .flex.items-center.justify-between.gap-x-4
+              %h3#tier-freelancer.text-lg.font-semibold.leading-8{class: manager_plan_classes(index)}
+                = price.product.name
+              - if index == 1
+                %p.rounded-full.py-1.text-xs.font-semibold.leading-5.text-primary{class: "bg-primary/10 px-2.5"}
+                  = t('landing_pricing_component.most_popular')
+            %p.mt-4.text-sm.leading-6.text-white
+              = price.product.description
+            .mt-6.flex.items-baseline.gap-x-1
+              %p.line-through.text-white
+                = number_to_currency((price.unit_amount / 0.85) / 100.0, unit: '€', format: "%n %u")
+              %span.text-4xl.font-bold.tracking-tight.text-white.ml-2
+                = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n %u")
+              %span.text-sm.font-semibold.leading-6.text-white
+                = t('landing_pricing_component.per_year')
+            %p.text-xs.text-red-600.font-semibold.mt-2
+              = t('landing_page_controller.discount_applied')
+            = button_to t('menu_options.subscribe'),
+              checkout_stripe_checkout_path(id: price.id),
+              class: 'w-full',
+              method: :post,
+              form_class: manager_link_classes(index),
+              "aria-label" => t('landing_pricing_component.get_started', product_name: price.product.name, price: number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n %u")),
+              data: { turbo: 'false' }
+            %ul.mt-8.space-y-3.text-sm.leading-6.text-white.xl:mt-10{role: "list"}
+              - @features[price.product.name.downcase].each do |feature|
+                %li.flex.gap-x-3
+                  = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: 'h-6 w-5 flex-none text-primary')
+                  = feature
+
+
+
+-else
+  %section#pricing.bg-slate-900.py-20.sm:py-32{"aria-label" => t('landing_pricing_component.pricing')}
+    .mx-auto.max-w-7xl.px-4.sm:px-6.lg:px-8{data: {controller: 'periodicity-selector'} }
+      .md:text-center
+        %h2.font-display.text-3xl.tracking-tight.text-white.sm:text-4xl
+          %span.relative.whitespace-nowrap
+            %svg.absolute.left-0.w-full.fill-blue-400{"aria-hidden" => "true", class: "top-1/2 h-[1em]", preserveaspectratio: "none", viewbox: "0 0 281 40"}
+              %path{"clip-rule" => "evenodd", d: "M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z", "fill-rule" => "evenodd"}
+            %span.relative
+              = t('landing_pricing_component.simple_pricing')
+          = t('landing_pricing_component.for_everyone')
+        %p.mt-4.text-lg.text-slate-400
+          = t('landing_pricing_component.size_message')
+        %p.mx-auto.mt-6.max-w-2xl.text-center.text-lg.leading-8.text-white= t('landing_pricing_component.choose_plan')
+        .mt-16.flex.justify-center
+          %fieldset.grid.grid-cols-2.gap-x-1.rounded-full.p-1.text-center.text-xs.font-semibold.leading-5.text-white{class: "bg-white/5"}
+            %legend.sr-only= t('landing_pricing_component.payment_frequency')
+            %label.bg-primary.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out{class: "px-2.5", data: { periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
+              %input.sr-only{name: "frequency", type: "radio", value: "monthly"}
+              %span= t('landing_pricing_component.monthly')
+            %label.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out{class: "px-2.5", data: { periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
+              %input.sr-only{name: "frequency", type: "radio", value: "annually"}
+              %span= t('landing_pricing_component.annually')
+
+      .-mx-4.mt-16.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8{ data: { periodicity_selector_target: "monthlyPrices" } }
+        - @prices_monthly.each_with_index do |price, index|
+          %section{class: plan_classes(index)}
+            %h3.mt-5.font-display.text-lg.text-white
+              = price.product.name
+            %p.mt-2.text-base{class: description_text_classes(index)}
+              = price.product.description
+            %p.order-first.font-display.text-5xl.font-light.tracking-tight.text-white
+              = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n%u/mes")
+            %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(index), role: "list"}
+              - @features[price.product.name.downcase].each do |feature|
+                %li.flex
+                  = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
+                  %span.ml-4= feature
+
+      .hidden{ data: { periodicity_selector_target: "annuallyPrices" } }
+        %p.text-sm.text-green-200.font-semibold.text-center.mt-4
+          = t('landing_pricing_component.discount_applied')
+        .-mx-4.mt-9.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8
+          - @prices_yearly.each_with_index do |price, index|
+            %section{class: plan_classes(index)}
+              .flex.items-baseline.gap-x-2
+                %span.line-through.text-white
+                  = number_to_currency((@prices_monthly[index].unit_amount / 100.0) * 12, unit: '€', format: "%n%u/año")
+                %p.order-first.font-display.text-5xl.font-light.tracking-tight.text-white.ml-2
+                  = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n%u")
+              %h3.mt-5.font-display.text-lg.text-white
+                = price.product.name
+              %p.mt-2.text-base{class: description_text_classes(index)}
+                = price.product.description
+              %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(index), role: "list"}
+                - @features[price.product.name.downcase].each do |feature|
+                  %li.flex
+                    = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
+                    %span.ml-4
+                      = feature
+      .mt-10.flex.justify-center.gap-x-6
+        %a.group.inline-flex.items-center.justify-center.rounded-full.py-2.px-4.text-sm.font-semibold.focus:outline-none.focus-visible:outline-2.focus-visible:outline-offset-2.bg-white.text-slate-900.hover:bg-slate-700.hover:text-slate-100.active:bg-slate-800.active:text-slate-300.focus-visible:outline-slate-900{href: new_user_registration_path}
+          = t('landing_page_controller.call_to_action')

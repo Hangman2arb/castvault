@@ -1,0 +1,12 @@
+- if @icon_position == 'left'
+  .flex.justify-center.items-center{class: @button_extra_classes}
+    %i{ class: "bi bi-#{@icon} #{@extra_classes}" }
+    - unless @text.blank?
+      %span.ml-2{class: @text_extra_classes}
+        = @text
+- else
+  .flex.justify-center.items-center{class: @button_extra_classes}
+    - unless @text.blank?
+      %span.mr-2{class: @text_extra_classes}
+        = @text
+    %i{ class: "bi bi-#{@icon} #{@extra_classes}" }

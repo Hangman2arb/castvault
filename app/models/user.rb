@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
+  has_many :forms
+  has_many :profiles
+
   enum role: [:user, :admin]
   enum plan: [:basic, :pro, :elite]
 

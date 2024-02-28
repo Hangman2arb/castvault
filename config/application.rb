@@ -24,7 +24,11 @@ module Castvault
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.active_job.queue_adapter = :sidekiq
+    # Available Languages
+    config.i18n.available_locales = [:en, :es]
+
+    # Lenguage by Default
+    config.i18n.default_locale = :en
 
   end
 end

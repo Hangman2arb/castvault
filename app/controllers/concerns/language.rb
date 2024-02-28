@@ -10,7 +10,7 @@ module Language
 
     def set_locale
       if user_signed_in?
-        user_locale = current_user&.setting&.language
+        user_locale = current_user&.language
         session[:locale] = user_locale if SUPPORTED_LANGUAGES.include?(user_locale)
       else
         session[:locale] ||= locale_from_header

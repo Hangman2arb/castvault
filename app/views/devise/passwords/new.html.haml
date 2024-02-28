@@ -1,10 +1,15 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.flex.flex-col.justify-center.mt-10.px-6.py-12.lg:px-8
+  .sm:mx-auto.sm:w-full.sm:max-w-md
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-white Forgot your password?
+
+  .mt-4.sm:mx-auto.sm:w-full.sm:max-w-md
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-6" }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      .field
+        %label.block.text-sm.font-medium.leading-6.text-white{for: "user_email"} Email address
+        .mt-2
+          = f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_email"
+
+      .actions
+        = f.submit "Send me reset password instructions", class: "flex w-full justify-center rounded-md bg-indigo-500 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 py-1.5"

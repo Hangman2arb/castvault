@@ -1,0 +1,69 @@
+= form_with model: [:manager, @form], local: true, data: { controller: "field-checkbox", turbo: false } do |form|
+  = render HeaderComponent.new(title: @title, description: @description, buttons: @header_buttons)
+  .mb-4.p-4.mt-10
+    = form.label :name, 'Nombre del formulario', class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
+    = form.text_field :name, class: 'mt-1 block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', placeholder: 'Introduce el nombre del formulario'
+    - if @form.errors[:name].present?
+      .text-red-500.text-sm
+        = @form.errors[:name].first
+
+  .flex.items-center.mb-4{data: { action: "click->field-checkbox#toggleCheckbox" } }
+    = check_box_tag 'select_all', '1', false, class: 'hidden', data: { field_checkbox_target: "checkboxSelectAll" }
+
+    %button.ml-4.bg-gray-200.relative.inline-flex.h-6.w-11.flex-shrink-0.cursor-pointer.rounded-full.border-2.border-transparent.transition-colors.duration-200.ease-in-out.focus:outline-none.focus:ring-2.focus:ring-indigo-600.focus:ring-offset-2{'aria-checked': "false", role: "switch", type: "button", data: {field_checkbox_target: 'buttonSelectAll', action: 'click->field-checkbox#selectAllToggle'} }
+      %span.sr-only Use setting
+      %span.translate-x-0.pointer-events-none.relative.inline-block.h-5.w-5.transform.rounded-full.bg-white.shadow.ring-0.transition.duration-200.ease-in-out{data: {field_checkbox_target: 'span1SelectAll'}}
+        %span.opacity-100.duration-200.ease-in.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': 'true', data: {field_checkbox_target: 'span2SelectAll'}}
+          %svg.h-3.w-3.text-gray-400{fill: "none", viewbox: "0 0 12 12"}
+            %path{d: "M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2", stroke: "currentColor", 'stroke-linecap': "round", 'stroke-linejoin': "round", 'stroke-width': '2'}
+        %span.opacity-0.duration-100.ease-out.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': "true", data: {field_checkbox_target: 'span3SelectAll'}}
+          %svg.h-3.w-3.text-indigo-600{fill: "currentColor", viewbox: "0 0 12 12"}
+            %path{d: "M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"}
+    = label_tag 'select_all', 'Seleccionar todos', class: 'ml-2 block text-sm text-shadowy-200'
+  - Form::ADMITED_FORM_FIELDS.group_by { |_, field_attrs| field_attrs[:section] }.each do |section, fields|
+    .border-b.pb-4.mb-10{class: 'border-shadowy-200/10'}
+      %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.#{section}")
+      %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.#{section}_description")
+      .grid.grid-cols-1.md:grid-cols-3.gap-4
+        - fields.each do |column_name, _|
+          .p-4.cursor-pointer.hover:shadow-white{data: { action: "click->field-checkbox#toggleCheckbox" }}
+            .flex.items-center.gap-3.text-sm.text-shadowy-200.mb-2
+              = check_box_tag "form[fields][#{column_name}][include]", "true", @form.fields.dig(column_name.to_s, 'include'), id: "#{column_name}_include", class: 'hidden', data: { field_checkbox_target: "checkbox", action: 'change->field-checkbox#updateSwitchVisual' }
+              %button.bg-gray-200.relative.inline-flex.h-6.w-11.flex-shrink-0.cursor-pointer.rounded-full.border-2.border-transparent.transition-colors.duration-200.ease-in-out.focus:outline-none.focus:ring-2.focus:ring-indigo-600.focus:ring-offset-2{'aria-checked': "false", role: "switch", type: "button", data: {field_checkbox_target: 'button'} }
+                %span.sr-only= "Use setting"
+                %span.translate-x-0.pointer-events-none.relative.inline-block.h-5.w-5.transform.rounded-full.bg-white.shadow.ring-0.transition.duration-200.ease-in-out{data: {field_checkbox_target: 'span1'}}
+                  %span.opacity-100.duration-200.ease-in.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': 'true', data: {field_checkbox_target: 'span2'}}
+                    %svg.h-3.w-3.text-gray-400{fill: "none", viewbox: "0 0 12 12"}
+                      %path{d: "M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2", stroke: "currentColor", 'stroke-linecap': "round", 'stroke-linejoin': "round", 'stroke-width': '2'}
+                  %span.opacity-0.duration-100.ease-out.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': "true", data: {field_checkbox_target: 'span3'}}
+                    %svg.h-3.w-3.text-indigo-600{fill: "currentColor", viewbox: "0 0 12 12"}
+                      %path{d: "M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"}
+              = label_tag '', t("fields.#{column_name}"), for: "#{column_name}-include"
+            = text_field_tag "form[fields][#{column_name}][label]", @form.fields.dig(column_name.to_s, 'label'), class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "Mensaje informativo adicional"
+
+  .relative.mt-6.mb-4
+    .absolute.inset-0.flex.items-center{"aria-hidden" => "true"}
+      .w-full.border-t.border-gray-300
+    .relative.flex.justify-center
+      %span.bg-gray-900.px-2.text-sm.text-shadowy-200
+        = t("forms_controller.section.skills")
+  .grid.grid-cols-1.md:grid-cols-3.gap-4
+    - Form::FEATURES_OPTIONS.each do |column_name, _|
+      .p-4.cursor-pointer.hover:shadow-white{data: { action: "click->field-checkbox#toggleCheckbox" }}
+        .flex.items-center.gap-3.text-sm.text-shadowy-200.mb-2
+          = check_box_tag "form[fields][#{column_name}][include]", "true", @form.fields.dig(column_name.to_s, 'include'), id: "#{column_name}_include", class: 'hidden', data: { field_checkbox_target: "checkbox", action: 'change->field-checkbox#updateSwitchVisual' }
+          %button.bg-gray-200.relative.inline-flex.h-6.w-11.flex-shrink-0.cursor-pointer.rounded-full.border-2.border-transparent.transition-colors.duration-200.ease-in-out.focus:outline-none.focus:ring-2.focus:ring-indigo-600.focus:ring-offset-2{'aria-checked': "false", role: "switch", type: "button", data: {field_checkbox_target: 'button'} }
+            %span.sr-only= "Use setting"
+            %span.translate-x-0.pointer-events-none.relative.inline-block.h-5.w-5.transform.rounded-full.bg-white.shadow.ring-0.transition.duration-200.ease-in-out{data: {field_checkbox_target: 'span1'}}
+              %span.opacity-100.duration-200.ease-in.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': 'true', data: {field_checkbox_target: 'span2'}}
+                %svg.h-3.w-3.text-gray-400{fill: "none", viewbox: "0 0 12 12"}
+                  %path{d: "M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2", stroke: "currentColor", 'stroke-linecap': "round", 'stroke-linejoin': "round", 'stroke-width': '2'}
+              %span.opacity-0.duration-100.ease-out.absolute.inset-0.flex.h-full.w-full.items-center.justify-center.transition-opacity{'aria-hidden': "true", data: {field_checkbox_target: 'span3'}}
+                %svg.h-3.w-3.text-indigo-600{fill: "currentColor", viewbox: "0 0 12 12"}
+                  %path{d: "M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"}
+          = label_tag '', t("fields.#{column_name}"), for: "#{column_name}-include"
+        = text_field_tag "form[fields][#{column_name}][label]", @form.fields.dig(column_name.to_s, 'label'), class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "Mensaje informativo adicional"
+
+  .mt-4.text-center
+    = form.submit submit_button_text, class: "inline-flex items-center rounded-full bg-primary px-4 py-3 text-md font-medium text-white transition duration-200 cursor-pointer hover:bg-dark hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+

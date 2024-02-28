@@ -10,6 +10,8 @@ gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+gem "pg_party", "~> 1.6"
+gem 'pg_search'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -56,13 +58,33 @@ gem "devise", "~> 4.9"
 # Pagination
 gem "pagy", "~> 6.4"
 
-# Sidekiq
-gem 'sidekiq'
+# Payment
+gem "stripe", "~> 10.2"
 
+# Sidekiq
+gem "sidekiq", "~> 7.2"
+gem "sidekiq-failures", "~> 1.0"
+gem "sidekiq-scheduler", "~> 5.0"
+gem "sidekiq-limit_fetch", "~> 4.4"
+
+# Comunication
+gem 'httparty'
+
+# Data Analysis
+gem 'chartkick'
+gem 'groupdate'
+gem 'i18n_data'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # Email Tester
+  gem "letter_opener"
+  gem 'letter_opener_web', '~> 2.0'
+
+  #Data
+  gem 'faker'
 end
 
 group :development do
@@ -81,5 +103,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-

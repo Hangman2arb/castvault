@@ -1,5 +1,5 @@
-class SetUserTimeZoneAndLanguageJob < ApplicationJob
-  queue_as :default
+class SetUserTimeZoneAndLanguageJob
+  include Sidekiq::Job
 
   def perform(user_id, ip_address)
     user = User.find_by(id: user_id)

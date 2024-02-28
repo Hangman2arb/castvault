@@ -1,0 +1,9 @@
+= render HeaderComponent.new(title: @title, description: @description, buttons: @header_buttons)
+
+= render DataTableComponent.new( data_collection: @data_collection,
+pagy: @pagy,
+actions: @actions,
+excluded_keys: @excluded_keys,
+empty_content: @empty_content,
+sorting_keys: Form::SORTING_KEYS,
+selector_options: @groups_selector )

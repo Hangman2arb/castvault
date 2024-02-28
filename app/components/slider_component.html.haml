@@ -1,0 +1,20 @@
+%div.flex.justify-center.items-center
+  %div{data: {controller: 'range-slider', range_slider_min_val_value: @val_min, range_slider_max_val_value: @val_max, range_slider_selected_min_val_value: @selected_val_min, range_slider_selected_max_val_value: @selected_val_max}, class: "relative max-w-xl w-full"}
+    %input{type: "range", step: "1", data: {action: "input->range-slider#updateStartValue", range_slider_target: "start"}, class: "absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer", min: @val_min, max: @val_max, value: @selected_val_min}
+    %input{type: "range", step: "1", data: {action: "input->range-slider#updateEndValue", range_slider_target: "end"}, class: "absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer", min: @val_min, max: @val_max, value: @selected_val_max}
+    %div.relative.z-10.h-2
+      %div{class: "absolute z-10 left-0 right-0 bottom-0 top-0 rounded-md bg-gray-200"}
+      %div{data: {range_slider_target: "progress"}, class: "absolute z-20 top-0 bottom-0 rounded-md bg-green-300"}
+      %div{data: {range_slider_target: "startThumb"}, class: "absolute z-30 w-6 h-6 top-0 left-0 bg-green-300 rounded-full -mt-2 -ml-1"}
+      %div{data: {range_slider_target: "endThumb"}, class: "absolute z-30 w-6 h-6 top-0 right-0 bg-green-300 rounded-full -mt-2 -mr-3"}
+    .flex.justify-between.items-center.py-5
+      = @form.text_field @key_min, maxlength: "5", data: {range_slider_target: "startValue", action: "input->range-slider#handleStartValueInput"}, class: "px-3 py-2 border border-gray-200 rounded w-24 text-center", value: @selected_val_min
+      = @form.text_field @key_max, maxlength: "5", data: {range_slider_target: "endValue", action: "input->range-slider#handleEndValueInput"}, class: "px-3 py-2 border border-gray-200 rounded w-24 text-center", value: @selected_val_max
+
+:css
+  input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    -webkit-appearance: none;
+  }

@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Utilities
   include ApplicationHelper
+
+  before_action :authenticate_user!
 end

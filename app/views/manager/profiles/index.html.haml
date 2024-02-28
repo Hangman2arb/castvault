@@ -1,0 +1,123 @@
+= turbo_frame_tag 'profiles' do
+  = render HeaderComponent.new(title: @title, description: @description)
+
+  = form_with url: manager_profiles_path, method: :get, local: true, class: "space-y-4 p-6", data: { controller: 'autosave profiles-form', autosave_delay_value: 0 } do |form|
+    .modal-overlay{ data: { profiles_form_target: "overlay" }, class: "hidden z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
+      .modal-container{ data: { profiles_form_target: "modal" }, class: "fixed inset-0 overflow-y-auto flex items-start justify-center" }
+        .modal-content{ class: "bg-gray-900 w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible" }
+
+          %nav.flex.items-center.justify-between.border-b.py-4{class: "border-white/10"}
+            %ul.pl-8.flex.flex-none.gap-x-6.px-2.text-sm.font-semibold.leading-6.text-gray-400{role: "list"}
+              %li.filter-tab.text-indigo-400.cursor-pointer.hover:text-indigo-400{data: {action: 'click->profiles-form#switchToGlobal', profiles_form_target: 'globalTab'}}
+                = 'Global'
+              %li.filter-tab.cursor-pointer.hover:text-indigo-400{data: {action: 'click->profiles-form#switchToHabilities', profiles_form_target: 'habilitiesTab'}}
+                = 'Habilidades'
+            .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#close" } }
+              = render BootstrapIconWithTextComponent.new(icon: 'x', extra_classes: 'text-3xl pr-4')
+
+          .grid.grid-cols-1.md:grid-cols-2.gap-4.p-10{data: { profiles_form_target: 'globalTabContent' }}
+            %div
+              .grid.grid-cols-1.md:grid-cols-2.gap-4
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Nombre y Apellidos'
+                  = form.text_field :name, placeholder: t('profiles_controller.search_terms.name'), value: params[:name], class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Ciudad'
+                  = form.text_field :city, placeholder: t('profiles_controller.search_terms.city'), value: params[:city], class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              .grid.grid-cols-1.md:grid-cols-3.gap-4.my-4
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Género'
+                  = form.select :gender, options_for_select(Form::GENDER_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:gender]), { include_blank: t('profiles_controller.search_terms.any_gender') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Etnia'
+                  = form.select :ethnicity, options_for_select(Form::ETHNICITY_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:ethnicity]), { include_blank: t('profiles_controller.search_terms.any_ethnicity') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Agencia'
+                  = form.select :agent_name, options_for_select(@agencies, selected: params[:agent_name]), { include_blank: t('profiles_controller.search_terms.any_agency') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Tipo de Cabello'
+                  = form.select :hair_type, options_for_select(Form::HAIR_TYPE_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_type]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Color del Cabello'
+                  = form.select :hair_color, options_for_select(Form::HAIR_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_color]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Color de Ojos'
+                  = form.select :eye_color, options_for_select(Form::EYE_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:eye_color]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Pasaporte'
+                  = form.select :passport, options_for_select(@boolean_options, selected: params[:passport]), { include_blank: false }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Carnet de Conducir'
+                  = form.select :driving_license, options_for_select(@boolean_options, selected: params[:driving_license]), { include_blank: false }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Alergias'
+                  = form.select :food_allergies, options_for_select(@boolean_options, selected: params[:food_allergies]), { include_blank: false }, { data: { controller: 'slim'} }
+                .form-group
+                  %label.text-shadowy-200
+                    = 'Ordenar por'
+                  = form.select :order_by, options_for_select(Profile::ORDER_BY.keys.map { |order| [t(".#{order}"), order] }, params[:order_by]), {}, { data: { controller: 'slim'}  }
+
+              %label.text-shadowy-200= t("skills_category.available_for")
+              .flex.items-center.justify-between.gap-4
+                - Form::AVAILABLE_FOR_OPTIONS.each do |available_for|
+                  .flex.items-center.gap-2.text-shadowy-200.text-sm
+                    = render CustomCheckboxComponent.new(form: form, key: "available_for[]", value: available_for, checked: params[:available_for]&.include?(available_for))
+                    = label_tag "available_for_#{available_for}", available_for
+
+            .slider-container
+              = render SliderComponent.new(val_min: 0, selected_val_min: params[:min_age] || 0, key_min: 'min_age', val_max: 100, selected_val_max: params[:max_age] || 100, key_max: 'max_age', form: form)
+              = render SliderComponent.new(val_min: 40, selected_val_min: params[:min_height] || 40, key_min: 'min_height', val_max: 220, selected_val_max: params[:max_height] || 220, key_max: 'max_height', form: form)
+              = render SliderComponent.new(val_min: 1, selected_val_min: params[:min_shirt_size] || 1, key_min: 'min_shirt_size', val_max: 74, selected_val_max: params[:max_shirt_size] || 74, key_max: 'max_shirt_size', form: form)
+              = render SliderComponent.new(val_min: 1, selected_val_min: params[:min_pants_size] || 1, key_min: 'min_pants_size', val_max: 70, selected_val_max: params[:max_pants_size] || 70, key_max: 'max_pants_size', form: form)
+              = render SliderComponent.new(val_min: 16, selected_val_min: params[:min_shoe_size] || 16, key_min: 'min_shoe_size', val_max: 54, selected_val_max: params[:max_shoe_size] || 54, key_max: 'max_shoe_size', form: form)
+
+          %ul.hidden.grid.grid-cols-2.md:grid-cols-fill.gap-6.mt-10.text-sm.p-10.cursor{role: "list", data: { profiles_form_target: 'habilitiesTabContent' }}
+            - Form::FEATURES_OPTIONS.each do |category, skills|
+              %li.col-span-1.flex.flex-col.cursor-pointer.max-w-custom
+                %label.text-primary.font-semibold= t("skills_category.#{category}")
+                %ul.grid.grid-cols-fill.gap-6.mt-10{role: "list"}
+                  - skills.each do |skill|
+                    %li.col-span-1.flex.flex-col.text-center.cursor-pointer.max-w-custom
+                      .flex.items-center.gap-2
+                        = render CustomCheckboxComponent.new(form: form, key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
+                        = label_tag "skills_#{category}_#{skill}", t("profiles_controller.features.#{skill}"), class: 'text-shadowy-200'
+
+
+
+          .actions.text-right.p-10
+            = form.submit t('labels.search'), class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#close" }
+            .cursor-pointer{class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#close" }}
+              = 'Close'
+
+    .flex.items-center.justify-between.text-sm
+      .flex.items-center.text-shadowy-200.text.sm.gap-2
+        %label
+          = "Seleccionar formulario"
+        = form.select :form_id, options_for_select(@forms.map { |f| [f.name, f.id] }, selected: params[:form_id]), { include_blank: 'All' }, { data: { controller: 'slim', placeholder: 'All', action: 'change->autosave#save' } }
+      .flex.items-center.text-shadowy-200.text.sm.gap-2
+        %label
+          = "Resultados:"
+        %label
+          = @total_count
+      .flex.items-center.gap-2
+        .cursor-pointer{class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#open" } }
+          = render BootstrapIconWithTextComponent.new(icon: 'funnel', text: 'Filter', extra_classes: 'text-xl')
+        .cursor-pointer{class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"}
+          = render BootstrapIconWithTextComponent.new(icon: 'arrow-clockwise', text: 'Reset', extra_classes: 'text-xl')
+
+    = turbo_frame_tag "profiles-#{@pagy.page}", class: 'profiles' do
+      %ul.grid.grid-cols-fill.gap-6.mt-10{role: "list"}
+        = render partial: 'profile', collection: @profiles
+      = turbo_frame_tag "profiles-#{@pagy.next}", class: 'products', src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next
+

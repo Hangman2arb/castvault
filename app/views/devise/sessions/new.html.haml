@@ -1,17 +1,21 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.flex.flex-col.justify-center.mt-10.px-6.py-12.lg:px-8
+  .sm:mx-auto.sm:w-full.sm:max-w-sm
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-white Sign in to your account
+  .mt-4.sm:mx-auto.sm:w-full.sm:max-w-md
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f|
+      %div
+        = f.label :email, class: "block text-sm font-medium leading-6 text-white"
+        .mt-2
+          = f.email_field :email, autofocus: true, autocomplete: 'off', required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "email"
+      %div
+        .flex.items-center.justify-between
+          = f.label :password, class: "block text-sm font-medium leading-6 text-white"
+          .text-sm
+            = link_to "Forgot password?", new_password_path(resource_name), class: "font-semibold text-indigo-400 hover:text-indigo-300"
+        .mt-2
+          = f.password_field :password, autocomplete: 'new-password', required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "password"
+      %div
+        = f.submit "Sign in", class: "flex w-full justify-center rounded-md bg-indigo-500 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 py-1.5"
+    %p.mt-10.text-center.text-sm.text-gray-400
+      Not a member?
+      = link_to "Start a 14 day free trial", new_registration_path(resource_name), class: "font-semibold leading-6 text-indigo-400 hover:text-indigo-300"

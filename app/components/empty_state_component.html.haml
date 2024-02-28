@@ -1,0 +1,15 @@
+.text-center.rounded-xl.mt-8.p-8
+  %i.mx-auto.h-12.w-12.text-secondary.text-6xl.bi{class: "bi-#{main_icon}"}
+  %h3.mt-2.text-lg.font-semibold.text-primary
+    = title
+  %p.mt-3.text-sm.text-shadowy-200
+    = message
+  - unless button_link.nil?
+    .mt-6
+      = render ButtonComponent.new( text: t('ai_chatbots_controller.save'),
+        action: button_link,
+        additional_attributes: { data: data_attributes },
+        icon: button_icon,
+        text: button_text,
+        icon_extra_classes: '',
+        is_link: true )

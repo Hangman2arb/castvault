@@ -1,3 +1,3 @@
 class PasswordsController < Devise::PasswordsController
-  layout 'landing_page'
+  layout 'web'
 end

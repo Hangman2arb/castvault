@@ -1,6 +1,12 @@
 #!/usr/bin/env sh
 
-if gem list --no-installed --exact --silent foreman; then
+## Clobber the assets
+#rails assets:clobber
+#
+## Precompile the assets
+#rails assets:precompile
+
+if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
   gem install foreman
 fi

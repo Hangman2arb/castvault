@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+@import './bootstrap_icons_1_11_3.css';
+@import 'sweetalert2/dist/sweetalert2.css';
+@import './stimulus-multiselect.css';
+@import './slimselect.css';

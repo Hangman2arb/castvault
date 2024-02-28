@@ -1,0 +1,27 @@
+- unless @actions.empty?
+  .relative.inline-block.text-left{data: {controller: 'actions-button-component'}}
+    %div
+      %button#menu-button.inline-flex.w-full.justify-center.rounded-full.bg-white.px-4.py-3.text-sm.font-medium.text-shadowy-300.hover:bg-shadowy-100{"aria-expanded" => "true", "aria-haspopup" => "true", class: "gap-x-1.5", type: "button", data: {action: 'actions-button-component#toggleDropdown'}}
+        = t('actions_button_component.options')
+        = render BootstrapIconWithTextComponent.new( icon: 'chevron-down', extra_classes: 'ps-2')
+    .absolute.right-0.z-10.mt-2.w-56.origin-top-right.divide-y.divide-gray-100.rounded-md.bg-white.shadow-lg.ring-1.ring-black.ring-opacity-5.focus:outline-none.hidden{"aria-labelledby" => "menu-button", "aria-orientation" => "vertical", role: "menu", tabindex: "-1", data: {actions_button_component_target: 'actions'}}
+      - @actions.each_with_index do |(key, action), index|
+        - if key == :copy_link
+          .py-1{role: "none", data: {clipboard_success_content_value: copy_success, controller: 'clipboard' } }
+            %input{ data: { clipboard_target: 'source'}, type: "hidden", value: @data_hash[key]  }
+            = link_to '', {id: "menu-item-#{index}", class: 'text-shadowy-300 group flex items-center px-4 py-2 text-sm'}.merge(action[:extra_options]) do
+              %i.mr-2.bi{class: "bi-#{action_icons[key]}"}
+              = t("actions_button_component.#{key}")
+        - elsif key == :destroy_link
+          .py-1{role: "none"}
+            %form{action: @data_hash[key], method: :delete, **action[:extra_options]}
+              %input{type: "hidden", name: "_method", value: "delete"}
+              %button{type: "submit", id: "menu-item-#{index}", class: 'text-shadowy-300 group flex items-center px-4 py-2 text-sm', role: "menuitem", tabindex: "-1"}
+                %i.mr-2.bi{class: "bi-#{action_icons[key]}"}
+                = t("actions_button_component.#{key}")
+        - else
+          - unless @data_hash[key].nil?
+            .py-1{role: "none"}
+              = link_to @data_hash[key], {id: "menu-item-#{index}", class: 'text-shadowy-300 group flex items-center px-4 py-2 text-sm', role: "menuitem", tabindex: "-1"}.merge(action[:extra_options]) do
+                %i.mr-2.bi{class: "bi-#{action_icons[key]}"}
+                = t("actions_button_component.#{key}")

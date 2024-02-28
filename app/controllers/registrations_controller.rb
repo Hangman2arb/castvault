@@ -1,11 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
-  layout 'landing_page'
+  layout 'web'
   before_action :configure_sign_up_params, only: [:create]
 
   def create
     super do |user|
       if user.persisted?
-        SetUserTimeZoneAndLanguageJob.perform_later(user.id, request.remote_ip)
+        SetUserTimeZoneAndLanguageJob.perform_async(user.id, request.remote_ip)
       end
     end
   end

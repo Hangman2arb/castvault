@@ -1,0 +1,30 @@
+.xl:flex.xl:items-center.xl:justify-between
+  .min-w-0.flex-1
+    %h2.text-2xl.font-bold.text-primary.sm:truncate.sm:text-3xl.sm:tracking-tight
+      = @title
+    %p.text-md.mt-2.text-shadowy-200.pr-5
+      = @description
+  .mt-4.flex.xl:ml-4.xl:mt-0.lg:justify-end.gap-3
+    - @buttons&.each_with_index do |button, index|
+      %span{ class: "#{index > @index_condition ? 'hidden' : ''} sm:block"}
+        - case button_type(button)
+        - when 'submit'
+          = button_tag class: classes_by_index(index), type: 'submit', data: data_attr(button)do
+            = render BootstrapIconWithTextComponent.new(icon: bootstrap_icon(button), text: text(button), extra_classes: 'me-1')
+        - when 'post_link'
+          = link_to link_path(button), class: classes_by_index(index), method: :post, data: data_attr(button).merge({ turbo_method: :post }) do
+            = render BootstrapIconWithTextComponent.new(icon: bootstrap_icon(button), text: text(button), extra_classes: 'me-1')
+        - else
+          = link_to link_path(button), class: classes_by_index(index), method: get_method(button), data: data_attr(button) do
+            = render BootstrapIconWithTextComponent.new(icon: bootstrap_icon(button), text: text(button), extra_classes: 'me-1')
+
+    - unless @mobile_menu_buttons.empty?
+      .relative.ml-3.block.sm:hidden{ data: { controller: "dropdown" } }
+        %button{ type: "button", class: classes(@buttons.first), data: { action: "dropdown#toggle click@window->dropdown#hide" } }
+          = render BootstrapIconWithTextComponent.new(icon: 'chevron-down', text: 'Más Opciones', extra_classes: 'ps-2', icon_position: 'right')
+        %div{ class: "absolute right-0 z-10 -mr-1 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none", data: { dropdown_target: "menu", transition_enter_from: "opacity-0 scale-95", transition_enter_to: "opacity-100 scale-100", transition_leave_from: "opacity-100 scale-100", transition_leave_to: "opacity-0 scale-95" }}
+          - @mobile_menu_buttons.each do |button|
+            = link_to link_path(button), class: 'block px-4 py-2 text-sm text-shadowy-300', method: get_method(button), data: { action: "dropdown#toggle" } do
+              = render BootstrapIconWithTextComponent.new(icon: bootstrap_icon(button), text: text(button), extra_classes: 'me-1')
+.inset-0.flex.items-center{"aria-hidden" => "true"}
+
