@@ -8,7 +8,7 @@
             %div
               %h2.text-2xl.font-semibold= [@profile.name, @profile.surname].compact.join(' ')
               %p.text-sm.text-gray-500= @profile.city if @profile.city.present?
-          .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#close" } }
+          .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#closeProfileModal" } }
             = render BootstrapIconWithTextComponent.new(icon: 'x', extra_classes: 'text-3xl pr-4')
 
         %div.flex.flex-wrap.mb-4
