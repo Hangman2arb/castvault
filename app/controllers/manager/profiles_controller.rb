@@ -29,6 +29,18 @@ class Manager::ProfilesController < ApplicationController
     @profile = current_user.profiles.with_attached_face_photo
   end
 
+  def modal
+    Rails.logger.debug "Accediendo a la acción modal con ID: #{params[:id]}"
+    @profile = current_user.profiles.find(params[:id])
+    if @profile
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+      redirect_to manager_profiles_path, alert: 'Perfil no encontrado'
+    end
+  end
+
   private
 
   def get_all_agencies

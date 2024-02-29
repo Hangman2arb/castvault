@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   namespace :manager do
     get 'settings/index'
     root 'dashboard#index', menu_option_id: 'dashboard'
-    resources :profiles, only: [:index, :create, :edit, :update, :destroy, :show], menu_option_id: 'profiles'
+    resources :profiles, only: [:index, :create, :edit, :update, :destroy, :show], menu_option_id: 'profiles' do
+      get :modal, on: :collection
+    end
     resources :forms, menu_option_id: 'forms' do
       get 'search_languages', to: 'forms#search_languages'
       get 'search_available_for', to: 'forms#search_available_for'

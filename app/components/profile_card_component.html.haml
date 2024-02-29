@@ -1,5 +1,5 @@
 .flex.flex-1.flex-col
-  %img.mx-auto.h-32.w-32.flex-shrink-0.rounded-full{alt: "", src: @photo}
+  %img.mx-auto.h-32.w-32.flex-shrink-0.rounded-full{alt: "", src: @photo, data: { action: "click->profiles-form#openModal", profile_id: @id }}}
   %h3.mt-6.text-sm.font-medium.text-shadowy-200
     = @name.blank? ? 'Nombre no especificado' : @name
   %dl.mt-1.flex.flex-grow.flex-col.justify-between

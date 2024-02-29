@@ -1,0 +1,82 @@
+%turbo-frame#profile_modal
+  .modal-overlay{ data: { profiles_form_target: "profileOverlay" }, class: "z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
+    .modal-container{ data: { profiles_form_target: "profileModal" }, class: "fixed inset-0 overflow-y-auto flex items-start justify-center" }
+      .modal-content{ class: "bg-gray-900 w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible text-shadowy-200" }
+        .flex.items-center.justify-between
+          %div.flex.items-center.space-x-6.mb-4
+            = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_image.png'), class: "h-24 w-24 rounded-full object-cover"
+            %div
+              %h2.text-2xl.font-semibold= [@profile.name, @profile.surname].compact.join(' ')
+              %p.text-sm.text-gray-500= @profile.city if @profile.city.present?
+          .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#close" } }
+            = render BootstrapIconWithTextComponent.new(icon: 'x', extra_classes: 'text-3xl pr-4')
+
+        %div.flex.flex-wrap.mb-4
+          - if @profile.email.present?
+            %div.flex.items-center.mr-4.mb-4
+              %i.bi.bi-envelope.fill-current.text-gray-400.mr-2
+              %p.text-gray-600= @profile.email
+          - if @profile.phone.present?
+            %div.flex.items-center.mr-4.mb-4
+              %i.bi.bi-telephone.fill-current.text-gray-400.mr-2
+              %p.text-gray-600= @profile.phone
+          - if @profile.web.present?
+            %div.flex.items-center.mr-4.mb-4
+              %i.bi.bi-globe.fill-current.text-gray-400.mr-2
+              %p.text-gray-600= @profile.web
+
+        %div.flex.space-x-4.mb-4
+          - if @profile.twitter.present?
+            = link_to "https://twitter.com/#{@profile.twitter.delete_prefix('@')}", class: "text-blue-400 hover:text-blue-500" do
+              %i.bi.bi-twitter
+          - if @profile.facebook.present?
+            = link_to "https://facebook.com/#{@profile.facebook}", class: "text-blue-600 hover:text-blue-700" do
+              %i.bi.bi-facebook
+          - if @profile.instagram.present?
+            = link_to "https://instagram.com/#{@profile.instagram.delete_prefix('@')}", class: "text-pink-600 hover:text-pink-700" do
+              %i.bi.bi-instagram
+          - if @profile.tik_tok.present?
+            = link_to "https://tiktok.com/@#{@profile.tik_tok.delete_prefix('@')}", class: "text-black hover:text-gray-900" do
+              %i.bi.bi-tiktok
+
+        -# Grouping JSON data
+        %div.mt-6
+          %h3.text-lg.font-semibold.Text-gray-800 Skills & Interests
+          %ul.flex.flex-wrap.mt-2
+            - Form::FEATURES_OPTIONS.each do |category, skills|
+              - skills_selected = @profile.send(category)
+              - if skills_selected.present?
+                %li.bg-gray-200.rounded-full.px-4.py-1.mr-2.mb-2
+                  %h4.font-semibold.text-gray-700= t("skills_category.#{category}")
+                  %ul.pl-4
+                    - skills_selected.each do |skill|
+                      %li.text-sm.text-gray-600= skill
+
+        -# Dynamic display for additional fields like agency information, height, etc.
+        - if @profile.agency && @profile.agent_name.present?
+          %div.mt-4
+            %h3.text-lg.font-semibold.Text-gray-800 Agency Information
+            %p.text-sm.text-gray-600= @profile.agent_name
+            - if @profile.agent_email.present?
+              %p.text-sm.text-gray-600= @profile.agent_email
+            - if @profile.agent_phone.present?
+              %p.text-sm.text-gray-600= @profile.agent_phone
+
+        -# Additional personal details
+        - if @profile.birthdate.present?
+          %div.mt-4
+            %h3.text-lg.font-semibold.Text-gray-800 Personal Details
+            %p.text-sm.text-gray-600= "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
+            %p.text-sm.text-gray-600= "Gender: #{@profile.gender.humanize}"
+            %p.text-sm.text-gray-600= "Ethnicity: #{@profile.ethnicity.humanize}"
+
+        -# Conditional rendering for attached photos and videos
+        - if @profile.body_photo.attached?
+          %div.mt-4
+            %h3.text-lg.font-semibold.Text-gray-800 Body Photo
+            = image_tag @profile.body_photo, class: "rounded-lg"
+
+        - if @profile.video_book.attached?
+          %div.mt-4
+            %h3.text-lg.font-semibold.Text-gray-800 Video Book
+            = video_tag @profile.video_book, controls: true, class: "rounded-lg w-full"

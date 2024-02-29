@@ -121,3 +121,4 @@
         = render partial: 'profile', collection: @profiles
       = turbo_frame_tag "profiles-#{@pagy.next}", class: 'products', src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next
 
+    = turbo_frame_tag "profile_modal"
