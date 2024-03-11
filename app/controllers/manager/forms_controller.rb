@@ -148,6 +148,9 @@ class Manager::FormsController < ApplicationController
           form_data_hash[key] = manager_form_path(form)
         when :updated_at
           form_data_hash[key] = global_date_format(form[key].in_time_zone(current_user.time_zone))
+        when :name
+          image_url = form.description_photo.attached? ? url_for(form.description_photo) : nil
+          form_data_hash[key] = AvatarComponent.new(image_url: image_url, size: :large, text: form[key], zoomable: true).render_in(view_context)
         else
           form_data_hash[key] = form[key]
         end
@@ -166,7 +169,7 @@ class Manager::FormsController < ApplicationController
 
     fields_params = (params.dig(:form, :fields) || {}).select { |key, _| permitted_keys.include?(key.to_sym) }
 
-    params.require(:form).permit(:name).merge(fields: fields_params).permit!
+    params.require(:form).permit(:name, :description, :description_photo).merge(fields: fields_params).permit!
   end
 
 

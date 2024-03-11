@@ -7,3 +7,5 @@ import './add_vanilla_datetimerange_picker'
 import './add_slimselect'
 import './add_alpine'
 import 'chartkick/chart.js'
+import "trix"
+import "@rails/actiontext"

@@ -39,7 +39,7 @@
 
           %li.-mx-6.mt-auto
             %a.flex.items-center.gap-x-4.px-6.py-3.text-sm.font-semibold.leading-6.text-white.hover:bg-gray-800{href: "#"}
-              %img.h-8.w-8.rounded-full.bg-gray-800{alt: "Profile photo", src: (@current_user.profile_photo.attached? ? url_for(@current_user.profile_photo) : image_url('no_image.png'))}
+              %img.h-8.w-8.rounded-full.bg-gray-800{alt: "Profile photo", src: (@current_user.profile_photo.attached? ? url_for(@current_user.profile_photo) : image_url('no_profile_photo.svg'))}
               %span.sr-only Your profile
               %span{'aria-hidden': "true"}
                 = @current_user.full_name
@@ -51,7 +51,7 @@
     .flex-1.text-sm.font-semibold.leading-6.text-white Dashboard
     %a{href: "#"}
       %span.sr-only Your profile
-      %img.h-8.w-8.rounded-full.bg-gray-800{alt: "Profile photo", src: (@current_user.profile_photo.attached? ? url_for(@current_user.profile_photo) : image_url('no_image.png'))}
+      %img.h-8.w-8.rounded-full.bg-gray-800{alt: "Profile photo", src: (@current_user.profile_photo.attached? ? url_for(@current_user.profile_photo) : image_url('no_profile_photo.svg'))}
   %main.py-10.lg:pl-72
     .px-4.sm:px-6.lg:px-8
       = content

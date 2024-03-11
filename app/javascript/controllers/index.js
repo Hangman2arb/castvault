@@ -7,6 +7,9 @@ import { application } from "./application"
 import ActionsButtonComponentController from "./actions_button_component_controller"
 application.register("actions-button-component", ActionsButtonComponentController)
 
+import AvatarComponentController from "./avatar_component_controller"
+application.register("avatar-component", AvatarComponentController)
+
 import CustomCheckboxController from "./custom_checkbox_controller"
 application.register("custom-checkbox", CustomCheckboxController)
 

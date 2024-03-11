@@ -5,3 +5,6 @@
 @import 'sweetalert2/dist/sweetalert2.css';
 @import './stimulus-multiselect.css';
 @import './slimselect.css';
+@import 'trix/dist/trix.css';
+@import './trix_customization.css';
+@import 'actiontext.css';

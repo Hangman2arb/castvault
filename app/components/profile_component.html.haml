@@ -4,7 +4,7 @@
       .modal-content{ class: "bg-gray-900 w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible text-shadowy-200" }
         .flex.items-center.justify-between
           %div.flex.items-center.space-x-6.mb-4
-            = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_image.png'), class: "h-24 w-24 rounded-full object-cover"
+            = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "h-24 w-24 rounded-full object-cover"
             %div
               %h2.text-2xl.font-semibold= [@profile.name, @profile.surname].compact.join(' ')
               %p.text-sm.text-gray-500= @profile.city if @profile.city.present?

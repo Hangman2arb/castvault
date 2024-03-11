@@ -2,10 +2,12 @@ class Form < ApplicationRecord
   include Searchable
 
   belongs_to :user
-
   has_many :profiles
 
+  has_one_attached :description_photo
+
   validates :name, presence: true
+
 
   DATA_FOR_SHOW = [ :id, :name, :submissions_count, :updated_at, :edit_link, :show_link, :destroy_link ]
   KEYS_FOR_HIDE = [:id, :edit_link, :show_link, :destroy_link]

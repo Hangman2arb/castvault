@@ -1,0 +1,120 @@
+trix-editor ul {
+    list-style-type: disc;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+trix-editor ol {
+    list-style-type: decimal;
+    margin-left: 1em;
+    padding-left: 1em;
+}
+
+trix-editor blockquote {
+    margin-left: 1em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+    font-style: italic;
+}
+
+trix-editor a {
+    color: #8887ed;
+    text-decoration: none;
+}
+
+trix-editor a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+trix-editor pre {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border: 1px solid #ddd; /* Borde sólido y de color claro */
+    border-left: 3px solid #8887ed; /* Borde izquierdo más oscuro para destacar */
+    color: #333; /* Color de texto oscuro */
+    padding: 0.5em; /* Espaciado interno */
+    overflow: auto; /* Si el contenido es muy ancho, permitir scroll */
+    font-family: 'Courier New', Courier, monospace; /* Fuente tipo máquina de escribir */
+    margin-bottom: 1em; /* Margen inferior */
+    white-space: pre-wrap; /* Si hay saltos de línea, respétalos */
+    word-break: break-all; /* Rompe las palabras largas para evitar el desbordamiento horizontal */
+}
+
+trix-toolbar .trix-button--icon-heading-1,
+trix-toolbar .trix-button--icon-quote,
+trix-toolbar .trix-button--icon-bullet-list,
+trix-toolbar .trix-button--icon-number-list,
+trix-toolbar .trix-button--icon-decrease-nesting-level,
+trix-toolbar .trix-button--icon-increase-nesting-level,
+trix-toolbar .trix-button--icon-attach {
+    display: none;
+}
+
+#custom_trix_toolbar {
+    display: flex; /* Use flexbox to layout toolbar items */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out the buttons */
+}
+
+#custom_trix_toolbar button {
+    margin-right: 10px; /* Provide some space between buttons */
+}
+
+#custom_trix_toolbar span.flex-grow {
+    flex: 1; /* Allow the spacer span to grow and push undo/redo to the end */
+}
+
+.trix-button-group.trix-button-group--file-tools{
+    border-right: 0px;
+}
+
+trix-toolbar .trix-button-group{
+    border: 0px;
+    border-bottom-color: white;
+}
+
+trix-toolbar .trix-button-group:not(:first-child) {
+    border: 0;
+}
+
+trix-toolbar .trix-button:not(:first-child) {
+    border-left: 1px solid #D0E1E7;
+}
+
+.trix-button-group.trix-button-group--block-tools {
+    border: 1px solid #D0E1E7!important;
+}
+
+.trix-button-group.trix-button-group--history-tools {
+    border: 1px solid #D0E1E7!important;
+}
+
+.trix-button-group .trix-button {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 0px;
+}
+
+.trix-button-group.trix-button-group--block-tools, .trix-button-group.trix-button-group--history-tools, .trix-button-group.trix-button-group--text-tools {
+    border: 1px solid #D0E1E7;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+trix-toolbar .trix-button:first-child {
+    border-left: 1px solid #D0E1E7;
+}
+
+trix-toolbar .trix-button:first-child {
+    border: 0px;
+}
+
+trix-toolbar .trix-button--icon::before {
+    background-size: auto;
+}
+
+.message-text-area-html {
+    border-radius: 16px;
+    background-color: #ffffff;
+    border: 1px solid #D0E1E7;
+    padding: 10px 16px;
+}
