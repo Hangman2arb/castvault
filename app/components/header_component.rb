@@ -33,7 +33,7 @@ class HeaderComponent < ViewComponent::Base
   end
 
   def classes_by_index index
-    index == 0 ? 'inline-flex items-center rounded-full bg-primary px-4 py-3 text-md font-medium text-white transition duration-200 cursor-pointer hover:bg-dark hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' : 'inline-flex items-center rounded-3xl bg-white px-4 py-3 text-md font-medium text-shadowy-300 transition duration-200 cursor-pointer hover:bg-shadowy-100 hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600'
+    index == 0 ? 'inline-flex items-center bg-primary rounded-full px-4 py-3 text-md font-semibold text-dark transition duration-200 cursor-pointer hover:bg-dark hover:text-primary hover:ring-1 hover:ring-primary hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' : 'inline-flex items-center rounded-3xl ring-1 ring-primary bg-dark px-4 py-3 text-md font-medium text-primary transition duration-200 cursor-pointer hover:bg-primary hover:text-dark hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600'
   end
 
   def get_method button

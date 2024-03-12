@@ -4,7 +4,7 @@
   = form_with url: manager_profiles_path, method: :get, local: true, class: "space-y-4 p-6", data: { controller: 'autosave profiles-form', autosave_delay_value: 0 } do |form|
     .modal-overlay{ data: { profiles_form_target: "overlay" }, class: "hidden z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
       .modal-container{ data: { profiles_form_target: "modal" }, class: "fixed inset-0 overflow-y-auto flex items-start justify-center" }
-        .modal-content{ class: "bg-gray-900 w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible" }
+        .modal-content{ class: "bg-dark w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible" }
 
           %nav.flex.items-center.justify-between.border-b.py-4{class: "border-white/10"}
             %ul.pl-8.flex.flex-none.gap-x-6.px-2.text-sm.font-semibold.leading-6.text-gray-400{role: "list"}

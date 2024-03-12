@@ -1,7 +1,7 @@
 %div{data: {controller: 'sidebar'}}
   / Off-canvas menu for mobile, show/hide based on off-canvas menu state.
   .relative.z-50.lg:hidden{'aria-modal': "true", role: "dialog"}
-    .hidden.fixed.inset-0{class: "bg-gray-900/80 opacity-0 transition-opacity ease-linear duration-300", data: {sidebar_target: "backdrop"}}
+    .hidden.fixed.inset-0{class: "bg-dark/80 opacity-0 transition-opacity ease-linear duration-300", data: {sidebar_target: "backdrop"}}
     .hidden.fixed.inset-0.flex{data: {sidebar_target: "mobileMenuContainer"}}
       .relative.mr-16.flex.w-full.max-w-xs.flex-1{class: '-translate-x-full transition ease-in-out duration-300 transform', data: {sidebar_target: "mobileMenu"}}
         .absolute.left-full.top-0.flex.w-16.justify-center.pt-5{class: 'opacity-0 ease-in-out duration-300', data: {sidebar_target: "mobileMenuButtonClose", action: "click->sidebar#hideMobileMenu"}}
@@ -10,31 +10,31 @@
             %svg.h-6.w-6.text-white{'aria-hidden': "true", fill: "none", stroke: "currentColor", 'stroke-width': "1.5", viewbox: "0 0 24 24"}
               %path{d: "M6 18L18 6M6 6l12 12", 'stroke-linecap': "round", 'stroke-linejoin': "round"}
         / Sidebar component, swap this element with another sidebar if you like
-        .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-gray-900.px-6.pb-2.ring-1{class: "ring-white/10"}
+        .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-gray-700.px-6.pb-2.ring-1{class: "ring-white/10"}
           .flex.h-16.shrink-0.items-center
-            = image_tag('logo_castvault.png', class: 'h-8 w-auto')
+            = image_tag('castvault.png', class: 'w-auto')
           %nav.flex.flex-1.flex-col
             %ul.flex.flex-1.flex-col.gap-y-7{role: "list"}
               %li
                 %ul.-mx-2.space-y-1{role: "list"}
                   - @menu_items.each do |item|
                     %li
-                      %a.group.flex.gap-x-3.rounded-md.p-2.text-sm.leading-6.font-semibold{href: item[:route], class: menu_item_class(item[:menu_option_id])}
+                      %a.group.flex.gap-x-3.rounded-full.py-2.px-4.leading-6.font-semibold{href: item[:route], class: menu_item_class(item[:menu_option_id])}
                         = render BootstrapIconWithTextComponent.new(icon: item[:icon], text: item[:text], extra_classes: 'text-xl mr-2')
 
   / Static sidebar for desktop
   .hidden.lg:fixed.lg:inset-y-0.lg:z-50.lg:flex.lg:w-72.lg:flex-col
     / Sidebar component, swap this element with another sidebar if you like
-    .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-gray-900.px-6
-      .flex.h-16.shrink-0.items-center
-        = image_tag('logo_castvault.png', class: 'h-8 w-auto')
+    .flex.grow.flex-col.gap-y-5.overflow-y-auto.bg-gray-700.px-6
+      .flex.pt-6.shrink-0.items-center
+        = image_tag('castvault.png', class: 'w-auto')
       %nav.flex.flex-1.flex-col
         %ul.flex.flex-1.flex-col.gap-y-7{role: "list"}
           %li
             %ul.-mx-2.space-y-1{role: "list"}
               - @menu_items.each do |item|
                 %li
-                  %a.group.flex.gap-x-3.rounded-md.p-2.text-sm.leading-6.font-semibold{href: item[:route], class: menu_item_class(item[:menu_option_id])}
+                  %a.group.flex.gap-x-3.rounded-full.py-2.px-4.leading-6.font-semibold{href: item[:route], class: menu_item_class(item[:menu_option_id])}
                     = render BootstrapIconWithTextComponent.new(icon: item[:icon], text: item[:text], extra_classes: 'text-xl mr-2')
 
           %li.-mx-6.mt-auto
@@ -43,7 +43,7 @@
               %span.sr-only Your profile
               %span{'aria-hidden': "true"}
                 = @current_user.full_name
-  .sticky.top-0.z-40.flex.items-center.gap-x-6.bg-gray-900.px-4.py-4.shadow-sm.sm:px-6.lg:hidden
+  .sticky.top-0.z-40.flex.items-center.gap-x-6.bg-gray-700.px-4.py-4.shadow-sm.sm:px-6.lg:hidden
     %button.text-gray-400.lg:hidden{data: {action: "sidebar#showMobileMenu"}, class: "-m-2.5 p-2.5", type: "button"}
       %span.sr-only Open sidebar
       %svg.h-6.w-6{'aria-hidden': "true", fill: "none", stroke: "currentColor", 'stroke-width': "1.5", viewbox: "0 0 24 24"}
@@ -52,6 +52,6 @@
     %a{href: "#"}
       %span.sr-only Your profile
       %img.h-8.w-8.rounded-full.bg-gray-800{alt: "Profile photo", src: (@current_user.profile_photo.attached? ? url_for(@current_user.profile_photo) : image_url('no_profile_photo.svg'))}
-  %main.py-10.lg:pl-72
+  %main.py-6.lg:pl-72
     .px-4.sm:px-6.lg:px-8
       = content

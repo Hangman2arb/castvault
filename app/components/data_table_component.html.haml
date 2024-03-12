@@ -9,14 +9,14 @@
     = form_with url: @form_action, method: :get, data: { turbo_frame: 'datatable', turbo_action: 'replace', controller: 'search', action: 'input->search#submit' } do |form|
       .py-5.sm:flex.sm:items-center.sm:justify-between
         .flex.items-center.space-x-4
-          = form.label :count, "Elementos: ", class: "block text-sm font-medium leading-6 text-shadowy-300"
-          = form.select :count, options_for_select([10, 25, 50, 100], selected: params[:count]), { prompt: nil }, class: "w-full border-0 pr-8 text-lg leading-6 placeholder:text-shadowy-200 sm:block rounded-3xl transition duration-200 border-0 bg-white px-4 py-3 text-shadowy-300 focus:shadow-lg focus:ring-0 sm:text-sm sm:leading-6"
+          = form.label :count, "Elementos: ", class: "block text-sm font-medium leading-6 text-shadowy-200"
+          = form.select :count, options_for_select([10, 25, 50, 100], selected: params[:count]), { prompt: nil }, class: "w-full border-0 pr-8 text-lg leading-6 placeholder:text-shadowy-200 ring-1 ring-primary sm:block rounded-full transition duration-200 border-0 bg-dark px-4 py-3 text-shadowy-200 focus:placeholder:text-white focus:ring-primary sm:text-sm sm:leading-6"
         - if @date_range_picker
           .mt-3.sm:ml-4.sm:mt-0
             = render DateRangePickerComponent.new(form: form, value: params[:start_date_between])
         - if @selector_options
           .mt-3.sm:ml-4.sm:mt-0
-            = form.select :id_to_filter, options_for_select(@selector_options, selected: params[:id_to_filter]), { prompt: nil}, class: "w-full border-0 pr-10 text-lg leading-6 placeholder:text-shadowy-200 sm:block rounded-3xl transition duration-200 border-0 bg-white px-4 py-3 text-shadowy-300 focus:shadow-lg focus:ring-0 sm:text-sm sm:leading-6"
+            = form.select :id_to_filter, options_for_select(@selector_options, selected: params[:id_to_filter]), { prompt: nil}, class: "w-full border-0 pr-10 text-lg leading-6 placeholder:text-shadowy-200 sm:block ring-primary rounded-full transition duration-200 border-0 bg-dark px-4 py-3 text-shadowy-200 focus:placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
         .mt-3.sm:ml-4.sm:mt-0
           = render SearchBoxComponent.new(form: form)
 
@@ -28,16 +28,16 @@
           %tr
             - @headers.each_with_index do |header, index|
               - if index.zero?
-                %th.hidden.lg:table-cell.pl-4.pr-3.text-left.text-sm.font-semibold.text-shadowy-300.sm:pl-0.py-3.5{ scope: "col" }
+                %th.hidden.lg:table-cell.pl-4.pr-3.text-left.text-sm.font-semibold.text-shadowy-200.sm:pl-0.py-3.5{ scope: "col" }
                   .flex.items-center
                     - if @sorting_keys.include?(header.to_s)
                       = sort_link_to(header)
                     - else
                       = t("data_table_component.#{header}")
-                %th.hidden.lg:hidden.max-lg:table-cell.table-cell.pl-4.pr-3.text-left.text-sm.font-semibold.text-shadowy-300.sm:pl-0.py-3.5{ scope: "col" }
+                %th.hidden.lg:hidden.max-lg:table-cell.table-cell.pl-4.pr-3.text-left.text-sm.font-semibold.text-shadowy-200.sm:pl-0.py-3.5{ scope: "col" }
                   = t('data_table_component.info')
               - else
-                %th.hidden.px-3.text-left.text-sm.font-semibold.text-shadowy-300.lg:table-cell.py-3.5{ scope: "col" }
+                %th.hidden.px-3.text-left.text-sm.font-semibold.text-shadowy-200.lg:table-cell.py-3.5{ scope: "col" }
                   .flex.items-center
                     - if @sorting_keys.include?(header.to_s)
                       = sort_link_to(header)
@@ -53,12 +53,12 @@
             %tr
               - data_hash.except(*@excluded_keys).each_with_index do |(key, data), index|
                 - if index.zero?
-                  %td.w-full.max-w-0.py-4.pl-4.pr-3.text-sm.font-medium.text-shadowy-300.sm:w-auto.sm:max-w-none.sm:pl-0
+                  %td.w-full.max-w-0.py-4.pl-4.pr-3.text-sm.font-medium.text-shadowy-200.sm:w-auto.sm:max-w-none.sm:pl-0
                     = render_content(data)
                     %dl.font-normal.lg:hidden
                       - data_hash.except(*@excluded_keys).drop(1).each do |key, data|
                         %dt.sr-only= t("data_table_component.#{key}")
-                        %dd.mt-2.truncate.text-shadowy-300
+                        %dd.mt-2.truncate.text-shadowy-200
                           = render_content(data)
                 - else
                   %td.hidden.px-3.py-4.text-sm.text-shadowy-200.lg:table-cell

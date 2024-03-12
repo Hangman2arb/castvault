@@ -3,7 +3,7 @@
     .flex.lg:flex-1
       %a{class: "-m-1.5 p-1.5", href: "#"}
         %span.sr-only Your Company
-        = image_tag('logo_castvault.png', class: 'h-8 w-auto')
+        = image_tag('castvault.png', class: 'w-auto')
     .hidden.lg:flex.lg:gap-x-12
       - @links.each do |link|
         %a.text-sm.font-semibold.leading-6.text-white{href: link[:url]}= link[:name]
@@ -19,11 +19,11 @@
   .hidden{ "aria-modal" => "true", role: "dialog", data: {navbar_target: 'mobileMenu'}}
     / Background backdrop, show/hide based on slide-over state.
     .fixed.inset-0.z-10
-    .fixed.inset-y-0.right-0.z-10.w-full.overflow-y-auto.bg-gray-900.px-6.py-6.sm:max-w-sm.sm:ring-1{class: "sm:ring-gray-900/10"}
+    .fixed.inset-y-0.right-0.z-10.w-full.overflow-y-auto.bg-dark.px-6.py-6.sm:max-w-sm.sm:ring-1{class: "sm:ring-gray-900/10"}
       .flex.items-center.gap-x-6
         %a{class: "-m-1.5 p-1.5", href: "#"}
           %span.sr-only Your Company
-          = image_tag('logo_castvault.png', class: 'h-8 w-auto')
+          = image_tag('castvault.png', class: 'w-auto')
         %a.ml-auto.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-indigo-500.focus-visible:outline.focus-visible:outline-2.focus-visible:outline-offset-2.focus-visible:outline-indigo-600{href: "#"} Sign up
         %button.rounded-md.text-white{class: "-m-2.5 p-2.5", type: "button", data: {action: 'navbar#toggleMobileMenu'}}
           %span.sr-only Close menu

@@ -1,7 +1,7 @@
 %turbo-frame#profile_modal
   .modal-overlay{ data: { profiles_form_target: "profileOverlay" }, class: "z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
     .modal-container{ data: { profiles_form_target: "profileModal" }, class: "fixed inset-0 overflow-y-auto flex items-start justify-center" }
-      .modal-content{ class: "bg-gray-900 w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible text-shadowy-200" }
+      .modal-content{ class: "bg-dark w-full max-w-100 m-5 rounded-xl shadow-lg space-y-4 overflow-visible text-shadowy-200" }
         .flex.items-center.justify-between
           %div.flex.items-center.space-x-6.mb-4
             = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "h-24 w-24 rounded-full object-cover"

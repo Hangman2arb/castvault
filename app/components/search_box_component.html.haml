@@ -2,4 +2,4 @@
   .relative.flex-grow.focus-within:z-10
     .pointer-events-none.absolute.inset-y-0.left-0.flex.items-center.pl-3
       = render BootstrapIconWithTextComponent.new(icon: 'search', extra_classes: 'text-shadowy-200')
-    = @form.text_field :query, placeholder: t('labels.search'), value: params[:query], class: "w-full border-0 pl-10 text-lg leading-6 placeholder:text-shadowy-200 sm:block rounded-3xl transition duration-200 border-0 bg-white px-4 py-3 text-shadowy-300 focus:shadow-lg focus:ring-0 sm:text-sm sm:leading-6"
+    = @form.text_field :query, placeholder: t('labels.search'), value: params[:query], class: "w-full border-0 pl-10 text-lg leading-6 placeholder:text-shadowy-200 sm:block rounded-3xl transition duration-200 border-0 ring-1 ring-primary bg-dark px-4 py-3 text-shadowy-200 focus:ring-primary focus:placeholder:text-white sm:text-sm sm:leading-6"

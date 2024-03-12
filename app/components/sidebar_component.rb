@@ -11,6 +11,6 @@ class SidebarComponent < ViewComponent::Base
   end
 
   def menu_item_class(menu_option_id)
-    menu_option_id == params[:menu_option_id] ? "bg-gray-800 text-white" : "text-gray-400 hover:text-white hover:bg-gray-800"
+    menu_option_id == params[:menu_option_id] ? "bg-gray-800 text-primary" : "text-gray-200 hover:text-light hover:bg-gray-800"
   end
 end

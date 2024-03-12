@@ -4,14 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ffffff',
-        secondary: '#6468ad',
-        third: '#c0c3e0',
+        primary: '#00FFEE',
+        secondary: '#0EA99F',
+        third: '#156963',
         error: '#CE6870',
         ambar: '#FBB92F',
         success: '#8FC477',
         dark: '#060D14',
-        light: '#EFF7F8',
+        light: '#D5FFFC',
         shadowy: {
           100: '#D0E1E7',
           200: '#93B2C0',

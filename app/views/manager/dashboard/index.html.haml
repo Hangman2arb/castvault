@@ -2,57 +2,57 @@
 
 .mx-auto.max-w-7xl
   .grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-4{class: "bg-white/5"}
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Total Perfiles
       %p.mt-2.flex.items-baseline.gap-x-2
         %span.text-4xl.font-semibold.tracking-tight.text-white= @total_profiles
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Total Formularios
       %p.mt-2.flex.items-baseline.gap-x-2
         %span.text-4xl.font-semibold.tracking-tight.text-white= @total_forms
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Formulario más usado
       %p.mt-2.flex.items-baseline.gap-x-2
         %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_most_profiles&.name} (#{@form_with_most_profiles&.profiles&.count})"
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Formulario menos usado
       %p.mt-2.flex.items-baseline.gap-x-2
         %span.text-4xl.font-semibold.tracking-tight.text-white= "#{@form_with_less_profiles&.name} (#{@form_with_less_profiles&.profiles&.count})"
 
 .mx-auto.max-w-7xl
   .grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-3
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8.mt-6
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8.mt-6
       %h3.text-sm.font-medium.leading-6.text-gray-400 Perfiles por Fecha
       = line_chart @profiles_by_date, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8.mt-6
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8.mt-6
       %h3.text-sm.font-medium.leading-6.text-gray-400 Perfiles por Etnia
       = pie_chart @profiles_by_ethnicity, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8.mt-6
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8.mt-6
       %h3.text-sm.font-medium.leading-6.text-gray-400 Perfiles por Género
       = pie_chart @profiles_by_gender, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Tipo de Cabello
       = pie_chart @hair_type_distribution, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Color de Cabello
       = pie_chart @hair_color_distribution, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Color de Ojos
       = bar_chart @eye_color_distribution
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Agencia
       = pie_chart @agency_distribution, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Pasaporte
       = pie_chart @passport_distribution, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
 
-    .bg-gray-900.px-4.py-6.sm:px-6.lg:px-8
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
       %p.text-sm.font-medium.leading-6.text-gray-400 Licencia de Conducir
       = pie_chart @driving_license_distribution, colors: ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"], dataset: {borderColor: '#111827', borderWidth: 5}, legend: false
