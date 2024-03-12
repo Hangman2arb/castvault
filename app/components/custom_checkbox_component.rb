@@ -1,5 +1,5 @@
 class CustomCheckboxComponent < ViewComponent::Base
-  def initialize(form:, key:, value:, checked: false)
+  def initialize(form:, key:, value: nil, checked: false)
     @form = form
     @key = key
     @value = value

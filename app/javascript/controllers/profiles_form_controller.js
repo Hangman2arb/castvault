@@ -16,7 +16,7 @@ export default class extends Controller {
     this.overlayTarget.classList.add("hidden")
   }
 
-  close() {
+  closeProfileModal() {
     this.profileModalTarget.classList.add("hidden")
     this.profileOverlayTarget.classList.add("hidden")
   }

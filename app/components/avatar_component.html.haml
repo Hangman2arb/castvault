@@ -1,0 +1,6 @@
+.avatar-container.flex.items-center{data: {controller: 'avatar-component'}}
+  - if @image_url.present?
+    %img{class: "#{tailwind_classes}", alt: @alter, src: @image_url, data: @data}
+  - else
+    = not_found_avatar_svg
+  .align-middle.ml-2= @text
