@@ -14,7 +14,7 @@
     "chartkick": "^5.0.1",
     "chokidar": "^3.6.0",
     "debounce": "^2.0.0",
-    "esbuild": "~0.16.17",
+    "esbuild": "0.16.17",
     "esbuild-plugin-sass": "^1.0.1",
     "http": "^0.0.1-security",
     "nouislider": "^15.7.1",
