@@ -1,4 +1,12 @@
 = render HeaderComponent.new(title: @title, description: @description, buttons: @header_buttons)
+.section-image-with-text.mt-6.mb-6.text-gray-400{data: {controller: 'form-header'}}
+  .container.mx-auto
+    - if @form.description_photo.attached?
+      .image-container.flex.justify-center.md:float-left.mr-4.mb-4{data:{form_header_target: 'image' }}
+        = image_tag @form.description_photo, alt: "Form Description", class: "object-cover rounded-lg shadow-lg max-w-full h-auto md:max-w-1/2"
+
+    .text-container.w-full
+      %p.text-base.text-shadowy-200.leading-relaxed= @form.description.html_safe
 
 = form_with model: [:manager, @profile], local: true, class: "space-y-12", data: { controller: 'form-show' } do |form|
   = form.hidden_field :form_id, value: @form.id

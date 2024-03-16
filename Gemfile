@@ -85,6 +85,8 @@ group :development, :test do
 
   #Data
   gem 'faker'
+
+  gem 'dotenv'
 end
 
 group :development do

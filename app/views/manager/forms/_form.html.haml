@@ -1,21 +1,20 @@
 = form_with model: [:manager, @form], local: true, data: { controller: "field-checkbox", turbo: false } do |form|
   = render HeaderComponent.new(title: @title, description: @description, buttons: @header_buttons)
   .mb-4.mt-10
-    .flex.items-end.justify-between.mb-4
-      .name.w-80
-        = form.label :name, 'Nombre del formulario', class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
-        = form.text_field :name, class: 'mt-1 w-full block rounded-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', placeholder: 'Introduce el nombre del formulario'
-        - if @form.errors[:name].present?
-          .text-red-500.text-sm
-            = @form.errors[:name].first
-      .description-photo
-        = render UploadFileComponent.new( form: form,
-                                          model: :form,
-                                          attribute: :description_photo,
-                                          multiple: false,
-                                          icon: 'camera',
-                                          accepted_types: %w[png jpg jpeg heic],
-                                          max_size_mb: 5 )
+    .mb-4.w-80
+      = form.label :name, 'Nombre del formulario', class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
+      = form.text_field :name, class: 'mt-1 w-full block rounded-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', placeholder: 'Introduce el nombre del formulario'
+      - if @form.errors[:name].present?
+        .text-red-500.text-sm
+          = @form.errors[:name].first
+    .mb-4.flex.justify-start
+      = render UploadFileComponent.new( form: form,
+                                        model: :form,
+                                        attribute: :description_photo,
+                                        multiple: false,
+                                        icon: 'camera',
+                                        accepted_types: %w[png jpg jpeg heic],
+                                        max_size_mb: 5 )
 
     = form.label :description, 'Descripción', class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
     = form.rich_text_area :description, class: 'message-text-area-html mt-4', data: { scheduled_messages_target: 'textHtmlSelector' }

@@ -1,22 +1,20 @@
 .col-span-full.text-center{data: { controller: 'upload-file-component', image_url: @image_url }}
+  .image-upload-area.bg-shadowy-700.mt-2.flex.justify-center.items-center.rounded-lg.border.border-dashed.p-6.relative{class: 'border-gray-900/25', data: { action: "dragover->upload-file-component#dragover dragleave->upload-file-component#dragleave drop->upload-file-component#drop drop->#{@extra_actions}", upload_file_component_target: 'imageUploadArea' }}
+    .flex.flex-col.items-center
+      = render BootstrapIconWithTextComponent.new(icon: @icon, extra_classes: 'text-5xl text-gray-400')
+      .text-sm.leading-6.text-shadowy-200.mt-4
+        = @form.file_field @attribute, multiple: @multiple, class: 'sr-only', data: { upload_file_component_target: 'input', action: "change->upload-file-component#preview change->#{@extra_actions}", max_size: @max_size_mb }, accept: accepted_types_to_mime
+        %label.relative.cursor-pointer.font-semibold.text-primary.focus-within:outline-none.focus-within:ring-2.focus-within:ring-indigo-600.focus-within:ring-offset-2.hover:text-white{for: "#{@model}_#{@attribute}"}
+          %span Upload a file
+        %p.pl-1 or drag and drop
+      %p.text-xs.leading-5.text-shadowy-200= accepted_types_message
 
-  .image-upload-area.bg-shadowy-700.mt-2.flex.justify-center.rounded-lg.border.border-dashed.p-6.relative{class: 'border-gray-900/25', data: { action: "dragover->upload-file-component#dragover dragleave->upload-file-component#dragleave drop->upload-file-component#drop drop->#{@extra_actions}", upload_file_component_target: 'imageUploadArea' }}
-    .text-center.flex
-      = render BootstrapIconWithTextComponent.new(icon: @icon, extra_classes: 'text-5xl text-gray-400 mx-auto')
-      .flex.flex-col.ml-4
-        .flex.text-sm.leading-6.text-shadowy-200
-          = @form.file_field @attribute, multiple: @multiple, class: 'sr-only', data: { upload_file_component_target: 'input', action: "change->upload-file-component#preview change->#{@extra_actions}", max_size: @max_size_mb }, accept: accepted_types_to_mime
-          %label.relative.cursor-pointer.font-semibold.text-primary.focus-within:outline-none.focus-within:ring-2.focus-within:ring-indigo-600.focus-within:ring-offset-2.hover:text-white{ for: "#{@model}_#{@attribute}" }
-            %span Upload a file
-          %p.pl-1 or drag and drop
-        %p.text-xs.leading-5.text-shadowy-200= accepted_types_message
   - if @label
     = @form.label @attribute, @label, class: 'block text-sm font-medium leading-6 text-gray-900'
 
-  .image-preview.hidden.mt-2.flex.justify-center.rounded-lg.relative{ class: 'border-2 border-dashed border-gray-700', data: { upload_file_component_target: 'preview' } }
-    %img.object-cover.w-full.h-full.rounded-lg{ data: { upload_file_component_target: 'image' } }
-    %button.remove-photo.absolute.top-4.right-4.bg-red-500.text-shadowy-200.px-1.mb-2.w-8.h-8.rounded.flex.items-center.justify-center{ data: { action: "click->upload-file-component#removePhoto #{@extra_actions}" } }
-      = render BootstrapIconWithTextComponent.new(icon: 'trash', extra_classes: 'text-s')
-
+  .image-preview.hidden.mt-2.flex.justify-center.items-center.rounded-lg.relative{class: 'border-2 border-dashed border-gray-700', data: { upload_file_component_target: 'preview' }}
+    %img.object-cover.max-w-full.mx-auto{class: 'max-h-[226px]', data: { upload_file_component_target: 'image' }}
+    %button.remove-photo.absolute.top-4.right-4.text-shadowy-300.hover:text-shadowy-200.flex.items-center.justify-center{data: { action: "click->upload-file-component#removePhoto #{@extra_actions}" }}
+      = render BootstrapIconWithTextComponent.new(icon: 'trash')
   - if @is_attached
     = @form.check_box "remove_#{@attribute}", class: 'hidden', id: "remove_#{@attribute}_id", data: { upload_file_component_target: 'checkbox' }

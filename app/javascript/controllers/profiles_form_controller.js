@@ -39,18 +39,17 @@ export default class extends Controller {
 
   openModal(event) {
     event.preventDefault();
-    const profileId = event.currentTarget.getAttribute('data-profile-id');
-    const url = `/manager/profiles/modal?id=${profileId}`;
-    console.log('sae');
-    Rails.ajax({
-      url: url,
-      type: 'GET',
-      dataType: 'html',
-      success: (data) => {
-        this.modalTarget.innerHTML = data
-        // Aquí podrías abrir el modal, por ejemplo, cambiando su clase CSS o usando una librería de modales
-      }
-    })
+    // const profileId = event.currentTarget.getAttribute('data-profile-id');
+    // const url = `/manager/profiles/modal?id=${profileId}`;
+    // Rails.ajax({
+    //   url: url,
+    //   type: 'GET',
+    //   dataType: 'html',
+    //   success: (data) => {
+    //     console.log(data);
+    //     //this.modalTarget.innerHTML = data
+    //   }
+    // })
 
   }
 }

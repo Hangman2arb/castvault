@@ -16,6 +16,9 @@ application.register("custom-checkbox", CustomCheckboxController)
 import FieldCheckboxController from "./field_checkbox_controller"
 application.register("field-checkbox", FieldCheckboxController)
 
+import FormHeaderController from "./form_header_controller"
+application.register("form-header", FormHeaderController)
+
 import FormShowController from "./form_show_controller"
 application.register("form-show", FormShowController)
 

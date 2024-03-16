@@ -30,11 +30,10 @@ class Manager::ProfilesController < ApplicationController
   end
 
   def modal
-    Rails.logger.debug "Accediendo a la acción modal con ID: #{params[:id]}"
     @profile = current_user.profiles.find(params[:id])
     if @profile
       respond_to do |format|
-        format.turbo_stream
+        format.html
       end
     else
       redirect_to manager_profiles_path, alert: 'Perfil no encontrado'
