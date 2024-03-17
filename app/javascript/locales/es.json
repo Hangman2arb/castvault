@@ -1,0 +1,18 @@
+{
+  "es": {
+    "js": {
+      "copy_link_modal": {
+        "confirm_button_aria_label": "Copiar al portapapeles",
+        "confirm_button_text": "<i class=\"fa fa-clipboard\"></i> Copiar",
+        "connected": "Conectado al modal de copiar enlace",
+        "copied_message": "El enlace ha sido copiado al portapapeles.",
+        "copied_title": "¡Copiado!",
+        "error_message": "No se pudo copiar el texto: ",
+        "focus_confirm": "Enfocar confirmar",
+        "html": "<b>%{link}</b>",
+        "show_close_button": "Mostrar botón de cerrar",
+        "title": "<strong>Copiar enlace</strong>"
+      }
+    }
+  }
+}

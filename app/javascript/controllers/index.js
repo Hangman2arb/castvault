@@ -10,6 +10,9 @@ application.register("actions-button-component", ActionsButtonComponentControlle
 import AvatarComponentController from "./avatar_component_controller"
 application.register("avatar-component", AvatarComponentController)
 
+import CopyLinkModalController from "./copy_link_modal_controller"
+application.register("copy-link-modal", CopyLinkModalController)
+
 import CustomCheckboxController from "./custom_checkbox_controller"
 application.register("custom-checkbox", CustomCheckboxController)
 

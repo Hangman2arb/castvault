@@ -13,7 +13,7 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
-  %body.h-full{ data: { locale: I18n.locale } }
+  %body.h-full
     = render FlashMessageComponent.new( message: flash.first.nil? ? nil : flash.first[1], type: flash.first.nil? ? nil : flash.first[0], delay: 10000 )
-    = render SidebarComponent.new(current_user: current_user) do
+    .p-4
       = yield

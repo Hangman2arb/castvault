@@ -1,5 +1,7 @@
 class Manager::FormsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show_form]
+
+  layout 'form', only: [:show_form]
   def index
     @title = t('forms_controller.index_title')
     @description = t('forms_controller.index_description')
@@ -15,6 +17,9 @@ class Manager::FormsController < ApplicationController
 
 
       @actions = {
+        copy_form_link: {
+          extra_options: { data: { controller: 'copy-link-modal', action: 'click->copy-link-modal#showModal' } }
+        },
         edit_link: {
           extra_options: { data: { turbo_track: "reload", turbo_frame: '_top' } }
         },
@@ -90,9 +95,32 @@ class Manager::FormsController < ApplicationController
     @header_buttons = [ { icon: 'send', type: 'submit', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', text: t('labels.send') },
                         { icon: 'arrow-90deg-left', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', link: manager_forms_path, text: t('labels.back_button') } ]
 
-    @form = Form.find_by(id: params[:id])
+    @form = current_user.forms.find_by(id: params[:id])
     @profile = Profile.new
 
+    @filtered_admited_form_fields = {}
+    @filtered_featured_options = {}
+
+    @form.ordered_fields.each do |key, value|
+      if Form::ADMITED_FORM_FIELDS[key.to_sym]
+        if value['include'] == 'true'
+          @filtered_admited_form_fields[key.to_sym] = Form::ADMITED_FORM_FIELDS[key.to_sym]
+        end
+      end
+
+      if Form::FEATURES_OPTIONS[key.to_sym]
+        if value['include'] == 'true'
+          @filtered_featured_options[key.to_sym] = Form::FEATURES_OPTIONS[key.to_sym]
+        end
+      end
+    end
+  end
+
+  def show_form
+    @form = Form.find_by(token: params[:token])
+    return render plain: 'Not Found', status: :not_found unless @form
+
+    @profile = Profile.new
     @filtered_admited_form_fields = {}
     @filtered_featured_options = {}
 
@@ -140,6 +168,8 @@ class Manager::FormsController < ApplicationController
       form_data_hash = {}
       Form::DATA_FOR_SHOW.each do |key|
         case key
+        when :copy_form_link
+          form_data_hash[key] = form.token
         when :edit_link
           form_data_hash[key] = edit_manager_form_path(form)
         when :show_link

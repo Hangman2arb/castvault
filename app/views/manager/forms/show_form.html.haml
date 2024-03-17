@@ -1,0 +1,72 @@
+.section-image-with-text.mt-6.mb-6.text-gray-400{data: {controller: 'form-header'}}
+  .container.mx-auto
+    - if @form.description_photo.attached?
+      .image-container.flex.justify-center.md:float-left.mr-4.mb-4{data:{form_header_target: 'image' }}
+        = image_tag @form.description_photo, alt: "Form Description", class: "object-cover rounded-lg shadow-lg max-w-full h-auto md:max-w-1/2"
+
+    .text-container.w-full
+      %p.text-base.text-shadowy-200.leading-relaxed= @form.description.html_safe
+.container.mx-auto
+  = form_with model: [:manager, @profile], local: true, class: "space-y-12", data: { controller: 'form-show' } do |form|
+    = form.hidden_field :form_id, value: @form.id
+    - @filtered_admited_form_fields.group_by { |_, field_attrs| field_attrs[:section] }.each do |section, fields|
+      .border-b.pb-12{class: 'border-shadowy-200/10'}
+        %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.#{section}")
+        %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.#{section}_description")
+
+        .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
+          - fields.each do |field_name, field_attrs|
+            .sm:col-span-2
+              = form.label field_name, t("fields.#{field_name}"), class: "block text-sm font-medium leading-6 text-shadowy-200", id: "label_profile_#{field_name}"
+              - case field_attrs[:type]
+              - when 'string', 'email', 'integer'
+                = form.text_field field_name, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+              - when 'date'
+                = form.date_field field_name, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+              - when 'select'
+                = form.select field_name, options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), {}, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+              - when 'boolean'
+                = render CustomCheckboxComponent.new(form: form, key: field_name)
+              - when 'multiselect'
+                .mt-2.text-sm.text-shadowy-200
+                  %select{multiple: true, name: "profile[#{field_name}][]", id: "profile_#{field_name}", data: {controller: 'slim-multiple', placeholder: t("forms_controller.multiselect_texts.placeholder_#{field_name}")}, class: "multiselect-#{field_name}"}
+                    %optgroup{data: {selectall: "true", selectalltext: "Seleccionar todos"}}
+                      - Form.const_get("#{field_name.upcase}_OPTIONS").each do |value|
+                        %option{value: value, selected: @profile.send(field_name).include?(value)}= t("forms_controller.multiselect_texts.#{field_name}.#{value}")
+
+              - when 'image'
+                = render UploadFileComponent.new( form: form,
+                                                  model: :profile,
+                                                  attribute: field_name.to_sym,
+                                                  multiple: false,
+                                                  icon: 'camera',
+                                                  accepted_types: %w[png jpg jpeg heic],
+                                                  max_size_mb: 5,
+                                                  extra_actions: ['autosave#save'] )
+              - when 'video'
+                = render UploadFileComponent.new( form: form,
+                                                  model: :profile,
+                                                  attribute: field_name.to_sym,
+                                                  multiple: false,
+                                                  icon: 'camera-video',
+                                                  accepted_types: %w[mov mp4 avi],
+                                                  max_size_mb: 5,
+                                                  extra_actions: ['autosave#save'] )
+    .border-b.pb-12{class: 'border-shadowy-200/10'}
+      %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.skills")
+      %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.skills_description")
+
+      .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
+        - @filtered_featured_options.each do |key, options|
+          .sm:col-span-2
+            = form.label key, t("fields.#{key}"), class: "block text-sm font-medium leading-6 text-shadowy-200"
+            .mt-2.text-sm.text-shadowy-200
+              -# = form.select key, options_for_select(options.map { |value| [ t("forms_controller.multiselect_texts.#{key}.#{value}"), value ] }, selected: @profile.send(key)), {}, { multiple: true, data: { controller: 'slim-multiple', placeholder: 'Select your Skills' } }
+              %select{multiple: true, name: "profile[#{key}][]", id: "profile_#{key}", data: {controller: 'slim-multiple', placeholder: t("forms_controller.multiselect_texts.placeholder_#{key}")}, class: "multiselect-#{key}"}
+                %optgroup{data: {selectall: "true", selectalltext: "Seleccionar todos"}}
+                  - options.each do |value|
+                    %option{value: value, selected: @profile.send(key).include?(value)}
+                      = t("forms_controller.multiselect_texts.#{key}.#{value}")
+
+    .mt-4.text-center
+      = form.submit t('labels.send'), class: "inline-flex items-center bg-primary rounded-full px-4 py-3 text-md font-semibold text-dark transition duration-200 cursor-pointer hover:bg-dark hover:text-primary hover:ring-1 hover:ring-primary hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"

@@ -75,6 +75,10 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'i18n_data'
 
+# Translations
+gem 'i18n-js'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

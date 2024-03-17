@@ -1,0 +1,18 @@
+{
+  "en": {
+    "js": {
+      "copy_link_modal": {
+        "confirm_button_aria_label": "Copy to clipboard",
+        "confirm_button_text": "<i class=\"fa fa-clipboard\"></i> Copy",
+        "connected": "Connected to copy link modal",
+        "copied_message": "The link has been copied to your clipboard.",
+        "copied_title": "Copied!",
+        "error_message": "Could not copy text: ",
+        "focus_confirm": "Focus confirm",
+        "html": "<b>%{link}</b>",
+        "show_close_button": "Show close button",
+        "title": "<strong>Copy Link</strong>"
+      }
+    }
+  }
+}

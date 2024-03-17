@@ -10,6 +10,7 @@ class ActionsButtonComponent < ViewComponent::Base
       show_link: 'eye',
       destroy_link:'trash',
       copy_link: 'clipboard',
+      copy_form_link: 'clipboard',
       resend_link: 'send',
       list_services: 'card-list',
       refresh_link: 'arrow-clockwise',

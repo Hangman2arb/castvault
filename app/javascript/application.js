@@ -6,6 +6,8 @@ import './turbo_set_confirm_method'
 import './add_vanilla_datetimerange_picker'
 import './add_slimselect'
 import './add_alpine'
+import './add_i18n'
 import 'chartkick/chart.js'
 import "trix"
 import "@rails/actiontext"
+

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  get 'forms/:token', to: 'manager/forms#show_form', as: :show_form
+
   namespace :manager do
     get 'settings/index'
     root 'dashboard#index', menu_option_id: 'dashboard'

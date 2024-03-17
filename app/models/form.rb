@@ -8,9 +8,11 @@ class Form < ApplicationRecord
 
   validates :name, presence: true
 
+  before_create :generate_unique_token
 
-  DATA_FOR_SHOW = [ :id, :name, :submissions_count, :updated_at, :edit_link, :show_link, :destroy_link ]
-  KEYS_FOR_HIDE = [:id, :edit_link, :show_link, :destroy_link]
+
+  DATA_FOR_SHOW = [ :id, :name, :submissions_count, :updated_at, :edit_link, :show_link, :destroy_link, :copy_form_link ]
+  KEYS_FOR_HIDE = [:id, :edit_link, :show_link, :destroy_link, :copy_form_link]
   SEARCHABLE_KEYS  = ['name']
   SORTING_KEYS  = ['name']
 
@@ -95,5 +97,14 @@ class Form < ApplicationRecord
     ordered = FIELDS_ORDER.map do |key|
       [key, fields[key.to_s]] if fields.has_key?(key.to_s)
     end.compact.to_h
+  end
+
+  private
+
+  def generate_unique_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64
+      break random_token unless Form.exists?(token: random_token)
+    end
   end
 end
