@@ -2,7 +2,7 @@
   = render HeaderComponent.new(title: @title, description: @description)
 
   = form_with url: manager_profiles_path, method: :get, local: true, class: "space-y-4 p-6", data: { controller: 'autosave profiles-form', autosave_delay_value: 0 } do |form|
-    .modal-overlay{ data: { profiles_form_target: "overlay" }, class: "hidden z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
+    .modal-overlay{ data: { profiles_form_target: "overlay" }, class: "hidden z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center scroll-m-0" }
       #drawer-profiles{class: "fixed top-0 right-0 w-full md:w-3/6 z-50 h-screen p-4 overflow-y-auto bg-gray-700 dark:bg-gray-800 transition-transform duration-1000 ease-in-out transform translate-x-full", tabindex: "-1", aria: {labelledby: "drawer-profiles-label"}, data: {profiles_form_target: 'modal'}}
         %h5#drawer-profiles-label{class: "text-base font-semibold text-gray-500 dark:text-gray-400"}
           %span
@@ -12,10 +12,10 @@
           = render BootstrapIconWithTextComponent.new(icon: 'x', extra_classes: 'text-3xl')
 
         %nav.flex.items-center.justify-center.border-b.py-4{class: "border-white/10"}
-          %ul.pl-8.flex.flex-none.gap-x-6.px-2.text-sm.font-semibold.leading-6.text-gray-400{role: "list"}
-            %li{class: 'bg-gray-200 text-gray-800 rounded-md px-3 py-2 text-sm font-medium cursor-pointer', data: {action: 'click->profiles-form#switchToGlobal', profiles_form_target: 'globalTab'}}
+          %ul.flex.flex-none.gap-x-6.px-2.text-sm.font-semibold.leading-6.text-gray-400{role: "list"}
+            %li{class: 'bg-primary text-dark rounded-full px-4 py-3 text-sm font-medium cursor-pointer', data: {action: 'click->profiles-form#switchToGlobal', profiles_form_target: 'globalTab'}}
               = 'Global'
-            %li{class: 'text-gray-200 hover:text-gray-800 rounded-md px-3 py-2 text-sm font-medium cursor-pointer', data: {action: 'click->profiles-form#switchToHabilities', profiles_form_target: 'habilitiesTab'}}
+            %li{class: 'text-primary ring-1 ring-primary rounded-full px-4 py-3 text-sm font-medium cursor-pointer', data: {action: 'click->profiles-form#switchToHabilities', profiles_form_target: 'habilitiesTab'}}
               = 'Habilidades'
           .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#close" } }
 
@@ -23,7 +23,7 @@
           .grid.grid-cols-1.md:grid-cols-2.gap-4.mt-4
             = render InputComponent.new(key: :name, label: 'Nombre y Apellidos', placeholder: 'Nombre', form: form)
             = render InputComponent.new(key: :city, label: 'Ciudad', placeholder: 'Ciudad', form: form)
-          .grid.grid-cols-1.md:grid-cols-3.gap-4.my-4
+          .grid.grid-cols-1.md:grid-cols-3.gap-4.my-6
             = render SelectComponent.new(key: :gender, label: 'Género', options_for_select: options_for_select(Form::GENDER_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:gender]), placeholder: t('profiles_controller.search_terms.any_gender'), form: form)
             = render SelectComponent.new(key: :ethnicity, label: 'Etnia', options_for_select: options_for_select(Form::ETHNICITY_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:ethnicity]), placeholder: t('profiles_controller.search_terms.any_ethnicity'), form: form)
             = render SelectComponent.new(key: :agent_name, label: 'Agencia', options_for_select: options_for_select(@agencies, selected: params[:agent_name]), placeholder: t('profiles_controller.search_terms.any_agency'), form: form)
@@ -41,7 +41,7 @@
               .flex.items-center.gap-2.text-shadowy-200.text-sm
                 = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.available_for.#{available_for}"), key: "available_for[]", value: available_for, checked: params[:available_for]&.include?(available_for))
 
-          .slider-container
+          .slider-container.mt-6
             = render SliderComponent.new(label: 'Rango de Edad', val_min: 0, selected_val_min: params[:min_age] || 0, key_min: 'min_age', val_max: 100, selected_val_max: params[:max_age] || 100, key_max: 'max_age', form: form)
             = render SliderComponent.new(label: 'Rango de Altura', val_min: 40, selected_val_min: params[:min_height] || 40, key_min: 'min_height', val_max: 220, selected_val_max: params[:max_height] || 220, key_max: 'max_height', form: form)
             = render SliderComponent.new(label: 'Rango de Talla de Camiseta', val_min: 1, selected_val_min: params[:min_shirt_size] || 1, key_min: 'min_shirt_size', val_max: 74, selected_val_max: params[:max_shirt_size] || 74, key_max: 'max_shirt_size', form: form)
@@ -58,16 +58,16 @@
                     .flex.items-end.gap-2
                       = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.features.#{skill}"), key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
 
-        .actions.text-right.p-10
-          = form.submit t('labels.search'), class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#close" }
-          .cursor-pointer{class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#close" }}
+        .actions.text-center.p-10
+          = form.submit t('labels.search'), class: "inline-flex items-center px-6 py-3 border-transparent rounded-full text-md font-medium text-dark bg-primary hover:bg-dark focus:outline-none focus:ring-0 hover:bg-dark cursor-pointer hover:ring-1 hover:ring-primary hover:text-primary", data: { action: "click->profiles-form#close" }
+          .cursor-pointer{class: "inline-flex items-center px-6 py-3 ml-6 border border-transparent rounded-full text-md font-medium text-primary bg-dark focus:outline-none focus:ring-0 hover:bg-primary hover:text-dark ring-1 ring-primary", data: { action: "click->profiles-form#close" }}
             = 'Close'
 
     .flex.flex-col.sm:flex-row.justify-between.items-center.text-sm.gap-4.text-sm.text-shadowy-200
       %div
         %label.whitespace-nowrap
           Seleccionar formulario
-        = form.select :form_id, options_for_select(@forms.map { |f| [f.name, f.id] }, selected: params[:form_id]), { include_blank: 'All' }, { data: { controller: 'slim', placeholder: 'All', action: 'change->autosave#save' }, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" }
+        = form.select :form_id, options_for_select(@forms.map { |f| [f.name, f.id] }, selected: params[:form_id]), { include_blank: 'All' }, { data: { controller: 'slim', placeholder: 'All', action: 'change->autosave#save' }, class: "block mt-2 w-full border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" }
 
       .flex.items-center.gap-2
         %div{class: 'inline-flex items-center bg-primary rounded-full px-4 py-3 text-md font-semibold text-dark transition duration-200 cursor-pointer hover:bg-dark hover:text-primary hover:ring-1 hover:ring-primary hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary', data: { action: "click->profiles-form#open" } }

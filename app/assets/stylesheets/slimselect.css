@@ -1,7 +1,7 @@
 :root {
-    --ss-primary-color:  #3c41aa;
-    --ss-bg-color:  #111827;
-    --ss-font-color:  #93B2C0;
+    --ss-primary-color:  #0ad1c4;
+    --ss-bg-color:  #ffffff;
+    --ss-font-color:  #060D14;
     --ss-font-placeholder-color:  #93B2C0;
     --ss-disabled-color:  #dcdee2;
     --ss-border-color:  #93B2C01A;
@@ -9,13 +9,13 @@
     --ss-success-color:  #00b755;
     --ss-error-color:  #dc3545;
     --ss-focus-color:  #5897fb;
-    --ss-main-height:  36px;
+    --ss-main-height:  50px;
     --ss-content-height:  300px;
-    --ss-spacing-l:  7px;
-    --ss-spacing-m:  5px;
-    --ss-spacing-s:  3px;
+    --ss-spacing-l:  16px;
+    --ss-spacing-m:  12px;
+    --ss-spacing-s:  8px;
     --ss-animation-timing:  0.2s;
-    --ss-border-radius:  8px;
+    --ss-border-radius:  25px;
 }
 @keyframes ss-valueIn {
     0% {

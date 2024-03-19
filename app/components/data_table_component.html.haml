@@ -9,8 +9,8 @@
     = form_with url: @form_action, method: :get, data: { turbo_frame: 'datatable', turbo_action: 'replace', controller: 'search', action: 'input->search#submit' } do |form|
       .py-5.sm:flex.sm:items-center.sm:justify-between
         .flex.items-center.space-x-4
-          = form.label :count, "Elementos: ", class: "block text-sm font-medium leading-6 text-shadowy-200"
-          = form.select :count, options_for_select([10, 25, 50, 100], selected: params[:count]), { prompt: nil }, class: "w-full border-0 pr-8 text-lg leading-6 placeholder:text-shadowy-200 ring-1 ring-primary sm:block rounded-full transition duration-200 border-0 bg-dark px-4 py-3 text-shadowy-200 focus:placeholder:text-white focus:ring-primary sm:text-sm sm:leading-6"
+          = form.label :count, "Elementos: ", class: "block text-sm font-medium leading-6 text-shadowy-100"
+          = form.select :count, options_for_select([10, 25, 50, 100], selected: params[:count]), { prompt: nil }, class: "w-full border-0 pr-8 text-lg leading-6 placeholder:text-white ring-2 ring-primary sm:block rounded-full transition duration-200 border-0 bg-dark px-4 py-3 text-shadowy-100 focus:placeholder:text-white focus:ring-primary sm:text-sm sm:leading-6"
         - if @date_range_picker
           .mt-3.sm:ml-4.sm:mt-0
             = render DateRangePickerComponent.new(form: form, value: params[:start_date_between])

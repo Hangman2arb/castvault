@@ -33,7 +33,7 @@ export default class extends Controller {
     const span3 = this.span3Targets[index];
 
     if (isChecked) {
-      button.classList.replace("bg-gray-200", "bg-indigo-600");
+      button.classList.replace("bg-gray-200", "bg-primary");
       span1.classList.replace("translate-x-0", "translate-x-5");
       span2.classList.add("opacity-0");
       span2.classList.remove("opacity-100");
@@ -44,7 +44,7 @@ export default class extends Controller {
         this.checkboxSelectAllTarget.checked = !this.checkboxSelectAllTarget.checked;
         this.updateSwitchVisualForSelectAllCheckbox();
       }
-      button.classList.replace("bg-indigo-600", "bg-gray-200");
+      button.classList.replace("bg-primary", "bg-gray-200");
       span1.classList.replace("translate-x-5", "translate-x-0");
       span2.classList.add("opacity-100");
       span2.classList.remove("opacity-0");
@@ -73,14 +73,14 @@ export default class extends Controller {
     const span3 = this.span3SelectAllTarget;
 
     if (isChecked) {
-      button.classList.replace("bg-gray-200", "bg-indigo-600");
+      button.classList.replace("bg-gray-200", "bg-primary");
       span1.classList.replace("translate-x-0", "translate-x-5");
       span2.classList.add("opacity-0");
       span2.classList.remove("opacity-100");
       span3.classList.add("opacity-100");
       span3.classList.remove("opacity-0");
     } else {
-      button.classList.replace("bg-indigo-600", "bg-gray-200");
+      button.classList.replace("bg-primary", "bg-gray-200");
       span1.classList.replace("translate-x-5", "translate-x-0");
       span2.classList.add("opacity-100");
       span2.classList.remove("opacity-0");

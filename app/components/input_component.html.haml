@@ -1,6 +1,6 @@
 .form-group
   = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
-  = @form.public_send(@type, @key, class: 'mt-1 w-full block rounded-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', placeholder: @placeholder)
+  = @form.public_send(@type, @key, class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: @placeholder)
   - if @model&.errors&.[](@key)&.present?
     .text-red-500.text-sm
       = @model.errors[@key].first
