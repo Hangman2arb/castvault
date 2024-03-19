@@ -27,7 +27,6 @@
                 = render CustomCheckboxComponent.new(form: form, key: field_name, checked: @profile[field_name], value: @profile[field_name], model: @profile)
               - when 'multiselect'
                 = render SelectComponent.new( form: form, key: field_name, options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value] }, @profile.send(field_name)),  model: @profile, label: t("fields.#{field_name}"), multiple: true)
-
               - when 'image'
                 = render UploadFileComponent.new( form: form,
                                                   model: :profile,
@@ -53,7 +52,7 @@
       .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
         - @filtered_featured_options.each do |key, options|
           .sm:col-span-2
-            = render SelectComponent.new( form: form, key: key, options_for_select: options_for_select(options.map{|option|[option, t("fields.#{option}")]}, @profile.send(key)),  model: @profile, label: t("fields.#{key}"), multiple: true)
+            = render SelectComponent.new( form: form, key: key, options_for_select: options_for_select(options.map{|option|[t("fields.#{option}"), option]}, @profile.send(key)),  model: @profile, label: t("fields.#{key}"), multiple: true)
 
 
     .mt-4.text-center

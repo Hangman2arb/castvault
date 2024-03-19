@@ -62,7 +62,6 @@
         .sm:col-span-2
           = form.label key, t("fields.#{key}"), class: "block text-sm font-medium leading-6 text-shadowy-200"
           .mt-2.text-sm.text-shadowy-200
-            -# = form.select key, options_for_select(options.map { |value| [ t("forms_controller.multiselect_texts.#{key}.#{value}"), value ] }, selected: @profile.send(key)), {}, { multiple: true, data: { controller: 'slim-multiple', placeholder: 'Select your Skills' } }
             %select{multiple: true, name: "profile[#{key}][]", id: "profile_#{key}", data: {controller: 'slim-multiple', placeholder: t("forms_controller.multiselect_texts.placeholder_#{key}")}, class: "multiselect-#{key}"}
               %optgroup{data: {selectall: "true", selectalltext: "Seleccionar todos"}}
                 - options.each do |value|
