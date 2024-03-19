@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  # Outside Links
   get 'forms/:token', to: 'manager/forms#show_form', as: :show_form
+  patch 'forms/:token/update_show_form', to: 'manager/forms#update_show_form', as: :update_show_form
 
   namespace :manager do
     get 'settings/index'
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
       get 'search_languages', to: 'forms#search_languages'
       get 'search_available_for', to: 'forms#search_available_for'
     end
+
     resources :instructions, only: [:index], menu_option_id: 'instructions'
     resources :settings, only: [:index], menu_option_id: 'settings'
     patch 'settings', to: 'settings#update', as: :update_settings

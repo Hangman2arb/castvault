@@ -6,9 +6,10 @@
 
     .text-container.w-full
       %p.text-base.text-shadowy-200.leading-relaxed= @form.description&.html_safe
-.container.mx-auto
+
+.container.mx-auto.clear-both
   = form_with model: [:manager, @profile], local: true, class: "space-y-12", data: { controller: 'form-show' } do |form|
-    = form.hidden_field :form_id, value: @form.id
+    = form.hidden_field :token, value: params[:token]
     - @filtered_admited_form_fields.group_by { |_, field_attrs| field_attrs[:section] }.each do |section, fields|
       .border-b.pb-12{class: 'border-shadowy-200/10'}
         %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.#{section}")
@@ -17,22 +18,15 @@
         .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
           - fields.each do |field_name, field_attrs|
             .sm:col-span-2
-              = form.label field_name, t("fields.#{field_name}"), class: "block text-sm font-medium leading-6 text-shadowy-200", id: "label_profile_#{field_name}"
               - case field_attrs[:type]
-              - when 'string', 'email', 'integer'
-                = form.text_field field_name, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-              - when 'date'
-                = form.date_field field_name, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+              - when 'string', 'email', 'integer', 'date'
+                = render InputComponent.new(form: form, key: field_name.to_sym, type: Form::INPUT_TYPES[field_attrs[:type]], label: t("fields.#{field_name}"), model: @profile)
               - when 'select'
-                = form.select field_name, options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), {}, class: "mt-2 block w-full rounded-md border-0 bg-shadowy-200/5 py-1.5 text-shadowy-200 shadow-sm ring-1 ring-inset ring-shadowy-200/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                = render SelectComponent.new(key: field_name.to_sym, label: t("fields.#{field_name}"), options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), form: form, model: @profile)
               - when 'boolean'
-                = render CustomCheckboxComponent.new(form: form, key: field_name)
+                = render CustomCheckboxComponent.new(form: form, key: field_name, checked: @profile[field_name], value: @profile[field_name], model: @profile)
               - when 'multiselect'
-                .mt-2.text-sm.text-shadowy-200
-                  %select{multiple: true, name: "profile[#{field_name}][]", id: "profile_#{field_name}", data: {controller: 'slim-multiple', placeholder: t("forms_controller.multiselect_texts.placeholder_#{field_name}")}, class: "multiselect-#{field_name}"}
-                    %optgroup{data: {selectall: "true", selectalltext: "Seleccionar todos"}}
-                      - Form.const_get("#{field_name.upcase}_OPTIONS").each do |value|
-                        %option{value: value, selected: @profile.send(field_name).include?(value)}= t("forms_controller.multiselect_texts.#{field_name}.#{value}")
+                = render SelectComponent.new( form: form, key: field_name, options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value] }, @profile.send(field_name)),  model: @profile, label: t("fields.#{field_name}"), multiple: true)
 
               - when 'image'
                 = render UploadFileComponent.new( form: form,
@@ -59,14 +53,8 @@
       .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
         - @filtered_featured_options.each do |key, options|
           .sm:col-span-2
-            = form.label key, t("fields.#{key}"), class: "block text-sm font-medium leading-6 text-shadowy-200"
-            .mt-2.text-sm.text-shadowy-200
-              -# = form.select key, options_for_select(options.map { |value| [ t("forms_controller.multiselect_texts.#{key}.#{value}"), value ] }, selected: @profile.send(key)), {}, { multiple: true, data: { controller: 'slim-multiple', placeholder: 'Select your Skills' } }
-              %select{multiple: true, name: "profile[#{key}][]", id: "profile_#{key}", data: {controller: 'slim-multiple', placeholder: t("forms_controller.multiselect_texts.placeholder_#{key}")}, class: "multiselect-#{key}"}
-                %optgroup{data: {selectall: "true", selectalltext: "Seleccionar todos"}}
-                  - options.each do |value|
-                    %option{value: value, selected: @profile.send(key).include?(value)}
-                      = t("forms_controller.multiselect_texts.#{key}.#{value}")
+            = render SelectComponent.new( form: form, key: key, options_for_select: options_for_select(options.map{|option|[option, t("fields.#{option}")]}, @profile.send(key)),  model: @profile, label: t("fields.#{key}"), multiple: true)
+
 
     .mt-4.text-center
       = form.submit t('labels.send'), class: "inline-flex items-center bg-primary rounded-full px-4 py-3 text-md font-semibold text-dark transition duration-200 cursor-pointer hover:bg-dark hover:text-primary hover:ring-1 hover:ring-primary hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"

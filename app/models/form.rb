@@ -93,6 +93,13 @@ class Form < ApplicationRecord
     :arts_leisure_stunt_professions, :general
   ].freeze
 
+  INPUT_TYPES = {
+    'string' => 'text_field',
+    'email' => 'email_field',
+    'integer' => 'number_field',
+    'date' => 'date_field'
+  }.freeze
+
   def ordered_fields
     ordered = FIELDS_ORDER.map do |key|
       [key, fields[key.to_s]] if fields.has_key?(key.to_s)

@@ -39,8 +39,7 @@
           .flex.items-center.justify-between.gap-4
             - Form::AVAILABLE_FOR_OPTIONS.each do |available_for|
               .flex.items-center.gap-2.text-shadowy-200.text-sm
-                = render CustomCheckboxComponent.new(form: form, key: "available_for[]", value: available_for, checked: params[:available_for]&.include?(available_for))
-                = label_tag "available_for_#{available_for}", available_for
+                = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.available_for.#{available_for}"), key: "available_for[]", value: available_for, checked: params[:available_for]&.include?(available_for))
 
           .slider-container
             = render SliderComponent.new(label: 'Rango de Edad', val_min: 0, selected_val_min: params[:min_age] || 0, key_min: 'min_age', val_max: 100, selected_val_max: params[:max_age] || 100, key_max: 'max_age', form: form)
@@ -49,16 +48,15 @@
             = render SliderComponent.new(label: 'Rango de Talla de Pantalón', val_min: 1, selected_val_min: params[:min_pants_size] || 1, key_min: 'min_pants_size', val_max: 70, selected_val_max: params[:max_pants_size] || 70, key_max: 'max_pants_size', form: form)
             = render SliderComponent.new(label: 'Rango de Talla de Zapatillas', val_min: 16, selected_val_min: params[:min_shoe_size] || 16, key_min: 'min_shoe_size', val_max: 54, selected_val_max: params[:max_shoe_size] || 54, key_max: 'max_shoe_size', form: form)
 
-        %ul.hidden.grid.grid-cols-2.md:grid-cols-fill.gap-6.mt-10.text-sm.p-10.cursor{role: "list", data: { profiles_form_target: 'habilitiesTabContent' }}
+        %ul.hidden.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-fill.gap-6.mt-10.text-sm.p-10.cursor{role: "list", data: { profiles_form_target: 'habilitiesTabContent' }}
           - Form::FEATURES_OPTIONS.each do |category, skills|
-            %li.col-span-1.flex.flex-col.cursor-pointer.max-w-custom
-              %label.text-primary.font-semibold= t("skills_category.#{category}")
-              %ul.grid.grid-cols-fill.gap-6.mt-10{role: "list"}
+            %li.flex.flex-col.cursor-pointer.max-w-custom
+              %label.text-primary.font-semibold= t("profiles_controller.skills_category.#{category}")
+              %ul.grid.grid-cols-1.sm:grid-cols-2.md:grid-cols-fill.gap-6.mt-10{role: "list"}
                 - skills.each do |skill|
-                  %li.col-span-1.flex.flex-col.text-center.cursor-pointer.max-w-custom
-                    .flex.items-center.gap-2
-                      = render CustomCheckboxComponent.new(form: form, key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
-                      = label_tag "skills_#{category}_#{skill}", t("profiles_controller.features.#{skill}"), class: 'text-shadowy-200'
+                  %li.flex.flex-col.text-center.cursor-pointer.max-w-custom
+                    .flex.items-end.gap-2
+                      = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.features.#{skill}"), key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
 
         .actions.text-right.p-10
           = form.submit t('labels.search'), class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", data: { action: "click->profiles-form#close" }

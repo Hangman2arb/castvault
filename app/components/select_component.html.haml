@@ -1,3 +1,14 @@
-.form-group
-  = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
-  = @form.select @key, @options_for_select, { include_blank: @placeholder }, { data: { controller: 'slim'} }
+- if @multiple
+  = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200 mb-1'
+  %select{multiple: true, name: "profile[#{@key}][]", id: "profile_#{@key}", data: {controller: 'slim-multiple', placeholder: @placeholder}, class: "multiselect-#{@key}"}
+    %optgroup{label: @placeholder, data: {selectall: "true", selectalltext: "Seleccionar todos"}}
+      = @options_for_select
+
+- else
+  .form-group
+    = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200 mb-1'
+    = @form.select @key, @options_for_select, { include_blank: @placeholder }, { data: { controller: 'slim'} }
+
+- if @model&.errors&.[](@key)&.present?
+  .text-red-500.text-sm
+    = @model.errors[@key].first

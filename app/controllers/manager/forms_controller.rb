@@ -1,5 +1,5 @@
 class Manager::FormsController < ApplicationController
-  before_action :authenticate_user!, except: [:show_form]
+  before_action :authenticate_user!, except: [:show_form, :update_show_form]
 
   layout 'form', only: [:show_form]
   def index
@@ -137,7 +137,13 @@ class Manager::FormsController < ApplicationController
         end
       end
     end
+  end
 
+  def update_show_form
+    @form = Form.find_by(token: params[:token])
+    return render plain: 'Not Found', status: :not_found unless @form
+    # Lógica para actualizar el formulario
+    # Deberás encontrar el formulario por token y actualizarlo
   end
 
 
