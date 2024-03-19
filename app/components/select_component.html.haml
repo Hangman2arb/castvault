@@ -1,0 +1,3 @@
+.form-group
+  = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
+  = @form.select @key, @options_for_select, { include_blank: @placeholder }, { data: { controller: 'slim'} }

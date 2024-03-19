@@ -20,56 +20,20 @@
           .cursor-pointer.font-bold.text-white{ data: { action: "click->profiles-form#close" } }
 
         %div{data: { profiles_form_target: 'globalTabContent' }}
-          .grid.grid-cols-1.md:grid-cols-2.gap-4
-            .form-group
-              %label.text-shadowy-200
-                = 'Nombre y Apellidos'
-              = form.text_field :name, placeholder: t('profiles_controller.search_terms.name'), value: params[:name], class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-            .form-group
-              %label.text-shadowy-200
-                = 'Ciudad'
-              = form.text_field :city, placeholder: t('profiles_controller.search_terms.city'), value: params[:city], class: "form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          .grid.grid-cols-1.md:grid-cols-2.gap-4.mt-4
+            = render InputComponent.new(key: :name, label: 'Nombre y Apellidos', placeholder: 'Nombre', form: form)
+            = render InputComponent.new(key: :city, label: 'Ciudad', placeholder: 'Ciudad', form: form)
           .grid.grid-cols-1.md:grid-cols-3.gap-4.my-4
-            .form-group
-              %label.text-shadowy-200
-                = 'Género'
-              = form.select :gender, options_for_select(Form::GENDER_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:gender]), { include_blank: t('profiles_controller.search_terms.any_gender') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Etnia'
-              = form.select :ethnicity, options_for_select(Form::ETHNICITY_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:ethnicity]), { include_blank: t('profiles_controller.search_terms.any_ethnicity') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Agencia'
-              = form.select :agent_name, options_for_select(@agencies, selected: params[:agent_name]), { include_blank: t('profiles_controller.search_terms.any_agency') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Tipo de Cabello'
-              = form.select :hair_type, options_for_select(Form::HAIR_TYPE_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_type]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Color del Cabello'
-              = form.select :hair_color, options_for_select(Form::HAIR_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_color]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Color de Ojos'
-              = form.select :eye_color, options_for_select(Form::EYE_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:eye_color]), { include_blank: t('profiles_controller.search_terms.any_hair_type') }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Pasaporte'
-              = form.select :passport, options_for_select(@boolean_options, selected: params[:passport]), { include_blank: false }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Carnet de Conducir'
-              = form.select :driving_license, options_for_select(@boolean_options, selected: params[:driving_license]), { include_blank: false }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Alergias'
-              = form.select :food_allergies, options_for_select(@boolean_options, selected: params[:food_allergies]), { include_blank: false }, { data: { controller: 'slim'} }
-            .form-group
-              %label.text-shadowy-200
-                = 'Ordenar por'
-              = form.select :order_by, options_for_select(Profile::ORDER_BY.keys.map { |order| [t(".#{order}"), order] }, params[:order_by]), {}, { data: { controller: 'slim'}  }
+            = render SelectComponent.new(key: :gender, label: 'Género', options_for_select: options_for_select(Form::GENDER_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:gender]), placeholder: t('profiles_controller.search_terms.any_gender'), form: form)
+            = render SelectComponent.new(key: :ethnicity, label: 'Etnia', options_for_select: options_for_select(Form::ETHNICITY_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:ethnicity]), placeholder: t('profiles_controller.search_terms.any_ethnicity'), form: form)
+            = render SelectComponent.new(key: :agent_name, label: 'Agencia', options_for_select: options_for_select(@agencies, selected: params[:agent_name]), placeholder: t('profiles_controller.search_terms.any_agency'), form: form)
+            = render SelectComponent.new(key: :hair_type, label: 'Tipo de Cabello', options_for_select: options_for_select(Form::HAIR_TYPE_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_type]), placeholder: t('profiles_controller.search_terms.any_hair_type'), form: form)
+            = render SelectComponent.new(key: :hair_color, label: 'Color del Cabello', options_for_select: options_for_select(Form::HAIR_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:hair_color]), placeholder: t('profiles_controller.search_terms.any_hair_type'), form: form)
+            = render SelectComponent.new(key: :eye_color, label: 'Color de Ojos', options_for_select: options_for_select(Form::EYE_COLOR_OPTIONS.map { |option| [t("profiles_controller.search_terms.#{option}"), option] }, selected: params[:eye_color]), placeholder: t('profiles_controller.search_terms.any_hair_type'), form: form)
+            = render SelectComponent.new(key: :passport, label: 'Pasaporte', options_for_select: options_for_select(@boolean_options, selected: params[:passport]), placeholder: 'Seleccionar', form: form)
+            = render SelectComponent.new(key: :driving_license, label: 'Carnet de Conducir', options_for_select: options_for_select(@boolean_options, selected: params[:driving_license]), placeholder: 'Seleccionar', form: form)
+            = render SelectComponent.new(key: :food_allergies, label: 'Alergias', options_for_select: options_for_select(@boolean_options, selected: params[:food_allergies]), placeholder: 'Seleccionar', form: form)
+            = render SelectComponent.new(key: :order_by, label: 'Ordenar por', options_for_select: options_for_select(Profile::ORDER_BY.keys.map { |order| [t(".#{order}"), order] }, params[:order_by]), placeholder: 'Seleccionar', form: form)
 
           %label.text-shadowy-200= t("skills_category.available_for")
           .flex.items-center.justify-between.gap-4

@@ -2,11 +2,7 @@
   = render HeaderComponent.new(title: @title, description: @description, buttons: @header_buttons)
   .mb-4.mt-10
     .mb-4.w-80
-      = form.label :name, 'Nombre del formulario', class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
-      = form.text_field :name, class: 'mt-1 w-full block rounded-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', placeholder: 'Introduce el nombre del formulario'
-      - if @form.errors[:name].present?
-        .text-red-500.text-sm
-          = @form.errors[:name].first
+      = render InputComponent.new(key: :name, label: 'Nombre del formulario', placeholder: 'Introduce el nombre del formulario', model: @form, form: form)
     .mb-4.flex.justify-start
       = render UploadFileComponent.new( form: form,
                                         model: :form,
