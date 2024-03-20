@@ -15,8 +15,8 @@ class Manager::SettingsController < ApplicationController
 
   def password_change
     if password_change_params[:password].blank? || password_change_params[:password_confirmation].blank?
-      current_user.errors.add(:password, :blank, message: "cannot be blank")
-      current_user.errors.add(:password_confirmation, :blank, message: "cannot be blank")
+      current_user.errors.add(:password, :blank, message: "cannot be blank") if password_change_params[:password].blank?
+      current_user.errors.add(:password_confirmation, :blank, message: "cannot be blank") if password_change_params[:password_confirmation].blank?
       render :index, alert: 'Password and password confirmation cannot be blank.'
     elsif current_user.update_with_password(password_change_params)
       redirect_to manager_settings_path, notice: 'Password was successfully updated.'

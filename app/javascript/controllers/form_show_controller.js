@@ -38,13 +38,13 @@ export default class extends Controller {
       }
     });
 
-    const slimSelectContainer = document.querySelector("[class='ss-main']");
-    if (slimSelectContainer) {
-      if (agencyChecked) {
-        slimSelectContainer.style.display = "";
-      } else {
-        slimSelectContainer.style.display = "none";
-      }
-    }
+    // const slimSelectContainer = document.querySelector("[class='ss-main']");
+    // if (slimSelectContainer) {
+    //   if (agencyChecked) {
+    //     slimSelectContainer.style.display = "";
+    //   } else {
+    //     slimSelectContainer.style.display = "none";
+    //   }
+    // }
   }
 }

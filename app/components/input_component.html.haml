@@ -1,7 +1,11 @@
 .form-group
   - if @label
-    = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
+    = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200', id: "label_profile_#{@key}"
   = @form.public_send(@type, @key, class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: @placeholder)
   - if @model&.errors&.[](@key)&.present?
     .text-red-500.text-sm
       = @model.errors[@key].first
+  - else
+    - unless @info_message.blank?
+      %span.text-xs.text-shadowy-200.flex.justify-start
+        = render BootstrapIconWithTextComponent.new(icon: 'info-circle', extra_classes: 'text-xs', text: @info_message, text_extra_classes: 'text-xs', button_extra_classes: 'mt-2')

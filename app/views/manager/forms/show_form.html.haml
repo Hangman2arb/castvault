@@ -20,13 +20,13 @@
             .sm:col-span-2
               - case field_attrs[:type]
               - when 'string', 'email', 'integer', 'date'
-                = render InputComponent.new(form: form, key: field_name.to_sym, type: Form::INPUT_TYPES[field_attrs[:type]], label: t("fields.#{field_name}"), model: @profile)
+                = render InputComponent.new(form: form, key: field_name.to_sym, type: Form::INPUT_TYPES[field_attrs[:type]], label: t("fields.#{field_name}"), model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'select'
-                = render SelectComponent.new(key: field_name.to_sym, label: t("fields.#{field_name}"), options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), form: form, model: @profile)
+                = render SelectComponent.new(key: field_name.to_sym, label: t("fields.#{field_name}"), options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), form: form, model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'boolean'
-                = render CustomCheckboxComponent.new(form: form, key: field_name, checked: @profile[field_name], value: @profile[field_name], model: @profile)
+                = render CustomCheckboxComponent.new(form: form, key: field_name, checked: @profile[field_name], value: @profile[field_name], model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'multiselect'
-                = render SelectComponent.new( form: form, key: field_name, options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value] }, @profile.send(field_name)),  model: @profile, label: t("fields.#{field_name}"), multiple: true)
+                = render SelectComponent.new( form: form, key: field_name, options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value] }, @profile.send(field_name)),  model: @profile, label: t("fields.#{field_name}"), multiple: true, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'image'
                 = render UploadFileComponent.new( form: form,
                                                   model: :profile,
@@ -35,7 +35,7 @@
                                                   icon: 'camera',
                                                   accepted_types: %w[png jpg jpeg heic],
                                                   max_size_mb: 5,
-                                                  extra_actions: ['autosave#save'] )
+                                                  extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
               - when 'video'
                 = render UploadFileComponent.new( form: form,
                                                   model: :profile,
@@ -44,7 +44,7 @@
                                                   icon: 'camera-video',
                                                   accepted_types: %w[mov mp4 avi],
                                                   max_size_mb: 5,
-                                                  extra_actions: ['autosave#save'] )
+                                                  extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
     .border-b.pb-12{class: 'border-shadowy-200/10'}
       %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.skills")
       %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.skills_description")

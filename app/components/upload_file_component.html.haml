@@ -18,3 +18,6 @@
       = render BootstrapIconWithTextComponent.new(icon: 'trash')
   - if @is_attached
     = @form.check_box "remove_#{@attribute}", class: 'hidden', id: "remove_#{@attribute}_id", data: { upload_file_component_target: 'checkbox' }
+- unless @info_message.blank?
+  %span.text-xs.text-shadowy-200.flex.justify-start
+    = render BootstrapIconWithTextComponent.new(icon: 'info-circle', extra_classes: 'text-xs', text: @info_message, text_extra_classes: 'text-xs', button_extra_classes: 'mt-2')
