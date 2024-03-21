@@ -24,7 +24,6 @@
         = link_to "https://tiktok.com/@#{@profile.tik_tok.delete_prefix('@')}", class: "text-black hover:text-gray-900" do
           %i.bi.bi-tiktok
   - if @profile.face_photo.attached? || @profile.body_photo.attached? || @profile.video_book.attached?
-
     %section.mt-16{ data: { controller: "glightbox" } }
       %h2.text-2xl.font-semibold.text-center.mb-4
         = 'Galería'
@@ -38,10 +37,6 @@
         - if @profile.video_book.attached?
           %a.glightbox{ href: url_for(@profile.video_book), data: { type: 'video', source: 'local' } }
             = video_tag @profile.video_book, controls: true, class: "object-scale-down h-48 w-48 mx-auto"
-
-
-
-
 
     .mt-6
       %h3.text-lg.font-semibold.Text-gray-800 Skills & Interests
