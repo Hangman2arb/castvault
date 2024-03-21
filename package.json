@@ -24,6 +24,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.0.1",
     "postcss-nested": "^6.0.1",
+    "stimulus-carousel": "^5.0.1",
     "stimulus-clipboard": "^4.0.1",
     "stimulus-dropdown": "^2.1.0",
     "stimulus-notification": "^2.2.0",
@@ -32,6 +33,7 @@
     "stimulus-rails-nested-form": "^4.1.0",
     "stimulus-textarea-autogrow": "^4.1.0",
     "sweetalert2": "^11.10.5",
+    "swiper": "^11.0.7",
     "tailwind": "^4.0.0",
     "tailwindcss": "^3.4.1",
     "trix": "^2.0.10"

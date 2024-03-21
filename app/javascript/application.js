@@ -10,4 +10,3 @@ import './add_i18n'
 import 'chartkick/chart.js'
 import "trix"
 import "@rails/actiontext"
-
