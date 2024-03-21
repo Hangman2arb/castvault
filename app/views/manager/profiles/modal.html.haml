@@ -1,1 +1,72 @@
-= render ProfileComponent.new(profile: @profile)
+= render ModalComponent.new() do
+  .flex.items-center.space-x-6.mb-4
+    = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "h-24 w-24 rounded-full object-cover"
+    .name-and-city
+      %h2.text-2xl.font-semibold
+        = [@profile.name, @profile.surname].compact.join(' ')
+      %p.text-sm.text-gray-500
+        = @profile.city if @profile.city.present?
+      .text-start
+        = link_to "mailto:#{@profile.email}", class: "text-decoration-none" do
+          = render BootstrapIconWithTextComponent.new(icon: 'envelope', text: @profile.email)
+        = link_to "tel:#{@profile.phone}", class: "text-decoration-none" do
+          = render BootstrapIconWithTextComponent.new(icon: 'telephone', text: @profile.phone)
+        = link_to @profile.web, class: "text-decoration-none", target: "_blank" do
+          = render BootstrapIconWithTextComponent.new(icon: 'globe', text: @profile.web)
+
+      .flex.items-center.gap-3
+        = link_to "https://twitter.com/#{@profile.twitter.delete_prefix('@')}", class: "text-blue-400 hover:text-blue-500" do
+          %i.bi.bi-twitter
+        = link_to "https://facebook.com/#{@profile.facebook}", class: "text-blue-600 hover:text-blue-700" do
+          %i.bi.bi-facebook
+        = link_to "https://instagram.com/#{@profile.instagram.delete_prefix('@')}", class: "text-pink-600 hover:text-pink-700" do
+          %i.bi.bi-instagram
+        = link_to "https://tiktok.com/@#{@profile.tik_tok.delete_prefix('@')}", class: "text-black hover:text-gray-900" do
+          %i.bi.bi-tiktok
+  - if @profile.face_photo.attached? || @profile.body_photo.attached? || @profile.video_book.attached?
+
+    %section.mt-16{ data: { controller: "glightbox" } }
+      %h2.text-2xl.font-semibold.text-center.mb-4
+        = 'Galería'
+      .flex.items-center.justify-center
+        - if @profile.face_photo.attached?
+          %a.glightbox{ href: url_for(@profile.face_photo) }
+            = image_tag @profile.face_photo, alt: "", class: "object-scale-down h-48 w-48 mx-auto"
+        - if @profile.body_photo.attached?
+          %a.glightbox{ href: url_for(@profile.body_photo) }
+            = image_tag @profile.body_photo, alt: "", class: "object-scale-down h-48 w-48 mx-auto"
+        - if @profile.video_book.attached?
+          %a.glightbox{ href: url_for(@profile.video_book), data: { type: 'video', source: 'local' } }
+            = video_tag @profile.video_book, controls: true, class: "object-scale-down h-48 w-48 mx-auto"
+
+
+
+
+
+    .mt-6
+      %h3.text-lg.font-semibold.Text-gray-800 Skills & Interests
+      %ul.flex.flex-wrap.mt-2
+        - Form::FEATURES_OPTIONS.each do |category, skills|
+          - skills_selected = @profile.send(category)
+          - if skills_selected.present?
+            %li.bg-gray-200.rounded-full.px-4.py-1.mr-2.mb-2
+              %h4.font-semibold.text-gray-700= t("skills_category.#{category}")
+              %ul.pl-4
+                - skills_selected.each do |skill|
+                  %li.text-sm.text-gray-600= skill
+
+      .mt-4
+        %h3.text-lg.font-semibold.Text-gray-800 Agency Information
+        %p.text-sm.text-gray-600= @profile.agent_name
+        - if @profile.agent_email.present?
+          %p.text-sm.text-gray-600= @profile.agent_email
+        - if @profile.agent_phone.present?
+          %p.text-sm.text-gray-600= @profile.agent_phone
+
+      .mt-4
+        %h3.text-lg.font-semibold.Text-gray-800 Personal Details
+        %p.text-sm.text-gray-600= "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
+        %p.text-sm.text-gray-600= "Gender: #{@profile.gender.humanize}"
+        %p.text-sm.text-gray-600= "Ethnicity: #{@profile.ethnicity.humanize}"
+
+

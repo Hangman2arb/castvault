@@ -1,3 +1,3 @@
 %li.col-span-1.flex.flex-col.divide-y.divide-shadowy-200.rounded-xl.text-center.shadow.cursor-pointer.max-w-custom.bg-shadowy-700.p-4.hover:ring-1.hover:ring-primary
-  = link_to modal_manager_profiles_path(id: profile.id), data: { turbo_frame: "profile_modal", turbo_action: 'replace' } do
+  = link_to modal_manager_profiles_path(id: profile.id), data: { turbo_frame: "modal" }, remote: true, class: "text-left button-like" do
     = render ProfileCardComponent.new(photo: profile.face_photo.attached? ? url_for(profile.face_photo) : image_url('no_profile_photo.svg'), name: profile.name, surname: profile.surname, agency: profile.agent_name, email: profile.email, phone: profile.phone, id: profile.id)

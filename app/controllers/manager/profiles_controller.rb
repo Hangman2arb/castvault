@@ -33,7 +33,7 @@ class Manager::ProfilesController < ApplicationController
     @profile = current_user.profiles.find(params[:id])
     if @profile
       respond_to do |format|
-        format.html
+        format.html { render layout: false }
       end
     else
       redirect_to manager_profiles_path, alert: 'Perfil no encontrado'

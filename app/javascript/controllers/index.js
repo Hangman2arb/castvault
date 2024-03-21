@@ -25,8 +25,14 @@ application.register("form-header", FormHeaderController)
 import FormShowController from "./form_show_controller"
 application.register("form-show", FormShowController)
 
+import GlightboxController from "./glightbox_controller"
+application.register("glightbox", GlightboxController)
+
 import ImagePreviewController from "./image_preview_controller"
 application.register("image-preview", ImagePreviewController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
