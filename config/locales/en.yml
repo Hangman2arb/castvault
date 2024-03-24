@@ -1,31 +1,418 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
+---
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+        blank: cannot be blank
+      models:
+        form:
+          attributes:
+            name:
+              blank: Name field cannot be blank
+  data_table_component:
+    action: Action
+    actions: Actions
+    chat_name: Send to
+    created_at: Date
+    daily_summary: Summary
+    date: Date
+    first_name: First Name
+    group: Group
+    group_title: Group Title
+    info: Information
+    is_bot: Is it a Bot?
+    key: Key
+    language_code: Language
+    max_user_usages: Max Messages/Day
+    members_count: Members
+    message: Message
+    message_count: Registered Messages
+    name: Name
+    parse_mode: Type
+    prompt: Prompt
+    scheduled_at: Scheduled For
+    status: Status
+    submissions_count: Times Sent
+    telegram: Telegram ID
+    telegram_type: Chat Type
+    telegram_user_name: Username
+    text: Message
+    title: Title
+    topic_name: Topic
+    updated_at: Updated At
+    user_status: User Status
+    username: Username
+  devise:
+    confirmations:
+      confirmed: Your email has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for confirming your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions for confirming your email address in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account has not been activated yet.
+      invalid: Invalid email and/or password.
+      last_attempt: You have one more attempt before your account is locked.
+      locked: Your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session has expired. Please sign in again.
+      unauthenticated: You need to sign up or sign in before continuing.
+      unconfirmed: You have to confirm your account before continuing.
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation Instructions
+      email_changed:
+        subject: Email Changed
+      password_change:
+        subject: Password Changed
+      reset_password_instructions:
+        subject: Password Reset Instructions
+      unlock_instructions:
+        subject: Unlock Instructions
+    omniauth_callbacks:
+      failure: 'We could not authenticate your %{kind} account for the following reason: "%{reason}".'
+      success: You have successfully authenticated with your %{kind} account.
+    passwords:
+      no_token: You cannot access this page without coming from a password reset email. If you do come from there, please make sure to use the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email exists in our system, you will receive an email with instructions to reset your password in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been deleted. We hope to see you again soon!
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully, but your account has not been activated yet.
+      signed_up_but_locked: You have signed up successfully, but your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and confirm the address.
+      updated: You updated your account successfully.
+      updated_but_not_signed_in: You updated your account successfully, but you need to sign in again as your password was changed.
+    sessions:
+      already_signed_out: Already signed out.
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+    unlocks:
+      send_instructions: You will receive an email with instructions for unlocking your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email with instructions for unlocking your account in a few minutes.
+      unlocked: Your account has been unlocked. Please sign in to continue.
+  email_changed:
+    email_being_changed: We're contacting you to notify that your email is being changed to %{email}.
+    email_changed: We're contacting you to notify that your email has been changed to %{email}.
+    error_question: If it wasn't you, contact us at <a href='mailto:support@metricgram.com'>support@metricgram.com</a> and we will help you resolve this issue.
+    greeting: Hello %{full_name}!
+  email_confirmation:
+    confirm_email: Please confirm your email
+    confirm_your_email: Confirm Email
+    confirmation_url: "<a href='%{url}' style='color:#2F67F6;'>%{url}</a>"
+    email_to_confirm: "An email to confirm an email. 🤪"
+    help_needed: Need help?
+    or_verify_link: 'Or verify using this link:'
+    send_feedback: Please send any feedback or error information to <a href='mailto:info@example.com' style='color:#2F67F6'>info@example.com</a>
+    validate_email: Please validate your email address to start using Metricgram.
+    yes_we_know: Yes, we know.
+  errors:
+    attributes:
+      name:
+        blank: The name field cannot be blank
+    messages:
+      already_confirmed: has already been confirmed. Try signing in.
+      blank: cannot be blank
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: has not been locked
+      not_saved:
+        one: '1 error has occurred:'
+        other: "%{count} errors have occurred:"
+  ethnicities:
+    asian: Asian
+    black_african: Black/African
+    caucasian: Caucasian
+    hispanic_latino: Hispanic/Latino
+    middle_eastern: Middle Eastern
+    mixed: Mixed
+    native_american: Native American
+    other: Other
+    pacific_islander: Pacific Islander
+  eye_colors:
+    amber: Amber
+    blue: Blue
+    brown: Brown
+    gray: Gray
+    green: Green
+    hazel: Hazel
+  fields:
+    agency: Agency
+    agent_email: Agent's Email
+    agent_name: Agent's Name
+    agent_phone: Agent's Phone
+    available_for: Available For
+    birthdate: Date of Birth
+    body_photo: Body Photo
+    city: City
+    created_at: Created At
+    driving_license: Driving License
+    email: Email
+    ethnicity: Ethnicity
+    eye_color: Eye Color
+    face_photo: Face Photo
+    facebook: Facebook
+    food_allergies: Food Allergies
+    gender: Gender
+    hair_color: Hair Color
+    hair_type: Hair Type
+    height: Height
+    id: ID
+    instagram: Instagram
+    is_an_actor: Is an Actor/Actress
+    language: Language
+    time_zone: Time Zone
+    languages: Languages
+    name: Name
+    pants_size: Pants Size
+    passport: Passport
+    phone: Phone
+    shirt_size: Shirt Size
+    shoe_size: Shoe Size
+    skills: Skills
+    surname: Surname
+    tik_tok: TikTok
+    twitter: Twitter
+    updated_at: Updated At
+    video_book: Video Book
+    web: Website
+  forms_controller:
+    form_name_label: "Form Name"
+    form_name_placeholder: "Enter the form name"
+    description_label: "Description"
+    select_all_label: "Select All"
+    use_setting: "Use setting"
+    additional_info_placeholder: "Additional informational message"
+    not_found: Not found
+    show_title: "Show form title"
+    show_description: "Show form description"
+    destroy_message: You are going to delete the form and will not be able to recover it.
+    edit_title: Edit Form
+    form_created: Form successfully created!
+    form_deleted: Form deleted.
+    form_not_deleted: There was a problem deleting the form. Please contact the administrator.
+    form_updated: Form successfully updated!
+    index_description: List of existing forms
+    index_title: Forms
+    multiselect_texts:
+      available_for:
+        advertising: Advertising
+        fiction: Fiction
+        performing_arts: Performing Arts
+        tv: Television
+      languages:
+        de: German
+        en: English
+        es: Spanish
+        fr: French
+        it: Italian
+        nl: Dutch
+        pl: Polish
+        ru: Russian
+        sv: Swedish
+        tr: Turkish
+    new_description: Select the fields you need the profiles to fill out.
+    new_form: Create Form
+    new_title: New Form
+    no_forms_yet: No forms yet
+    no_forms_yet_description: You haven't created any forms yet, you can create your first form by clicking on 'Create Form'
+    section:
+      skills: "Skills"
+      skills_description: "Describe the skills related to the form here."
+      additional_information: "Additional Information"
+      additional_information_description: "Provide any extra details that are relevant to the form."
+      basic_information: "Basic Information"
+      basic_information_description: "Enter the fundamental details required for the form."
+      contact_information: "Contact Information"
+      contact_information_description: "Fill in the contact details necessary for the form."
+      features: "Features"
+      features_description: "List the features associated with the form."
+      measurements: "Measurements"
+      measurements_description: "Specify the measurements that need to be provided in the form."
+      pictures_and_media: "Pictures and Media"
+      pictures_and_media_description: "Upload any pictures or media files related to the form."
+      social_media: "Social Media"
+      social_media_description: "Include relevant social media links or information."
+  genders:
+    female: Female
+    male: Male
+    non_binary: Non-Binary
+  hair_colors:
+    black: Black
+    blonde: Blonde
+    dark_brown: Dark Brown
+    gray: Gray
+    light_brown: Light Brown
+    medium_brown: Medium Brown
+    red: Red
+    white: White
+  hair_types:
+    bald: Bald
+    coiled: Coiled
+    curly: Curly
+    open_wave: Open Wave
+    straight: Straight
+    very_coiled: Very Coiled
+    very_curly: Very Curly
+    wavy: Wavy
+    zigzag_coiled: Zigzag
+  javascript:
+    confirm:
+      cancel_button: Cancel
+      confirm_button: Confirm
+      title: Confirmation
+  labels:
+    current_password: "Current password"
+    password: "New password"
+    password_confirmation: "Confirm password"
+    results: 'Results'
+    all: All
+    back_button: Back
+    save: Save
+    search: Search
+    send: Send
+    update: Update
+    close: Close
+  landing_pricing_component:
+    annually: Annually
+    choose_plan: Choose an affordable plan packed with the best features to engage your audience, create customer loyalty, and boost sales.
+    discount_applied: Receive 2 Months for FREE when contracting the Annual plan.
+    features:
+      basic:
+        '0': Manage 1 Telegram Group
+        '1': Advanced metrics and data
+        '2': Group, Permissions, and User Management
+        '3': Automated messages
+        '4': Integrate your own AI ChatBOT
+        '5': Receive daily status and predictive reports
+      elite:
+        '0': Manage 10 Telegram Groups
+        '1': Advanced metrics and data
+        '2': Group, Permissions, and User Management
+        '3': Automated messages
+        '4': Integrate your own AI ChatBOT
+        '5': Receive daily status and predictive reports
+      pro:
+        '0': Manage 3 Telegram Groups
+        '1': Advanced metrics and data
+        '2': Group, Permissions, and User Management
+        '3': Automated messages
+        '4': Integrate your own AI ChatBOT
+        '5': Receive daily status and predictive reports
+    for_everyone: for everyone.
+    get_a_discount: Get a 15% discount with the annual plan
+    get_started: Get started with the %{product_name} plan for %{price}
+    monthly: Monthly
+    monthly_description:
+      basic: This plan lets you manage <b>1 group</b> on Telegram. With all the features that make Metricgram the best tool for managing communities on Telegram.
+      elite: This plan lets you manage <b>10 groups</b> on Telegram. Perfect for admin groups managing up to 10 different communities.
+      pro: This plan lets you manage <b>3 groups</b> on Telegram. Perfect for people who have multiple communities on Telegram or a small group of administrators.
+    most_popular: Most Popular
+    payment_frequency: Payment Frequency
+    per_month: "/month"
+    per_year: "/year"
+    pricing: Pricing
+    simple_pricing: Simple pricing,
+    size_message: No matter the size of your business, our software will work well for you.
+    yearly_description:
+      basic: This plan lets you manage <b>1 group</b> on Telegram. With all the features that make Metricgram the best tool for managing communities on Telegram.
+      elite: This plan lets you manage <b>10 groups</b> on Telegram. Perfect for admin groups managing up to 10 different communities.
+      pro: This plan lets you manage <b>3 groups</b> on Telegram. Perfect for people who have multiple communities on Telegram or a small group of administrators.
+  password_change:
+    instruction: We are contacting you to notify you that your password has been changed.
+  profiles_controller:
+    age_range: "Age Range"
+    height_range: "Height Range (cm)"
+    shirt_size_range: "Shirt Size (cm)"
+    pants_size_range: "Pants Size (cm)"
+    shoe_size_range: "Shoe Size (cm)"
+    available_for_title: Available for
+    available_for:
+      performing_arts: "Performing Arts"
+      tv: "Television"
+      fiction: "Fiction"
+      advertising: "Advertising"
+    filters_title: Advanced Filters
+    title: "Profiles"
+    description: "View all the profiles registered through your forms."
+    profile_created: "Profile was successfully created."
+    profile_not_found: "Profile not found."
+    with: With
+    without: Without
+    n_a: N/A
+    search_terms:
+      select_form: Form
+      select: Select
+      newest: 'Newest'
+      age_old: 'Age Old'
+      age_young: 'Age Young'
+      global: "Global"
+      habilidades: "Skills"
+      name: "Full Name"
+      city: "City"
+      gender: "Gender"
+      any_gender: "Any Gender"
+      ethnicity: "Ethnicity"
+      any_ethnicity: "Any Ethnicity"
+      agency: "Agency"
+      any_agency: "Any Agency"
+      hair_type: "Hair Type"
+      any_hair_type: "Any Hair Type"
+      hair_color: "Hair Color"
+      any_hair_color: "Any Hair Color"
+      eye_color: "Eye Color"
+      any_eye_color: "Any Eye Color"
+      passport: "Passport"
+      driving_license: "Driving License"
+      food_allergies: "Food Allergies"
+      order_by: "Order by"
+    without_agency: Without Agency
+  reset_password_instructions:
+    change_password_button: Change my password
+    greeting: Hello %{full_name}!
+    ignore_message: If you didn't request this, please ignore this email.
+    instruction: Someone has requested a link to change your password. You can do this through the link below.
+    password_change_confirmation: Your password will not change until you access the above link and create a new one.
+  unlock_instructions:
+    instruction: Your account has been locked due to an excessive number of failed login attempts.
+    unlock_account_button: Unlock my account
+    unlock_account_button_instructions: 'Click the link below to unlock your account:'
+  dashboard_controller:
+    title: "Dashboard"
+    description: "Have a global view of all your data."
+    total_profiles: "Total Profiles"
+    total_forms: "Total Forms"
+    most_used_form: "Most Used Form"
+    least_used_form: "Least Used Form"
+    profiles_by_date: "Profiles by Date"
+    profiles_by_ethnicity: "Profiles by Ethnicity"
+    profiles_by_gender: "Profiles by Gender"
+    hair_type: "Hair Type"
+    hair_color: "Hair Color"
+    eye_color: "Eye Color"
+    agency: "Agency"
+    passport: "Passport"
+    driving_license: "Driving License"
+  settings_controller:
+    title: "Settings"
+    description: "Modify your settings for the entire platform"
+    settings_updated: "Settings were successfully updated."
+    unable_to_update_settings: "Unable to update settings."
+    password_blank: "Password and password confirmation cannot be blank."
+    password_updated: "Password was successfully updated."
+    password_update_problem: "There was a problem updating your password."
+    log_out: "Log out"
+    log_out_message: "Are you sure you want to log out?"
+    log_out_other_sessions: "Log out other sessions"
+    log_out_other_sessions_description: "Please enter your password to confirm you would like to log out of your other sessions across all of your devices."
+    delete_account: "Delete account"
+    delete_account_description: "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently."
+    delete_account_confirmation: "Yes, delete my account"
+  profile_modal:
+    galery: Galery
+    agency_information: 'Agency Information'
+    personal_details: 'Personal Details'

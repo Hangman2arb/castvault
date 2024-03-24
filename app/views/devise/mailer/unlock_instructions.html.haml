@@ -1,5 +1,8 @@
-%p
-  Hello #{@resource.email}!
-%p Your account has been locked due to an excessive number of unsuccessful sign in attempts.
-%p Click the link below to unlock your account:
-%p= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token)
+= render EmailCenteredTextComponent.new(font_size: '32px', line_height: 1, extra_styles: 'font-weight:bold;', text: t('email_changed.greeting', full_name: @resource.full_name))
+
+= render EmailCenteredTextComponent.new(text: t('unlock_instructions.instruction'))
+
+= render EmailCenteredTextComponent.new(text: t('unlock_instructions.unlock_account_button_instructions'))
+
+= render EmailCenteredButtonComponent.new(text: t('unlock_instructions.unlock_account_button'), url: unlock_url(@resource, unlock_token: @token))
+

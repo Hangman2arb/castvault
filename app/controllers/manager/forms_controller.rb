@@ -90,8 +90,9 @@ class Manager::FormsController < ApplicationController
   end
 
   def show
-    @title = 'Show form title'
-    @description = 'Show form description'
+    @title = I18n.t('forms_controller.show_title')
+    @description = I18n.t('forms_controller.show_description')
+
     @header_buttons = [ { icon: 'send', type: 'submit', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', text: t('labels.send') },
                         { icon: 'arrow-90deg-left', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', link: manager_forms_path, text: t('labels.back_button') } ]
 
@@ -118,7 +119,7 @@ class Manager::FormsController < ApplicationController
 
   def show_form
     @form = Form.find_by(token: params[:token])
-    return render plain: 'Not Found', status: :not_found unless @form
+    return render plain: t('forms_controller.not_found'), status: :not_found unless @form
 
     @profile = Profile.new
     @filtered_admited_form_fields = {}
@@ -141,9 +142,7 @@ class Manager::FormsController < ApplicationController
 
   def update_show_form
     @form = Form.find_by(token: params[:token])
-    return render plain: 'Not Found', status: :not_found unless @form
-    # Lógica para actualizar el formulario
-    # Deberás encontrar el formulario por token y actualizarlo
+    return render plain: t('forms_controller.not_found'), status: :not_found unless @form
   end
 
 

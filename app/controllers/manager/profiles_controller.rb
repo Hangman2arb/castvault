@@ -1,14 +1,14 @@
 class Manager::ProfilesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @title = 'Perfiles'
-    @description = 'Consulta todos los perfiles registrados a través de tus formularios.'
+    @title = t('profiles_controller.title')
+    @description = t('profiles_controller.description')
 
     @forms = current_user.forms
 
     @agencies = [[t('profiles_controller.without_agency'), 'no_agency']] + get_all_agencies.map { |agency| [agency, agency] }
 
-    @boolean_options = [['N/A', nil], ['Sí', true], ['No', false]]
+    @boolean_options = [[t('profiles_controller.with'), true], [t('profiles_controller.without'), false]]
 
     query = FindProfiles.new(current_user).call(params).load_async
     @total_count = query.count
@@ -19,7 +19,7 @@ class Manager::ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
 
     if @profile.save
-      redirect_to manager_profiles_path, notice: 'Profile was successfully created.'
+      redirect_to manager_profiles_path, notice: t('profiles_controller.profile_created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Manager::ProfilesController < ApplicationController
         format.html { render layout: false }
       end
     else
-      redirect_to manager_profiles_path, alert: 'Perfil no encontrado'
+      redirect_to manager_profiles_path, alert: t('profiles_controller.profile_not_found')
     end
   end
 

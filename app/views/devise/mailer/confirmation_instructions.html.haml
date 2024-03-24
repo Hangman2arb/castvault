@@ -1,4 +1,17 @@
-%p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+= render EmailCenteredTextComponent.new(font_size: '32px', line_height: 1, extra_styles: 'font-weight:bold;', text: t('email_confirmation.confirm_email'))
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.yes_we_know') )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.email_to_confirm') )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.validate_email') )
+
+= render EmailCenteredButtonComponent.new( text: t('email_confirmation.confirm_your_email'), url: confirmation_url(@resource, confirmation_token: @token) )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.or_verify_link') )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.confirmation_url', url: confirmation_url(@resource, confirmation_token: @token) ) )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.help_needed') )
+
+= render EmailCenteredTextComponent.new( font_size: '14px', text: t('email_confirmation.send_feedback') )

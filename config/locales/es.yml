@@ -1,86 +1,286 @@
-
+---
 es:
   activerecord:
     errors:
+      messages:
+        blank: no puede estar vacío
       models:
         form:
           attributes:
             name:
-              blank: "El campo nombre no puede estar vacío"
-      messages:
-        blank: "no puede estar vacío"
-
+              blank: El campo nombre no puede estar vacío
+  data_table_component:
+    action: Acciones
+    actions: Acciones
+    chat_name: Enviar a
+    created_at: Fecha
+    daily_summary: Resumen
+    date: Fecha
+    first_name: Nombre
+    group: Grupo
+    group_title: Grupo
+    info: Información
+    is_bot: "¿Es un Bot?"
+    key: Clave
+    language_code: Idioma
+    max_user_usages: Max Mensajes/Día
+    members_count: Miembros
+    message: Mensaje
+    message_count: Mensajes Registrados
+    name: Nombre
+    parse_mode: Tipo
+    prompt: Prompt
+    scheduled_at: Programado para
+    status: Estado
+    submissions_count: Veces Enviado
+    telegram: ID
+    telegram_type: Tipo de chat
+    telegram_user_name: Nombre de Usuario
+    text: Mensaje
+    title: Título
+    topic_name: Tema
+    updated_at: Actualizado el
+    user_status: Estado
+    username: Alias
   devise:
     confirmations:
-      confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
-      send_instructions: "Recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
-      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+      confirmed: Tu correo electrónico ha sido confirmado exitosamente.
+      send_instructions: Recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos.
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base de datos, recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos.
     failure:
-      already_authenticated: "Ya iniciaste sesión."
-      inactive: "Tu cuenta aún no ha sido activada."
-      invalid: "Email y/o contraseña inválidos."
-      locked: "Tu cuenta está bloqueada."
-      last_attempt: "Tienes un intento más antes que tu cuenta sea bloqueada."
+      already_authenticated: Ya iniciaste sesión.
+      inactive: Tu cuenta aún no ha sido activada.
+      invalid: Email y/o contraseña inválidos.
+      last_attempt: Tienes un intento más antes que tu cuenta sea bloqueada.
+      locked: Tu cuenta está bloqueada.
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
-      timeout: "Tu sesión ha expirado. Inicia sesión nuevamente."
-      unauthenticated: "Tienes que registrarte o iniciar sesión antes de continuar."
-      unconfirmed: "Tienes que confirmar tu cuenta antes de continuar."
+      timeout: Tu sesión ha expirado. Inicia sesión nuevamente.
+      unauthenticated: Tienes que registrarte o iniciar sesión antes de continuar.
+      unconfirmed: Tienes que confirmar tu cuenta antes de continuar.
     mailer:
       confirmation_instructions:
-        subject: "Instrucciones de confirmación"
-      reset_password_instructions:
-        subject: "Instrucciones de cambio de contraseña"
-      unlock_instructions:
-        subject: "Instrucciones de desbloqueo"
+        subject: Instrucciones de confirmación
       email_changed:
-        subject: "Email modificado"
+        subject: Email modificado
       password_change:
-        subject: "Contraseña modificada"
+        subject: Contraseña modificada
+      reset_password_instructions:
+        subject: Instrucciones de cambio de contraseña
+      unlock_instructions:
+        subject: Instrucciones de desbloqueo
     omniauth_callbacks:
-      failure: "No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: \"%{reason}\"."
-      success: "Te autentificaste correctamente con tu cuenta de %{kind}."
+      failure: 'No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: "%{reason}".'
+      success: Te autentificaste correctamente con tu cuenta de %{kind}.
     passwords:
-      no_token: "No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece."
-      send_instructions: "Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
-      send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
-      updated: "Tu contraseña fue modificada correctamente. Has iniciado sesión."
-      updated_not_active: "Tu contraseña fue modificada correctamente."
+      no_token: No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece.
+      send_instructions: Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.
+      send_paranoid_instructions: Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.
+      updated: Tu contraseña fue modificada correctamente. Has iniciado sesión.
+      updated_not_active: Tu contraseña fue modificada correctamente.
     registrations:
-      destroyed: "Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!"
-      signed_up: "Bienvenido! Te has registrado correctamente."
-      signed_up_but_inactive: "Te has registrado correctamente, pero tu cuenta aun no ha sido activada."
-      signed_up_but_locked: "Te has registrado correctamente, pero tu cuenta está bloqueada."
-      signed_up_but_unconfirmed: "Te hemos enviado un email con instrucciones para que confirmes tu cuenta."
-      update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
-      updated: "Actualizaste tu cuenta correctamente."
-      updated_but_not_signed_in: "Actualizaste tu cuenta correctamente, pero tienes que iniciar sesión nuevamente porque tu contraseña ha cambiado."
+      destroyed: Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!
+      signed_up: Bienvenido! Te has registrado correctamente.
+      signed_up_but_inactive: Te has registrado correctamente, pero tu cuenta aun no ha sido activada.
+      signed_up_but_locked: Te has registrado correctamente, pero tu cuenta está bloqueada.
+      signed_up_but_unconfirmed: Te hemos enviado un email con instrucciones para que confirmes tu cuenta.
+      update_needs_confirmation: Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección.
+      updated: Actualizaste tu cuenta correctamente.
+      updated_but_not_signed_in: Actualizaste tu cuenta correctamente, pero tienes que iniciar sesión nuevamente porque tu contraseña ha cambiado.
     sessions:
-      signed_in: "Iniciaste sesión correctamente."
-      signed_out: "Cerraste sesión correctamente."
-      already_signed_out: "Se cerró sesión correctamente."
+      already_signed_out: Se cerró sesión correctamente.
+      signed_in: Iniciaste sesión correctamente.
+      signed_out: Cerraste sesión correctamente.
     unlocks:
-      send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
-      send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
-      unlocked: "Tu cuenta ha sido desbloqueada. Inicia sesión para continuar."
-
+      send_instructions: Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos
+      send_paranoid_instructions: Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos
+      unlocked: Tu cuenta ha sido desbloqueada. Inicia sesión para continuar.
+  email_changed:
+    email_being_changed: Te contactamos para notificarte que tu correo electrónico está siendo cambiado a %{email}.
+    email_changed: Te contactamos para notificarte que tu correo electrónico ha sido cambiado a %{email}.
+    error_question: Si no has sido tú, contáctanos a <a href='mailto:support@metricgram.com'>support@metricgram.com</a> y te ayudaremos a solucionar tu problema.
+    greeting: "¡Hola %{full_name}!"
+  email_confirmation:
+    confirm_email: Por favor confirma tu correo electrónico
+    confirm_your_email: Confirma Email
+    confirmation_url: "<a href='%{url}' style='color:#2F67F6;'>%{url}</a>"
+    email_to_confirm: "Un correo para confirmar un correo. 🤪"
+    help_needed: "¿Necesitas ayuda?"
+    or_verify_link: 'O verifica usando este enlace:'
+    send_feedback: Por favor envía cualquier comentario o información de errores a <a href="mailto:info@example.com" style="color:#2F67F6">info@example.com</a>
+    validate_email: Por favor valida tu dirección de correo electrónico para empezar a usar Metricgram.
+    yes_we_know: Sí, lo sabemos.
   errors:
     attributes:
       name:
-        blank: "El campo nombre no puede estar vacío"
+        blank: El campo nombre no puede estar vacío
     messages:
-      blank: "no puede estar vacío"
-      already_confirmed: "ya fue confirmada. Intenta ingresar."
-      confirmation_period_expired: "necesita ser confirmada dentro de %{period}, por favor pide una nueva"
-      expired: "ha expirado, por favor pide una nueva"
-      not_found: "no encontrado"
-      not_locked: "no ha sido bloqueada"
+      already_confirmed: ya fue confirmada. Intenta ingresar.
+      blank: no puede estar vacío
+      confirmation_period_expired: necesita ser confirmada dentro de %{period}, por favor pide una nueva
+      expired: ha expirado, por favor pide una nueva
+      not_found: no encontrado
+      not_locked: no ha sido bloqueada
       not_saved:
-        one: "Ha ocurrido 1 error:"
-        other: "Han ocurrido %{count} errores:"
-
+        one: 'Ha ocurrido 1 error:'
+        other: 'Han ocurrido %{count} errores:'
+  ethnicities:
+    asian: Asiático
+    black_african: Negro/Africano
+    caucasian: Caucásico
+    hispanic_latino: Hispano/Latino
+    middle_eastern: Medio Oriental
+    mixed: Mixto
+    native_american: Nativo Americano
+    other: Otro
+    pacific_islander: Isleño del Pacífico
+  eye_colors:
+    amber: Ámbar
+    blue: Azul
+    brown: Marrón
+    gray: Gris
+    green: Verde
+    hazel: Avellana
+  fields:
+    agency: Agencia
+    agent_email: Correo Electrónico del Agente
+    agent_name: Nombre del Agente
+    agent_phone: Teléfono del Agente
+    available_for: Disponible Para
+    birthdate: Fecha de Nacimiento
+    body_photo: Foto de Cuerpo
+    city: Ciudad
+    created_at: Creado el
+    driving_license: Licencia de Conducir
+    email: Correo Electrónico
+    ethnicity: Etnia
+    eye_color: Color de Ojos
+    face_photo: Foto de Cara
+    facebook: Facebook
+    food_allergies: Alergias Alimentarias
+    gender: Género
+    hair_color: Color de Cabello
+    hair_type: Tipo de Cabello
+    height: Altura
+    id: Identificador
+    instagram: Instagram
+    is_an_actor: Es Actor/Actriz
+    language: Idioma
+    time_zone: Zona Horaria
+    languages: Idiomas
+    name: Nombre
+    pants_size: Talla de Pantalón
+    passport: Pasaporte
+    phone: Teléfono
+    shirt_size: Talla de Camisa
+    shoe_size: Talla de Zapato
+    skills: Habilidades
+    surname: Apellidos
+    tik_tok: TikTok
+    twitter: Twitter
+    updated_at: Actualizado el
+    video_book: Videobook
+    web: Sitio Web
+  forms_controller:
+    form_name_label: "Nombre del formulario"
+    form_name_placeholder: "Introduce el nombre del formulario"
+    description_label: "Descripción"
+    select_all_label: "Seleccionar todos"
+    use_setting: "Usar configuración"
+    additional_info_placeholder: "Mensaje informativo adicional"
+    not_found: No encontrado
+    show_title: "Mostrar título del formulario"
+    show_description: "Mostrar descripción del formulario"
+    destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
+    edit_title: Editar Formulario
+    form_created: Formulario creado con éxito!
+    form_deleted: Formulario eliminado.
+    form_not_deleted: Hubo algún problema al eliminar el formulario. Contacte con el administrador.
+    form_updated: Formulario actualizado con éxito!
+    index_description: Listado de formularios existentes
+    index_title: Formularios
+    multiselect_texts:
+      available_for:
+        advertising: Publicidad
+        fiction: Ficción
+        performing_arts: Artes Escénicas
+        tv: Televisión
+      languages:
+        de: Deutsch
+        en: English
+        es: Español
+        fr: Français
+        it: Italiano
+        nl: Nederlands
+        pl: Polski
+        ru: Русский
+        sv: Svenska
+        tr: Türkçe
+    new_description: Selecciona los campos que necesites que tus perfiles rellenen.
+    new_form: Crear Formulario
+    new_title: Nuevo Formulario
+    no_forms_yet: Sin formularios
+    no_forms_yet_description: Todavía no has creado ningún formulario, puedes crear tu primer formulario pulsando en "Crear Formulario"
+    section:
+      skills: "Habilidades"
+      skills_description: "Describe aquí las habilidades relacionadas con el formulario."
+      additional_information: "Información Adicional"
+      additional_information_description: "Proporciona detalles adicionales que sean relevantes para el formulario."
+      basic_information: "Información Básica"
+      basic_information_description: "Ingresa los detalles fundamentales requeridos para el formulario."
+      contact_information: "Información de Contacto"
+      contact_information_description: "Rellena los detalles de contacto necesarios para el formulario."
+      features: "Habilidades"
+      features_description: "Enumera las habilidades asociadas con el formulario."
+      measurements: "Medidas"
+      measurements_description: "Especifica las medidas que deben proporcionarse en el formulario."
+      pictures_and_media: "Fotos y Medios"
+      pictures_and_media_description: "Sube cualquier foto o archivo multimedia relacionado con el formulario."
+      social_media: "Redes Sociales"
+      social_media_description: "Incluye enlaces de redes sociales o información relevante."
+  genders:
+    female: Femenino
+    male: Masculino
+    non_binary: No Binario
+  hair_colors:
+    black: Negro
+    blonde: Rubio
+    dark_brown: Marrón Oscuro
+    gray: Gris
+    light_brown: Marrón Claro
+    medium_brown: Marrón Medio
+    red: Rojo
+    white: Blanco
+  hair_types:
+    bald: Calvo
+    coiled: En Espiral
+    curly: Rizado
+    open_wave: Ondulado Abierto
+    straight: Liso
+    very_coiled: Muy En Espiral
+    very_curly: Muy Rizado
+    wavy: Ondulado
+    zigzag_coiled: En Zigzag
+  javascript:
+    confirm:
+      cancel_button: Cancelar
+      confirm_button: Confirmar
+      title: Confirmación
+  labels:
+    current_password: "Contraseña actual"
+    password: "Nueva contraseña"
+    password_confirmation: "Confirmar contraseña"
+    results: 'Resultados'
+    all: Todos
+    back_button: Atrás
+    save: Guardar
+    search: Buscar
+    send: Enviar
+    update: Actualizar
+    close: Cerrar
   landing_pricing_component:
     annually: Anual
     choose_plan: Elige un plan asequible lleno de las mejores características para atraer a tu audiencia, crear lealtad del cliente e impulsar las ventas.
+    discount_applied: Recibe 2 Meses totalmente GRATIS contratando el plan Anual.
     features:
       basic:
         '0': Administra 1 Grupo de Telegram
@@ -122,181 +322,97 @@ es:
       basic: Este plan te permite gestionar <b>1 grupo</b> de Telegram. Con todas las características que hacen a Metricgram la mejor herramienta para administrar comunidades en Telegram.
       elite: Este plan te permite gestionar <b>10 grupos</b> de Telegram. Perfecto para grupos de administradores que dirijan hasta 10 comunidades diferentes.
       pro: Este plan te permite gestionar <b>3 grupos</b> de Telegram. Perfecto para personas que tienen varias comunidades en Telegram o un grupo pequeño de administradores.
-    discount_applied: Recibe 2 Meses totalmente GRATIS contratando el plan Anual.
-
-  fields:
-    id: Identificador
-    name: Nombre
-    surname: Apellidos
-    birthdate: Fecha de Nacimiento
-    ethnicity: Etnia
-    gender: Género
-    city: Ciudad
-    email: Correo Electrónico
-    phone: Teléfono
-    agency: Agencia
-    agent_name: Nombre del Agente
-    agent_email: Correo Electrónico del Agente
-    agent_phone: Teléfono del Agente
-    height: Altura
-    shirt_size: Talla de Camisa
-    pants_size: Talla de Pantalón
-    shoe_size: Talla de Zapato
-    hair_type: Tipo de Cabello
-    hair_color: Color de Cabello
-    eye_color: Color de Ojos
-    passport: Pasaporte
-    driving_license: Licencia de Conducir
-    food_allergies: Alergias Alimentarias
-    web: Sitio Web
-    twitter: Twitter
-    facebook: Facebook
-    instagram: Instagram
-    tik_tok: TikTok
-    is_an_actor: Es Actor/Actriz
-    languages: Idiomas
-    skills: Habilidades
-    face_photo: Foto de Cara
-    body_photo: Foto de Cuerpo
-    video_book: Videobook
-    available_for: Disponible Para
-    created_at: Creado el
-    updated_at: Actualizado el
-
-  forms_controller:
-    edit_title: Editar Formulario
-    new_description: Selecciona los campos que necesites que tus perfiles rellenen.
-    new_title: Nuevo Formulario
-    index_description: Listado de formularios existentes
-    index_title: Formularios
-    no_forms_yet: Sin formularios
-    no_forms_yet_description: Todavía no has creado ningún formulario, puedes crear tu primer formulario pulsando en "Crear Formulario"
-    new_form: Crear Formulario
-    form_created: Formulario creado con éxito!
-    form_updated: Formulario actualizado con éxito!
-    form_deleted: Formulario eliminado.
-    form_not_deleted: Hubo algún problema al eliminar el formulario. Contacte con el administrador.
-    destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
-    section:
-      basic_information: Información Básica
-      contact_information: Información de Contacto
-      measurements: Medidas
-      additional_information: Información Adicional
-      social_media: Redes Sociales
-      pictures_and_media: Fotos y videos
-      features: Habilidades
-    multiselect_texts:
-      available_for:
-        performing_arts: Artes Escénicas
-        tv: Televisión
-        fiction: Ficción
-        advertising: Publicidad
-      languages:
-        en: English
-        fr: Français
-        de: Deutsch
-        es: Español
-        it: Italiano
-        ru: Русский
-        pl: Polski
-        nl: Nederlands
-        tr: Türkçe
-        sv: Svenska
-
-  labels:
-    back_button: Atrás
-    save: Guardar
-    search: Buscar
-    send: Enviar
-    update: Actualizar
-    yes: Si
-    no: No
-
-  data_table_component:
-    action: Acciones
-    actions: Acciones
-    chat_name: Enviar a
-    created_at: Fecha
-    daily_summary: Resumen
-    date: Fecha
-    first_name: Nombre
-    group: Grupo
-    group_title: Grupo
-    info: Información
-    is_bot: "¿Es un Bot?"
-    key: Clave
-    language_code: Idioma
-    max_user_usages: Max Mensajes/Día
-    members_count: Miembros
-    message: Mensaje
-    message_count: Mensajes Registrados
-    name: Nombre
-    parse_mode: Tipo
-    prompt: Prompt
-    scheduled_at: Programado para
-    status: Estado
-    submissions_count: Veces Enviado
-    telegram: ID
-    telegram_type: Tipo de chat
-    telegram_user_name: Nombre de Usuario
-    text: Mensaje
-    title: Título
-    topic_name: Tema
-    user_status: Estado
-    username: Alias
-    updated_at: Actualizado el
-
+  password_change:
+    instruction: Nos estamos comunicando con usted para notificarle que su contraseña ha sido cambiada.
   profiles_controller:
-    without_agency: Sin agencia
+    age_range: "Rango de Edad"
+    height_range: "Rango de Altura (cm)"
+    shirt_size_range: "Talla de Camiseta (cm)"
+    pants_size_range: "Talla de Pantalón (cm)"
+    shoe_size_range: "Talla de Zapatillas (cm)"
+    available_for_title: Disponible para
+    available_for:
+      performing_arts: "Artes Escénicas"
+      tv: "Televisión"
+      fiction: "Ficción"
+      advertising: "Publicidad"
+    filters_title: Filtros Avanzados
+    title: "Perfiles"
+    description: "Consulta todos los perfiles registrados a través de tus formularios."
+    profile_created: "El perfil fue creado exitosamente."
+    profile_not_found: "Perfil no encontrado."
+    with: Con
+    without: Sin
+    n_a: N/A
     search_terms:
-      name: Nombre
-      city: Ciudad
-
-  eye_colors:
-    amber: "Ámbar"
-    blue: "Azul"
-    brown: "Marrón"
-    gray: "Gris"
-    green: "Verde"
-    hazel: "Avellana"
-
-  ethnicities:
-    asian: "Asiático"
-    black_african: "Negro/Africano"
-    caucasian: "Caucásico"
-    hispanic_latino: "Hispano/Latino"
-    middle_eastern: "Medio Oriental"
-    native_american: "Nativo Americano"
-    pacific_islander: "Isleño del Pacífico"
-    mixed: "Mixto"
-    other: "Otro"
-  genders:
-    male: "Masculino"
-    female: "Femenino"
-    non_binary: "No Binario"
-  hair_types:
-    bald: "Calvo"
-    straight: "Liso"
-    open_wave: "Ondulado Abierto"
-    wavy: "Ondulado"
-    curly: "Rizado"
-    very_curly: "Muy Rizado"
-    coiled: "En Espiral"
-    very_coiled: "Muy En Espiral"
-    zigzag_coiled: "En Zigzag"
-  hair_colors:
-    blonde: "Rubio"
-    light_brown: "Marrón Claro"
-    red: "Rojo"
-    medium_brown: "Marrón Medio"
-    dark_brown: "Marrón Oscuro"
-    black: "Negro"
-    gray: "Gris"
-    white: "Blanco"
-
-
-  javascript:
-    confirm:
-      cancel_button: Cancelar
-      confirm_button: Confirmar
-      title: Confirmación
+      select_form: Formulario
+      select: Selecciona
+      newest: 'Insertado recientemente'
+      age_old: 'Más mayor'
+      age_young: 'Más joven'
+      global: "Global"
+      habilidades: "Habilidades"
+      name: "Nombre y Apellidos"
+      city: "Ciudad"
+      gender: "Género"
+      any_gender: "Cualquier Género"
+      ethnicity: "Etnia"
+      any_ethnicity: "Cualquier Etnia"
+      agency: "Agencia"
+      any_agency: "Cualquier Agencia"
+      hair_type: "Tipo de Cabello"
+      any_hair_type: "Cualquier Tipo de Cabello"
+      hair_color: "Color del Cabello"
+      any_hair_color: "Cualquier Color de Cabello"
+      eye_color: "Color de Ojos"
+      any_eye_color: "Cualquier Color de Ojos"
+      passport: "Pasaporte"
+      driving_license: "Carnet de Conducir"
+      food_allergies: "Alergias"
+      order_by: "Ordenar por"
+    without_agency: Sin agencia
+  reset_password_instructions:
+    change_password_button: Cambiar mi contraseña
+    greeting: "¡Hola %{full_name}!"
+    ignore_message: Si no solicitaste esto, por favor ignora este correo electrónico.
+    instruction: Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo a través del enlace a continuación.
+    password_change_confirmation: Tu contraseña no cambiará hasta que accedas al enlace anterior y crees una nueva.
+  unlock_instructions:
+    instruction: Su cuenta ha sido bloqueada debido a una cantidad excesiva de intentos fallidos de inicio de sesión.
+    unlock_account_button: Desbloquear mi cuenta
+    unlock_account_button_instructions: 'Haga clic en el enlace a continuación para desbloquear su cuenta:'
+  dashboard_controller:
+    title: "Dashboard"
+    description: "Ten una vista global de todos tus datos."
+    total_profiles: "Total Perfiles"
+    total_forms: "Total Formularios"
+    most_used_form: "Formulario más usado"
+    least_used_form: "Formulario menos usado"
+    profiles_by_date: "Perfiles por Fecha"
+    profiles_by_ethnicity: "Perfiles por Etnia"
+    profiles_by_gender: "Perfiles por Género"
+    hair_type: "Tipo de Cabello"
+    hair_color: "Color de Cabello"
+    eye_color: "Color de Ojos"
+    agency: "Agencia"
+    passport: "Pasaporte"
+    driving_license: "Licencia de Conducir"
+  settings_controller:
+    title: "Ajustes"
+    description: "Modifica tus ajustes para toda la plataforma"
+    settings_updated: "Los ajustes se actualizaron correctamente."
+    unable_to_update_settings: "No se pudieron actualizar los ajustes."
+    password_blank: "La contraseña y la confirmación de la contraseña no pueden estar en blanco."
+    password_updated: "La contraseña se actualizó correctamente."
+    password_update_problem: "Hubo un problema al actualizar tu contraseña."
+    log_out: "Cerrar sesión"
+    log_out_message: "¿Estás seguro de que deseas cerrar sesión?"
+    log_out_other_sessions: "Cerrar otras sesiones"
+    log_out_other_sessions_description: "Por favor, introduce tu contraseña para confirmar que deseas cerrar las demás sesiones en todos tus dispositivos."
+    delete_account: "Eliminar cuenta"
+    delete_account_description: "¿Ya no deseas usar nuestro servicio? Puedes eliminar tu cuenta aquí. Esta acción no es reversible. Toda la información relacionada con esta cuenta será eliminada permanentemente."
+    delete_account_confirmation: "Sí, eliminar mi cuenta"
+  profile_modal:
+    galery: Galería
+    agency_information: 'Información de la Agencia'
+    personal_details: 'Detalles Personales'

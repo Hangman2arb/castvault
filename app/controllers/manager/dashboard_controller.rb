@@ -1,8 +1,8 @@
 class Manager::DashboardController < ApplicationController
   before_action :authenticate_user!
   def index
-    @title = 'Dashboard'
-    @description = 'Ten una vista global de todos tus datos.'
+    @title = I18n.t('dashboard_controller.title')
+    @description = I18n.t('dashboard_controller.description')
 
     @profiles = current_user.profiles
     @forms = current_user.forms
@@ -43,6 +43,31 @@ class Manager::DashboardController < ApplicationController
       key ? I18n.t('labels.yes') : I18n.t('labels.no')
     end
 
+    @charts = [
+      { chart_type: 'line_chart', data: @profiles_by_date, key: 'profiles_by_date', options: { legend: false } },
+      { chart_type: 'pie_chart', data: @profiles_by_ethnicity, key: 'profiles_by_ethnicity', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'pie_chart', data: @profiles_by_gender, key: 'profiles_by_gender', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'pie_chart', data: @hair_type_distribution, key: 'hair_type', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'pie_chart', data: @hair_color_distribution, key: 'hair_color', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'bar_chart', data: @eye_color_distribution, key: 'eye_color', options: {} },
+      { chart_type: 'pie_chart', data: @agency_distribution, key: 'agency', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'pie_chart', data: @passport_distribution, key: 'passport', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } },
+      { chart_type: 'pie_chart', data: @driving_license_distribution, key: 'driving_license', options: { donut: true, colors: chart_colors, dataset: { borderColor: '#111827', borderWidth: 5 }, legend: false } }
+    ]
+
+    @cards = [
+      ['total_profiles', @total_profiles],
+      ['total_forms', @total_forms],
+      ['most_used_form', "#{@form_with_most_profiles&.name} (#{@form_with_most_profiles&.profiles&.count})"],
+      ['least_used_form', "#{@form_with_less_profiles&.name} (#{@form_with_less_profiles&.profiles&.count})"]
+    ]
+
+  end
+
+  private
+
+  def chart_colors
+    ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"]
   end
 
 end

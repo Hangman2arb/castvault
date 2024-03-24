@@ -36,22 +36,20 @@ export default class extends Controller {
     event.preventDefault()
     this.globalTabContentTarget.classList.remove("hidden")
     this.habilitiesTabContentTarget.classList.add("hidden")
-    this.globalTabTarget.classList.add("bg-gray-200")
-    this.globalTabTarget.classList.remove("text-gray-200")
-    this.habilitiesTabTarget.classList.remove("bg-gray-200")
-    this.habilitiesTabTarget.classList.remove("text-gray-800")
-    this.habilitiesTabTarget.classList.add("text-gray-200")
+    this.habilitiesTabTarget.classList.remove("btn-primary-no-hover")
+    this.habilitiesTabTarget.classList.add("btn-terciary")
+    this.globalTabTarget.classList.remove("btn-terciary")
+    this.globalTabTarget.classList.add("btn-primary-no-hover")
   }
 
   switchToHabilities(event) {
     event.preventDefault()
     this.globalTabContentTarget.classList.add("hidden")
     this.habilitiesTabContentTarget.classList.remove("hidden")
-    this.habilitiesTabTarget.classList.add("bg-gray-200")
-    this.habilitiesTabTarget.classList.remove("text-gray-200")
-    this.globalTabTarget.classList.remove("bg-gray-200")
-    this.globalTabTarget.classList.remove("text-gray-800")
-    this.globalTabTarget.classList.add("text-gray-200")
+    this.habilitiesTabTarget.classList.add("btn-primary-no-hover")
+    this.habilitiesTabTarget.classList.remove("btn-terciary")
+    this.globalTabTarget.classList.add("btn-terciary")
+    this.globalTabTarget.classList.remove("btn-primary-no-hover")
   }
 
   openModal(event) {

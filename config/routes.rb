@@ -30,7 +30,6 @@ Rails.application.routes.draw do
       get 'search_available_for', to: 'forms#search_available_for'
     end
 
-    resources :instructions, only: [:index], menu_option_id: 'instructions'
     resources :settings, only: [:index], menu_option_id: 'settings'
     patch 'settings', to: 'settings#update', as: :update_settings
     patch 'settings/password_change', to: 'settings#password_change', as: :password_change

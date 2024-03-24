@@ -1,8 +1,8 @@
-%p
-  Hello #{@email}!
+= render EmailCenteredTextComponent.new(font_size: '32px', line_height: 1, extra_styles: 'font-weight:bold;', text: t('email_changed.greeting', full_name: @resource.full_name))
+
 - if @resource.try(:unconfirmed_email?)
-  %p
-    We're contacting you to notify you that your email is being changed to #{@resource.unconfirmed_email}.
+  = render EmailCenteredTextComponent.new(text: t('email_changed.email_being_changed', email: @resource.unconfirmed_email))
+
+  = render EmailCenteredTextComponent.new(text: t('email_changed.error_question'))
 - else
-  %p
-    We're contacting you to notify you that your email has been changed to #{@resource.email}.
+  = render EmailCenteredTextComponent.new(text: t('email_changed.email_changed', email: @resource.email))

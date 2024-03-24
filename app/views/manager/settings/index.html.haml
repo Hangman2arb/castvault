@@ -16,17 +16,17 @@
             %p.mt-2.text-xs.leading-5.text-gray-400 JPG, GIF or PNG. 1MB max.
 
         .sm:col-span-3
-          = render InputComponent.new(key: :first_name, label: 'Nombre', model: current_user, form: form)
+          = render InputComponent.new(key: :first_name, label: t('fields.name'), model: current_user, form: form)
         .sm:col-span-3
-          = render InputComponent.new(key: :last_name, label: 'Apellidos', model: current_user, form: form)
+          = render InputComponent.new(key: :last_name, label: t('fields.surname'), model: current_user, form: form)
         .col-span-full
-          = render InputComponent.new(key: :email, type: 'email_field', label: 'Email', model: current_user, form: form)
+          = render InputComponent.new(key: :email, type: 'email_field', label: t('fields.email'), model: current_user, form: form)
         .col-span-full
-          = render SelectComponent.new(key: :language, label: 'Idioma', options_for_select: options_for_select(User::PLATFORM_LANGUAGES.invert, current_user.language), placeholder: false, form: form)
+          = render SelectComponent.new(key: :language, label: t('fields.language'), options_for_select: options_for_select(User::PLATFORM_LANGUAGES.invert, current_user.language), placeholder: false, form: form)
         .col-span-full
-          = render SelectComponent.new(key: :time_zone, label: 'Zona Horaria', options_for_select: options_for_select(ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] }, current_user.time_zone), placeholder: false, form: form)
+          = render SelectComponent.new(key: :time_zone, label: t('fields.time_zone'), options_for_select: options_for_select(ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] }, current_user.time_zone), placeholder: false, form: form)
       .mt-8.flex
-        = form.submit 'Save', class: 'btn-primary'
+        = form.submit t('labels.save'), class: 'btn-primary'
 
   .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
     %div
@@ -36,26 +36,31 @@
       .grid.grid-cols-1.gap-x-6.gap-y-8.sm:max-w-xl.sm:grid-cols-6
 
         .col-span-full
-          = render InputComponent.new(key: :current_password, type: 'password_field', label: 'Current password', model: current_user, form: form)
+          = render InputComponent.new(key: :current_password, type: 'password_field', label: t('helpers.label.user.current_password'), model: current_user, form: form)
         .col-span-full
-          = render InputComponent.new(key: :password, type: 'password_field', label: 'New password', model: current_user, form: form)
+          = render InputComponent.new(key: :password, type: 'password_field', label: t('helpers.label.user.password'), model: current_user, form: form)
         .col-span-full
-          = render InputComponent.new(key: :password_confirmation, type: 'password_field', label: 'Confirm password', model: current_user, form: form)
+          = render InputComponent.new(key: :password_confirmation, type: 'password_field', label: t('helpers.label.user.password_confirmation'), model: current_user, form: form)
       .mt-8.flex
-        = form.submit 'Save', class: 'btn-primary'
+        = form.submit t('labels.save'), class: 'btn-primary'
 
   .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
     %div
-      %h2.text-base.font-semibold.leading-7.text-white Log out other sessions
-      %p.mt-1.text-sm.leading-6.text-gray-400 Please enter your password to confirm you would like to log out of your other sessions across all of your devices.
+      %h2.text-base.font-semibold.leading-7.text-white
+        = t('settings_controller.log_out_other_sessions')
+      %p.mt-1.text-sm.leading-6.text-gray-400
+        = t('settings_controller.log_out_other_sessions_description')
     .md:col-span-2
       .mt-8.flex
-        = button_to t('sidebar_component.log_out'), destroy_user_session_path, method: :delete, data: { turbo_confirm: t('settings.log_out_message') }, class: "btn-secondary"
+        = button_to t('settings_controller.log_out'), destroy_user_session_path, method: :delete, data: { turbo_confirm: t('settings_controller.log_out_message') }, class: "btn-secondary"
 
 
   .grid.max-w-7xl.grid-cols-1.gap-x-8.gap-y-10.px-4.py-16.sm:px-6.md:grid-cols-3.lg:px-8
     %div
-      %h2.text-base.font-semibold.leading-7.text-white Delete account
-      %p.mt-1.text-sm.leading-6.text-gray-400 No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
+      %h2.text-base.font-semibold.leading-7.text-white
+        = t('settings_controller.delete_account')
+      %p.mt-1.text-sm.leading-6.text-gray-400
+        = t('settings_controller.delete_account_description')
     %form.flex.items-start.md:col-span-2
-      %button.rounded-md.bg-red-500.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-red-400{type: "submit"} Yes, delete my account
+      %button.rounded-md.bg-red-500.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-red-400{type: "submit"}
+        = t('settings_controller.delete_account_confirmation')

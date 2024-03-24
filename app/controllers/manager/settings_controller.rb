@@ -1,30 +1,29 @@
 class Manager::SettingsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @title = 'Ajustes'
-    @description = 'Modifica tus ajustes para toda la plataforma'
+    @title = t('settings_controller.title')
+    @description = t('settings_controller.description')
   end
 
   def update
     if current_user.update(user_params)
-      redirect_to manager_settings_path, notice: 'Settings were successfully updated.'
+      redirect_to manager_settings_path, notice: t('settings_controller.settings_updated')
     else
-      redirect_to manager_settings_path, alert: 'Unable to update settings.'
+      redirect_to manager_settings_path, alert: t('settings_controller.unable_to_update_settings')
     end
   end
 
   def password_change
     if password_change_params[:password].blank? || password_change_params[:password_confirmation].blank?
-      current_user.errors.add(:password, :blank, message: "cannot be blank") if password_change_params[:password].blank?
-      current_user.errors.add(:password_confirmation, :blank, message: "cannot be blank") if password_change_params[:password_confirmation].blank?
-      render :index, alert: 'Password and password confirmation cannot be blank.'
+      current_user.errors.add(:password, :blank, message: t('errors.messages.blank')) if password_change_params[:password].blank?
+      current_user.errors.add(:password_confirmation, :blank, message: t('errors.messages.blank')) if password_change_params[:password_confirmation].blank?
+      render :index, alert: t('settings_controller.password_blank')
     elsif current_user.update_with_password(password_change_params)
-      redirect_to manager_settings_path, notice: 'Password was successfully updated.'
+      redirect_to manager_settings_path, notice: t('settings_controller.password_updated')
     else
-      render :index, alert: 'There was a problem updating your password.'
+      render :index, alert: t('settings_controller.password_update_problem')
     end
   end
-
 
   private
 

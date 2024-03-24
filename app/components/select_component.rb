@@ -1,5 +1,5 @@
 class SelectComponent < ViewComponent::Base
-  def initialize(form: nil, key: nil, options_for_select: [], model: nil, label: 'N/A', placeholder: 'N/A', multiple: false, info_message: nil)
+  def initialize(form: nil, key: nil, options_for_select: [], model: nil, label: 'N/A', placeholder: 'N/A', multiple: false, info_message: nil, data: {}, style: '')
     @form = form
     @key = key
     @model = model
@@ -8,5 +8,7 @@ class SelectComponent < ViewComponent::Base
     @options_for_select = options_for_select
     @multiple = multiple
     @info_message = info_message
+    @data = data
+    @style = style
   end
 end
