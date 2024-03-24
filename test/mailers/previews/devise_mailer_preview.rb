@@ -17,13 +17,13 @@ class DeviseMailerPreview < ActionMailer::Preview
     CustomDeviseMailer.email_changed(user)
   end
 
-  def unlock_instructions(record, token, opts = {})
-    user = User.first
-    token = user.confirmation_token || 'some_token'
-    CustomDeviseMailer.unlock_instructions(user, token)
-  end
+  # def unlock_instructions
+  #   user = User.first
+  #   token = user.unlock_token || 'some_token'
+  #   CustomDeviseMailer.unlock_instructions(user, token)
+  # end
 
-  def password_change(record, opts = {})
+  def password_change
     user = User.first
     CustomDeviseMailer.password_change(user)
   end

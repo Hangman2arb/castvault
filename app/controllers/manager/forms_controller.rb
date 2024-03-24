@@ -23,9 +23,9 @@ class Manager::FormsController < ApplicationController
         edit_link: {
           extra_options: { data: { turbo_track: "reload", turbo_frame: '_top' } }
         },
-        show_link: {
-          extra_options: { data: { turbo_track: "reload", turbo_frame: '_top' } }
-        },
+        # show_link: {
+        #   extra_options: { data: { turbo_track: "reload", turbo_frame: '_top' } }
+        # },
         destroy_link: {
           extra_options: { data: { turbo_frame: '_top', turbo_method: :delete, turbo_confirm: t('forms_controller.destroy_message').html_safe } }
         }
@@ -177,8 +177,8 @@ class Manager::FormsController < ApplicationController
           form_data_hash[key] = form.token
         when :edit_link
           form_data_hash[key] = edit_manager_form_path(form)
-        when :show_link
-          form_data_hash[key] = manager_form_path(form)
+        # when :show_link
+        #   form_data_hash[key] = manager_form_path(form)
         when :destroy_link
           form_data_hash[key] = manager_form_path(form)
         when :updated_at

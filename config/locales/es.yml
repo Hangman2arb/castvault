@@ -1,5 +1,10 @@
 ---
 es:
+  actions_button_component:
+    copy_form_link: Copiar Enlace
+    destroy_link: Eliminar
+    edit_link: Editar
+    show_link: Mostrar
   activerecord:
     errors:
       messages:
@@ -9,6 +14,22 @@ es:
           attributes:
             name:
               blank: El campo nombre no puede estar vacío
+  dashboard_controller:
+    agency: Agencia
+    description: Ten una vista global de todos tus datos.
+    driving_license: Licencia de Conducir
+    eye_color: Color de Ojos
+    hair_color: Color de Cabello
+    hair_type: Tipo de Cabello
+    least_used_form: Formulario menos usado
+    most_used_form: Formulario más usado
+    passport: Pasaporte
+    profiles_by_date: Perfiles por Fecha
+    profiles_by_ethnicity: Perfiles por Etnia
+    profiles_by_gender: Perfiles por Género
+    title: Dashboard
+    total_forms: Total Formularios
+    total_profiles: Total Perfiles
   data_table_component:
     action: Acciones
     actions: Acciones
@@ -165,7 +186,6 @@ es:
     instagram: Instagram
     is_an_actor: Es Actor/Actriz
     language: Idioma
-    time_zone: Zona Horaria
     languages: Idiomas
     name: Nombre
     pants_size: Talla de Pantalón
@@ -176,24 +196,20 @@ es:
     skills: Habilidades
     surname: Apellidos
     tik_tok: TikTok
+    time_zone: Zona Horaria
     twitter: Twitter
     updated_at: Actualizado el
     video_book: Videobook
     web: Sitio Web
   forms_controller:
-    form_name_label: "Nombre del formulario"
-    form_name_placeholder: "Introduce el nombre del formulario"
-    description_label: "Descripción"
-    select_all_label: "Seleccionar todos"
-    use_setting: "Usar configuración"
-    additional_info_placeholder: "Mensaje informativo adicional"
-    not_found: No encontrado
-    show_title: "Mostrar título del formulario"
-    show_description: "Mostrar descripción del formulario"
+    additional_info_placeholder: Mensaje informativo adicional
+    description_label: Descripción
     destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
     edit_title: Editar Formulario
     form_created: Formulario creado con éxito!
     form_deleted: Formulario eliminado.
+    form_name_label: Nombre del formulario
+    form_name_placeholder: Introduce el nombre del formulario
     form_not_deleted: Hubo algún problema al eliminar el formulario. Contacte con el administrador.
     form_updated: Formulario actualizado con éxito!
     index_description: Listado de formularios existentes
@@ -220,23 +236,28 @@ es:
     new_title: Nuevo Formulario
     no_forms_yet: Sin formularios
     no_forms_yet_description: Todavía no has creado ningún formulario, puedes crear tu primer formulario pulsando en "Crear Formulario"
+    not_found: No encontrado
     section:
-      skills: "Habilidades"
-      skills_description: "Describe aquí las habilidades relacionadas con el formulario."
-      additional_information: "Información Adicional"
-      additional_information_description: "Proporciona detalles adicionales que sean relevantes para el formulario."
-      basic_information: "Información Básica"
-      basic_information_description: "Ingresa los detalles fundamentales requeridos para el formulario."
-      contact_information: "Información de Contacto"
-      contact_information_description: "Rellena los detalles de contacto necesarios para el formulario."
-      features: "Habilidades"
-      features_description: "Enumera las habilidades asociadas con el formulario."
-      measurements: "Medidas"
-      measurements_description: "Especifica las medidas que deben proporcionarse en el formulario."
-      pictures_and_media: "Fotos y Medios"
-      pictures_and_media_description: "Sube cualquier foto o archivo multimedia relacionado con el formulario."
-      social_media: "Redes Sociales"
-      social_media_description: "Incluye enlaces de redes sociales o información relevante."
+      additional_information: Información Adicional
+      additional_information_description: Proporciona detalles adicionales que sean relevantes para el formulario.
+      basic_information: Información Básica
+      basic_information_description: Ingresa los detalles fundamentales requeridos para el formulario.
+      contact_information: Información de Contacto
+      contact_information_description: Rellena los detalles de contacto necesarios para el formulario.
+      features: Habilidades
+      features_description: Enumera las habilidades asociadas con el formulario.
+      measurements: Medidas
+      measurements_description: Especifica las medidas que deben proporcionarse en el formulario.
+      pictures_and_media: Fotos y Medios
+      pictures_and_media_description: Sube cualquier foto o archivo multimedia relacionado con el formulario.
+      skills: Habilidades
+      skills_description: Describe aquí las habilidades relacionadas con el formulario.
+      social_media: Redes Sociales
+      social_media_description: Incluye enlaces de redes sociales o información relevante.
+    select_all_label: Seleccionar todos
+    show_description: Mostrar descripción del formulario
+    show_title: Mostrar título del formulario
+    use_setting: Usar configuración
   genders:
     female: Femenino
     male: Masculino
@@ -266,17 +287,17 @@ es:
       confirm_button: Confirmar
       title: Confirmación
   labels:
-    current_password: "Contraseña actual"
-    password: "Nueva contraseña"
-    password_confirmation: "Confirmar contraseña"
-    results: 'Resultados'
     all: Todos
     back_button: Atrás
+    close: Cerrar
+    current_password: Contraseña actual
+    password: Nueva contraseña
+    password_confirmation: Confirmar contraseña
+    results: Resultados
     save: Guardar
     search: Buscar
     send: Enviar
     update: Actualizar
-    close: Cerrar
   landing_pricing_component:
     annually: Anual
     choose_plan: Elige un plan asequible lleno de las mejores características para atraer a tu audiencia, crear lealtad del cliente e impulsar las ventas.
@@ -324,150 +345,154 @@ es:
       pro: Este plan te permite gestionar <b>3 grupos</b> de Telegram. Perfecto para personas que tienen varias comunidades en Telegram o un grupo pequeño de administradores.
   password_change:
     instruction: Nos estamos comunicando con usted para notificarle que su contraseña ha sido cambiada.
+  profile_modal:
+    agency_information: Información de la Agencia
+    galery: Galería
+    personal_details: Detalles Personales
   profiles_controller:
-    skills_category:
-      sports_outdoor: "Aire libre"
-      sports_watersports: "Acuáticos"
-      sports_martial_arts: "Artes marciales"
-      sports_gymnastics: "Gimnasia"
-      sports_extreme: "Extremos"
-      sports_team: "Equipos"
-      sports_underwater: "Submarinos"
-      arts_leisure_music: "Música"
-      arts_leisure_dance: "Danza"
-      arts_leisure_stunt_professions: "Acrobacias"
-      general: "General"
-    features:
-      sports_outdoor:
-        mountain_surf: "Surf de montaña"
-        running: "Correr"
-        cycling: "Ciclismo"
-        snowboard: "Snowboard"
-        ski: "Esquí"
-        climbing: "Escalada"
-        roller_skating: "Patinaje sobre ruedas"
-        skate: "Skate"
-        tennis: "Tenis"
-      sports_watersports:
-        diving: "Buceo"
-        surf: "Surf"
-        paddle_surf: "Paddle surf"
-        kite_surf: "Kite surf"
-        wind_surf: "Windsurf"
-        sail: "Vela"
-      sports_martial_arts:
-        taekwondo: "Taekwondo"
-        karate: "Karate"
-        judo: "Judo"
-        jujitsu: "Jujitsu"
-        tai_chi: "Tai Chi"
-        aikido: "Aikido"
-        kendo: "Kendo"
-        kung_fu: "Kung Fu"
-        kickboxing: "Kickboxing"
-      sports_gymnastics:
-        aerobics: "Aeróbicos"
-        yoga: "Yoga"
-        fitness: "Fitness"
-        zumba: "Zumba"
-        boxing: "Boxeo"
-        crossfit: "Crossfit"
-        acrogym: "Acrogimnasia"
-      sports_extreme:
-        parachuting: "Paracaidismo"
-        acrobatics: "Acrobacias"
-        freefall: "Caída libre"
-        jump: "Salto"
-        ultra_light_flying: "Vuelo ultraligero"
-        rafting: "Rafting"
-        speleology: "Espeleología"
-        parkour: "Parkour"
-      sports_team:
-        football: "Fútbol"
-        volleyball: "Vóleibol"
-        baseball: "Béisbol"
-        hockey: "Hockey"
-        basketball: "Baloncesto"
-      sports_underwater:
-        apnea: "Apnea"
-        diving: "Buceo"
-        snorkel: "Snorkel"
-      arts_leisure_music:
-        singing: "Canto"
-        piano: "Piano"
-        violin: "Violín"
-        violoncello: "Violonchelo"
-        drums: "Batería"
-        guitar: "Guitarra"
-        bass: "Bajo"
-        flute: "Flauta"
-      arts_leisure_dance:
-        hip_hop: "Hip Hop"
-        popping: "Popping"
-        break_dance: "Break Dance"
-        jazz: "Jazz"
-        ballet: "Ballet"
-        contemporary: "Contemporáneo"
-        voguing: "Voguing"
-        pole_dance: "Pole Dance"
-        dancehall: "Dancehall"
-        afrobeat: "Afrobeat"
-        flamenco: "Flamenco"
-      arts_leisure_stunt_professions:
-        precision_driver: "Conductor de precisión"
-        equilibrist: "Equilibrista"
-        cooking: "Cocina"
-      general:
-        acting: "Actuación"
-        modeling: "Modelaje"
-        music: "Música"
-        dancing: "Baile"
-        sports: "Deportes"
-    age_range: "Rango de Edad"
-    height_range: "Rango de Altura (cm)"
-    shirt_size_range: "Talla de Camiseta (cm)"
-    pants_size_range: "Talla de Pantalón (cm)"
-    shoe_size_range: "Talla de Zapatillas (cm)"
-    available_for_title: Disponible para
+    age_range: Rango de Edad
     available_for:
-      performing_arts: "Artes Escénicas"
-      tv: "Televisión"
-      fiction: "Ficción"
-      advertising: "Publicidad"
+      advertising: Publicidad
+      fiction: Ficción
+      performing_arts: Artes Escénicas
+      tv: Televisión
+    available_for_title: Disponible para
+    description: Consulta todos los perfiles registrados a través de tus formularios.
+    features:
+      arts_leisure_dance:
+        afrobeat: Afrobeat
+        ballet: Ballet
+        break_dance: Break Dance
+        contemporary: Contemporáneo
+        dancehall: Dancehall
+        flamenco: Flamenco
+        hip_hop: Hip Hop
+        jazz: Jazz
+        pole_dance: Pole Dance
+        popping: Popping
+        voguing: Voguing
+      arts_leisure_music:
+        bass: Bajo
+        drums: Batería
+        flute: Flauta
+        guitar: Guitarra
+        piano: Piano
+        singing: Canto
+        violin: Violín
+        violoncello: Violonchelo
+      arts_leisure_stunt_professions:
+        cooking: Cocina
+        equilibrist: Equilibrista
+        precision_driver: Conductor de precisión
+      general:
+        acting: Actuación
+        dancing: Baile
+        modeling: Modelaje
+        music: Música
+        sports: Deportes
+      sports_extreme:
+        acrobatics: Acrobacias
+        freefall: Caída libre
+        jump: Salto
+        parachuting: Paracaidismo
+        parkour: Parkour
+        rafting: Rafting
+        speleology: Espeleología
+        ultra_light_flying: Vuelo ultraligero
+      sports_gymnastics:
+        acrogym: Acrogimnasia
+        aerobics: Aeróbicos
+        boxing: Boxeo
+        crossfit: Crossfit
+        fitness: Fitness
+        yoga: Yoga
+        zumba: Zumba
+      sports_martial_arts:
+        aikido: Aikido
+        judo: Judo
+        jujitsu: Jujitsu
+        karate: Karate
+        kendo: Kendo
+        kickboxing: Kickboxing
+        kung_fu: Kung Fu
+        taekwondo: Taekwondo
+        tai_chi: Tai Chi
+      sports_outdoor:
+        climbing: Escalada
+        cycling: Ciclismo
+        mountain_surf: Surf de montaña
+        roller_skating: Patinaje sobre ruedas
+        running: Correr
+        skate: Skate
+        ski: Esquí
+        snowboard: Snowboard
+        tennis: Tenis
+      sports_team:
+        baseball: Béisbol
+        basketball: Baloncesto
+        football: Fútbol
+        hockey: Hockey
+        volleyball: Vóleibol
+      sports_underwater:
+        apnea: Apnea
+        diving: Buceo
+        snorkel: Snorkel
+      sports_watersports:
+        diving: Buceo
+        kite_surf: Kite surf
+        paddle_surf: Paddle surf
+        sail: Vela
+        surf: Surf
+        wind_surf: Windsurf
     filters_title: Filtros Avanzados
-    title: "Perfiles"
-    description: "Consulta todos los perfiles registrados a través de tus formularios."
-    profile_created: "El perfil fue creado exitosamente."
-    profile_not_found: "Perfil no encontrado."
+    height_range: Rango de Altura (cm)
+    n_a: N/A
+    pants_size_range: Talla de Pantalón (cm)
+    profile_created: El perfil fue creado exitosamente.
+    profile_not_found: Perfil no encontrado.
+    search_terms:
+      age_old: Más mayor
+      age_young: Más joven
+      agency: Agencia
+      any_agency: Cualquier Agencia
+      any_ethnicity: Cualquier Etnia
+      any_eye_color: Cualquier Color de Ojos
+      any_gender: Cualquier Género
+      any_hair_color: Cualquier Color de Cabello
+      any_hair_type: Cualquier Tipo de Cabello
+      city: Ciudad
+      driving_license: Carnet de Conducir
+      ethnicity: Etnia
+      eye_color: Color de Ojos
+      food_allergies: Alergias
+      gender: Género
+      global: Global
+      habilidades: Habilidades
+      hair_color: Color del Cabello
+      hair_type: Tipo de Cabello
+      name: Nombre y Apellidos
+      newest: Insertado recientemente
+      order_by: Ordenar por
+      passport: Pasaporte
+      select: Selecciona
+      select_form: Formulario
+    shirt_size_range: Talla de Camiseta (cm)
+    shoe_size_range: Talla de Zapatillas (cm)
+    skills_category:
+      arts_leisure_dance: Danza
+      arts_leisure_music: Música
+      arts_leisure_stunt_professions: Acrobacias
+      general: General
+      sports_extreme: Extremos
+      sports_gymnastics: Gimnasia
+      sports_martial_arts: Artes marciales
+      sports_outdoor: Aire libre
+      sports_team: Equipos
+      sports_underwater: Submarinos
+      sports_watersports: Acuáticos
+    title: Perfiles
     with: Con
     without: Sin
-    n_a: N/A
-    search_terms:
-      select_form: Formulario
-      select: Selecciona
-      newest: 'Insertado recientemente'
-      age_old: 'Más mayor'
-      age_young: 'Más joven'
-      global: "Global"
-      habilidades: "Habilidades"
-      name: "Nombre y Apellidos"
-      city: "Ciudad"
-      gender: "Género"
-      any_gender: "Cualquier Género"
-      ethnicity: "Etnia"
-      any_ethnicity: "Cualquier Etnia"
-      agency: "Agencia"
-      any_agency: "Cualquier Agencia"
-      hair_type: "Tipo de Cabello"
-      any_hair_type: "Cualquier Tipo de Cabello"
-      hair_color: "Color del Cabello"
-      any_hair_color: "Cualquier Color de Cabello"
-      eye_color: "Color de Ojos"
-      any_eye_color: "Cualquier Color de Ojos"
-      passport: "Pasaporte"
-      driving_license: "Carnet de Conducir"
-      food_allergies: "Alergias"
-      order_by: "Ordenar por"
     without_agency: Sin agencia
   reset_password_instructions:
     change_password_button: Cambiar mi contraseña
@@ -475,42 +500,22 @@ es:
     ignore_message: Si no solicitaste esto, por favor ignora este correo electrónico.
     instruction: Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo a través del enlace a continuación.
     password_change_confirmation: Tu contraseña no cambiará hasta que accedas al enlace anterior y crees una nueva.
+  settings_controller:
+    delete_account: Eliminar cuenta
+    delete_account_confirmation: Sí, eliminar mi cuenta
+    delete_account_description: "¿Ya no deseas usar nuestro servicio? Puedes eliminar tu cuenta aquí. Esta acción no es reversible. Toda la información relacionada con esta cuenta será eliminada permanentemente."
+    description: Modifica tus ajustes para toda la plataforma
+    log_out: Cerrar sesión
+    log_out_message: "¿Estás seguro de que deseas cerrar sesión?"
+    log_out_other_sessions: Cerrar otras sesiones
+    log_out_other_sessions_description: Por favor, introduce tu contraseña para confirmar que deseas cerrar las demás sesiones en todos tus dispositivos.
+    password_blank: La contraseña y la confirmación de la contraseña no pueden estar en blanco.
+    password_update_problem: Hubo un problema al actualizar tu contraseña.
+    password_updated: La contraseña se actualizó correctamente.
+    settings_updated: Los ajustes se actualizaron correctamente.
+    title: Ajustes
+    unable_to_update_settings: No se pudieron actualizar los ajustes.
   unlock_instructions:
     instruction: Su cuenta ha sido bloqueada debido a una cantidad excesiva de intentos fallidos de inicio de sesión.
     unlock_account_button: Desbloquear mi cuenta
     unlock_account_button_instructions: 'Haga clic en el enlace a continuación para desbloquear su cuenta:'
-  dashboard_controller:
-    title: "Dashboard"
-    description: "Ten una vista global de todos tus datos."
-    total_profiles: "Total Perfiles"
-    total_forms: "Total Formularios"
-    most_used_form: "Formulario más usado"
-    least_used_form: "Formulario menos usado"
-    profiles_by_date: "Perfiles por Fecha"
-    profiles_by_ethnicity: "Perfiles por Etnia"
-    profiles_by_gender: "Perfiles por Género"
-    hair_type: "Tipo de Cabello"
-    hair_color: "Color de Cabello"
-    eye_color: "Color de Ojos"
-    agency: "Agencia"
-    passport: "Pasaporte"
-    driving_license: "Licencia de Conducir"
-  settings_controller:
-    title: "Ajustes"
-    description: "Modifica tus ajustes para toda la plataforma"
-    settings_updated: "Los ajustes se actualizaron correctamente."
-    unable_to_update_settings: "No se pudieron actualizar los ajustes."
-    password_blank: "La contraseña y la confirmación de la contraseña no pueden estar en blanco."
-    password_updated: "La contraseña se actualizó correctamente."
-    password_update_problem: "Hubo un problema al actualizar tu contraseña."
-    log_out: "Cerrar sesión"
-    log_out_message: "¿Estás seguro de que deseas cerrar sesión?"
-    log_out_other_sessions: "Cerrar otras sesiones"
-    log_out_other_sessions_description: "Por favor, introduce tu contraseña para confirmar que deseas cerrar las demás sesiones en todos tus dispositivos."
-    delete_account: "Eliminar cuenta"
-    delete_account_description: "¿Ya no deseas usar nuestro servicio? Puedes eliminar tu cuenta aquí. Esta acción no es reversible. Toda la información relacionada con esta cuenta será eliminada permanentemente."
-    delete_account_confirmation: "Sí, eliminar mi cuenta"
-  profile_modal:
-    galery: Galería
-    agency_information: 'Información de la Agencia'
-    personal_details: 'Detalles Personales'

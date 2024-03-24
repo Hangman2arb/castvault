@@ -1,5 +1,10 @@
 ---
 en:
+  actions_button_component:
+    copy_form_link: Copy Link
+    destroy_link: Delete
+    edit_link: Edit
+    show_link: Show
   activerecord:
     errors:
       messages:
@@ -9,6 +14,22 @@ en:
           attributes:
             name:
               blank: Name field cannot be blank
+  dashboard_controller:
+    agency: Agency
+    description: Have a global view of all your data.
+    driving_license: Driving License
+    eye_color: Eye Color
+    hair_color: Hair Color
+    hair_type: Hair Type
+    least_used_form: Least Used Form
+    most_used_form: Most Used Form
+    passport: Passport
+    profiles_by_date: Profiles by Date
+    profiles_by_ethnicity: Profiles by Ethnicity
+    profiles_by_gender: Profiles by Gender
+    title: Dashboard
+    total_forms: Total Forms
+    total_profiles: Total Profiles
   data_table_component:
     action: Action
     actions: Actions
@@ -165,7 +186,6 @@ en:
     instagram: Instagram
     is_an_actor: Is an Actor/Actress
     language: Language
-    time_zone: Time Zone
     languages: Languages
     name: Name
     pants_size: Pants Size
@@ -176,24 +196,20 @@ en:
     skills: Skills
     surname: Surname
     tik_tok: TikTok
+    time_zone: Time Zone
     twitter: Twitter
     updated_at: Updated At
     video_book: Video Book
     web: Website
   forms_controller:
-    form_name_label: "Form Name"
-    form_name_placeholder: "Enter the form name"
-    description_label: "Description"
-    select_all_label: "Select All"
-    use_setting: "Use setting"
-    additional_info_placeholder: "Additional informational message"
-    not_found: Not found
-    show_title: "Show form title"
-    show_description: "Show form description"
+    additional_info_placeholder: Additional informational message
+    description_label: Description
     destroy_message: You are going to delete the form and will not be able to recover it.
     edit_title: Edit Form
     form_created: Form successfully created!
     form_deleted: Form deleted.
+    form_name_label: Form Name
+    form_name_placeholder: Enter the form name
     form_not_deleted: There was a problem deleting the form. Please contact the administrator.
     form_updated: Form successfully updated!
     index_description: List of existing forms
@@ -220,23 +236,28 @@ en:
     new_title: New Form
     no_forms_yet: No forms yet
     no_forms_yet_description: You haven't created any forms yet, you can create your first form by clicking on 'Create Form'
+    not_found: Not found
     section:
-      skills: "Skills"
-      skills_description: "Describe the skills related to the form here."
-      additional_information: "Additional Information"
-      additional_information_description: "Provide any extra details that are relevant to the form."
-      basic_information: "Basic Information"
-      basic_information_description: "Enter the fundamental details required for the form."
-      contact_information: "Contact Information"
-      contact_information_description: "Fill in the contact details necessary for the form."
-      features: "Features"
-      features_description: "List the features associated with the form."
-      measurements: "Measurements"
-      measurements_description: "Specify the measurements that need to be provided in the form."
-      pictures_and_media: "Pictures and Media"
-      pictures_and_media_description: "Upload any pictures or media files related to the form."
-      social_media: "Social Media"
-      social_media_description: "Include relevant social media links or information."
+      additional_information: Additional Information
+      additional_information_description: Provide any extra details that are relevant to the form.
+      basic_information: Basic Information
+      basic_information_description: Enter the fundamental details required for the form.
+      contact_information: Contact Information
+      contact_information_description: Fill in the contact details necessary for the form.
+      features: Features
+      features_description: List the features associated with the form.
+      measurements: Measurements
+      measurements_description: Specify the measurements that need to be provided in the form.
+      pictures_and_media: Pictures and Media
+      pictures_and_media_description: Upload any pictures or media files related to the form.
+      skills: Skills
+      skills_description: Describe the skills related to the form here.
+      social_media: Social Media
+      social_media_description: Include relevant social media links or information.
+    select_all_label: Select All
+    show_description: Show form description
+    show_title: Show form title
+    use_setting: Use setting
   genders:
     female: Female
     male: Male
@@ -266,17 +287,17 @@ en:
       confirm_button: Confirm
       title: Confirmation
   labels:
-    current_password: "Current password"
-    password: "New password"
-    password_confirmation: "Confirm password"
-    results: 'Results'
     all: All
     back_button: Back
+    close: Close
+    current_password: Current password
+    password: New password
+    password_confirmation: Confirm password
+    results: Results
     save: Save
     search: Search
     send: Send
     update: Update
-    close: Close
   landing_pricing_component:
     annually: Annually
     choose_plan: Choose an affordable plan packed with the best features to engage your audience, create customer loyalty, and boost sales.
@@ -324,150 +345,154 @@ en:
       pro: This plan lets you manage <b>3 groups</b> on Telegram. Perfect for people who have multiple communities on Telegram or a small group of administrators.
   password_change:
     instruction: We are contacting you to notify you that your password has been changed.
+  profile_modal:
+    agency_information: Agency Information
+    galery: Galery
+    personal_details: Personal Details
   profiles_controller:
-    skills_category:
-      sports_outdoor: "Outdoor"
-      sports_watersports: "Water"
-      sports_martial_arts: "Martial"
-      sports_gymnastics: "Gym"
-      sports_extreme: "Extreme"
-      sports_team: "Team"
-      sports_underwater: "Underwater"
-      arts_leisure_music: "Music"
-      arts_leisure_dance: "Dance"
-      arts_leisure_stunt_professions: "Stunt"
-      general: "General"
-    features:
-      sports_outdoor:
-        mountain_surf: "Mountain Surf"
-        running: "Running"
-        cycling: "Cycling"
-        snowboard: "Snowboard"
-        ski: "Ski"
-        climbing: "Climbing"
-        roller_skating: "Roller Skating"
-        skate: "Skateboard"
-        tennis: "Tennis"
-      sports_watersports:
-        diving: "Diving"
-        surf: "Surf"
-        paddle_surf: "Paddle Surf"
-        kite_surf: "Kite Surf"
-        wind_surf: "Wind Surf"
-        sail: "Sailing"
-      sports_martial_arts:
-        taekwondo: "Taekwondo"
-        karate: "Karate"
-        judo: "Judo"
-        jujitsu: "Jujitsu"
-        tai_chi: "Tai Chi"
-        aikido: "Aikido"
-        kendo: "Kendo"
-        kung_fu: "Kung Fu"
-        kickboxing: "Kickboxing"
-      sports_gymnastics:
-        aerobics: "Aerobics"
-        yoga: "Yoga"
-        fitness: "Fitness"
-        zumba: "Zumba"
-        boxing: "Boxing"
-        crossfit: "CrossFit"
-        acrogym: "Acrogymnastics"
-      sports_extreme:
-        parachuting: "Parachuting"
-        acrobatics: "Acrobatics"
-        freefall: "Freefall"
-        jump: "Jump"
-        ultra_light_flying: "Ultra-light Flying"
-        rafting: "Rafting"
-        speleology: "Speleology"
-        parkour: "Parkour"
-      sports_team:
-        football: "Football"
-        volleyball: "Volleyball"
-        baseball: "Baseball"
-        hockey: "Hockey"
-        basketball: "Basketball"
-      sports_underwater:
-        apnea: "Apnea"
-        diving: "Diving"
-        snorkel: "Snorkeling"
-      arts_leisure_music:
-        singing: "Singing"
-        piano: "Piano"
-        violin: "Violin"
-        violoncello: "Violoncello"
-        drums: "Drums"
-        guitar: "Guitar"
-        bass: "Bass"
-        flute: "Flute"
-      arts_leisure_dance:
-        hip_hop: "Hip Hop"
-        popping: "Popping"
-        break_dance: "Break Dance"
-        jazz: "Jazz"
-        ballet: "Ballet"
-        contemporary: "Contemporary"
-        voguing: "Voguing"
-        pole_dance: "Pole Dance"
-        dancehall: "Dancehall"
-        afrobeat: "Afrobeat"
-        flamenco: "Flamenco"
-      arts_leisure_stunt_professions:
-        precision_driver: "Precision Driver"
-        equilibrist: "Equilibrist"
-        cooking: "Cooking"
-      general:
-        acting: "Acting"
-        modeling: "Modeling"
-        music: "Music"
-        dancing: "Dancing"
-        sports: "Sports"
-    age_range: "Age Range"
-    height_range: "Height Range (cm)"
-    shirt_size_range: "Shirt Size (cm)"
-    pants_size_range: "Pants Size (cm)"
-    shoe_size_range: "Shoe Size (cm)"
-    available_for_title: Available for
+    age_range: Age Range
     available_for:
-      performing_arts: "Performing Arts"
-      tv: "Television"
-      fiction: "Fiction"
-      advertising: "Advertising"
+      advertising: Advertising
+      fiction: Fiction
+      performing_arts: Performing Arts
+      tv: Television
+    available_for_title: Available for
+    description: View all the profiles registered through your forms.
+    features:
+      arts_leisure_dance:
+        afrobeat: Afrobeat
+        ballet: Ballet
+        break_dance: Break Dance
+        contemporary: Contemporary
+        dancehall: Dancehall
+        flamenco: Flamenco
+        hip_hop: Hip Hop
+        jazz: Jazz
+        pole_dance: Pole Dance
+        popping: Popping
+        voguing: Voguing
+      arts_leisure_music:
+        bass: Bass
+        drums: Drums
+        flute: Flute
+        guitar: Guitar
+        piano: Piano
+        singing: Singing
+        violin: Violin
+        violoncello: Violoncello
+      arts_leisure_stunt_professions:
+        cooking: Cooking
+        equilibrist: Equilibrist
+        precision_driver: Precision Driver
+      general:
+        acting: Acting
+        dancing: Dancing
+        modeling: Modeling
+        music: Music
+        sports: Sports
+      sports_extreme:
+        acrobatics: Acrobatics
+        freefall: Freefall
+        jump: Jump
+        parachuting: Parachuting
+        parkour: Parkour
+        rafting: Rafting
+        speleology: Speleology
+        ultra_light_flying: Ultra-light Flying
+      sports_gymnastics:
+        acrogym: Acrogymnastics
+        aerobics: Aerobics
+        boxing: Boxing
+        crossfit: CrossFit
+        fitness: Fitness
+        yoga: Yoga
+        zumba: Zumba
+      sports_martial_arts:
+        aikido: Aikido
+        judo: Judo
+        jujitsu: Jujitsu
+        karate: Karate
+        kendo: Kendo
+        kickboxing: Kickboxing
+        kung_fu: Kung Fu
+        taekwondo: Taekwondo
+        tai_chi: Tai Chi
+      sports_outdoor:
+        climbing: Climbing
+        cycling: Cycling
+        mountain_surf: Mountain Surf
+        roller_skating: Roller Skating
+        running: Running
+        skate: Skateboard
+        ski: Ski
+        snowboard: Snowboard
+        tennis: Tennis
+      sports_team:
+        baseball: Baseball
+        basketball: Basketball
+        football: Football
+        hockey: Hockey
+        volleyball: Volleyball
+      sports_underwater:
+        apnea: Apnea
+        diving: Diving
+        snorkel: Snorkeling
+      sports_watersports:
+        diving: Diving
+        kite_surf: Kite Surf
+        paddle_surf: Paddle Surf
+        sail: Sailing
+        surf: Surf
+        wind_surf: Wind Surf
     filters_title: Advanced Filters
-    title: "Profiles"
-    description: "View all the profiles registered through your forms."
-    profile_created: "Profile was successfully created."
-    profile_not_found: "Profile not found."
+    height_range: Height Range (cm)
+    n_a: N/A
+    pants_size_range: Pants Size (cm)
+    profile_created: Profile was successfully created.
+    profile_not_found: Profile not found.
+    search_terms:
+      age_old: Age Old
+      age_young: Age Young
+      agency: Agency
+      any_agency: Any Agency
+      any_ethnicity: Any Ethnicity
+      any_eye_color: Any Eye Color
+      any_gender: Any Gender
+      any_hair_color: Any Hair Color
+      any_hair_type: Any Hair Type
+      city: City
+      driving_license: Driving License
+      ethnicity: Ethnicity
+      eye_color: Eye Color
+      food_allergies: Food Allergies
+      gender: Gender
+      global: Global
+      habilidades: Skills
+      hair_color: Hair Color
+      hair_type: Hair Type
+      name: Full Name
+      newest: Newest
+      order_by: Order by
+      passport: Passport
+      select: Select
+      select_form: Form
+    shirt_size_range: Shirt Size (cm)
+    shoe_size_range: Shoe Size (cm)
+    skills_category:
+      arts_leisure_dance: Dance
+      arts_leisure_music: Music
+      arts_leisure_stunt_professions: Stunt
+      general: General
+      sports_extreme: Extreme
+      sports_gymnastics: Gym
+      sports_martial_arts: Martial
+      sports_outdoor: Outdoor
+      sports_team: Team
+      sports_underwater: Underwater
+      sports_watersports: Water
+    title: Profiles
     with: With
     without: Without
-    n_a: N/A
-    search_terms:
-      select_form: Form
-      select: Select
-      newest: 'Newest'
-      age_old: 'Age Old'
-      age_young: 'Age Young'
-      global: "Global"
-      habilidades: "Skills"
-      name: "Full Name"
-      city: "City"
-      gender: "Gender"
-      any_gender: "Any Gender"
-      ethnicity: "Ethnicity"
-      any_ethnicity: "Any Ethnicity"
-      agency: "Agency"
-      any_agency: "Any Agency"
-      hair_type: "Hair Type"
-      any_hair_type: "Any Hair Type"
-      hair_color: "Hair Color"
-      any_hair_color: "Any Hair Color"
-      eye_color: "Eye Color"
-      any_eye_color: "Any Eye Color"
-      passport: "Passport"
-      driving_license: "Driving License"
-      food_allergies: "Food Allergies"
-      order_by: "Order by"
     without_agency: Without Agency
   reset_password_instructions:
     change_password_button: Change my password
@@ -475,42 +500,22 @@ en:
     ignore_message: If you didn't request this, please ignore this email.
     instruction: Someone has requested a link to change your password. You can do this through the link below.
     password_change_confirmation: Your password will not change until you access the above link and create a new one.
+  settings_controller:
+    delete_account: Delete account
+    delete_account_confirmation: Yes, delete my account
+    delete_account_description: No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
+    description: Modify your settings for the entire platform
+    log_out: Log out
+    log_out_message: Are you sure you want to log out?
+    log_out_other_sessions: Log out other sessions
+    log_out_other_sessions_description: Please enter your password to confirm you would like to log out of your other sessions across all of your devices.
+    password_blank: Password and password confirmation cannot be blank.
+    password_update_problem: There was a problem updating your password.
+    password_updated: Password was successfully updated.
+    settings_updated: Settings were successfully updated.
+    title: Settings
+    unable_to_update_settings: Unable to update settings.
   unlock_instructions:
     instruction: Your account has been locked due to an excessive number of failed login attempts.
     unlock_account_button: Unlock my account
     unlock_account_button_instructions: 'Click the link below to unlock your account:'
-  dashboard_controller:
-    title: "Dashboard"
-    description: "Have a global view of all your data."
-    total_profiles: "Total Profiles"
-    total_forms: "Total Forms"
-    most_used_form: "Most Used Form"
-    least_used_form: "Least Used Form"
-    profiles_by_date: "Profiles by Date"
-    profiles_by_ethnicity: "Profiles by Ethnicity"
-    profiles_by_gender: "Profiles by Gender"
-    hair_type: "Hair Type"
-    hair_color: "Hair Color"
-    eye_color: "Eye Color"
-    agency: "Agency"
-    passport: "Passport"
-    driving_license: "Driving License"
-  settings_controller:
-    title: "Settings"
-    description: "Modify your settings for the entire platform"
-    settings_updated: "Settings were successfully updated."
-    unable_to_update_settings: "Unable to update settings."
-    password_blank: "Password and password confirmation cannot be blank."
-    password_updated: "Password was successfully updated."
-    password_update_problem: "There was a problem updating your password."
-    log_out: "Log out"
-    log_out_message: "Are you sure you want to log out?"
-    log_out_other_sessions: "Log out other sessions"
-    log_out_other_sessions_description: "Please enter your password to confirm you would like to log out of your other sessions across all of your devices."
-    delete_account: "Delete account"
-    delete_account_description: "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently."
-    delete_account_confirmation: "Yes, delete my account"
-  profile_modal:
-    galery: Galery
-    agency_information: 'Agency Information'
-    personal_details: 'Personal Details'
