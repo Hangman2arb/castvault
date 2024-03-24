@@ -31,6 +31,9 @@ application.register("glightbox", GlightboxController)
 import ImagePreviewController from "./image_preview_controller"
 application.register("image-preview", ImagePreviewController)
 
+import LoaderController from "./loader_controller"
+application.register("loader", LoaderController)
+
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 

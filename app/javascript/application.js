@@ -11,3 +11,4 @@ import 'chartkick/chart.js'
 import "trix"
 import "@rails/actiontext"
 import './add_glightbox'
+import './remove_turbo_progress_bar'

@@ -48,28 +48,27 @@
             = render SliderComponent.new(label: t('profiles_controller.pants_size_range'), val_min: 1, selected_val_min: params[:min_pants_size] || 1, key_min: 'min_pants_size', val_max: 70, selected_val_max: params[:max_pants_size] || 70, key_max: 'max_pants_size', form: form)
             = render SliderComponent.new(label: t('profiles_controller.shoe_size_range'), val_min: 16, selected_val_min: params[:min_shoe_size] || 16, key_min: 'min_shoe_size', val_max: 54, selected_val_max: params[:max_shoe_size] || 54, key_max: 'max_shoe_size', form: form)
 
-        %ul.hidden.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-fill.gap-6.mt-10.text-sm.p-10.cursor{role: "list", data: { profiles_form_target: 'habilitiesTabContent' }}
+        .hidden.grid.grid-cols-2.md:grid-cols-2.lg:grid-cols-4.gap-4.mt-6.text-sm.p-6.cursor{role: "list", data: { profiles_form_target: 'habilitiesTabContent' }}
           - Form::FEATURES_OPTIONS.each do |category, skills|
-            %li.flex.flex-col.cursor-pointer.max-w-custom
-              %label.text-primary.font-semibold= t("profiles_controller.skills_category.#{category}")
-              %ul.grid.grid-cols-1.sm:grid-cols-2.md:grid-cols-fill.gap-6.mt-10{role: "list"}
+            .w-full.relative.pr-6.my-4{data: {controller: 'range-slider'}, class: 'p-4 bg-dark text-white rounded-xl'}
+              %h3.text-lg.font-bold
+                = t("profiles_controller.skills_category.#{category}")
+              .grid.grid-cols-1
                 - skills.each do |skill|
-                  %li.flex.flex-col.text-center.cursor-pointer.max-w-custom
-                    .flex.items-end.gap-2
-                      = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.features.#{skill}"), key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
-        .actions.text-center.p-10
-          = form.submit t('labels.search'), class: "inline-flex items-center px-6 py-3 border-transparent rounded-full text-md font-medium text-dark bg-primary hover:bg-dark focus:outline-none focus:ring-0 hover:bg-dark cursor-pointer hover:ring-1 hover:ring-primary hover:text-primary", data: { action: "click->profiles-form#close" }
-          .cursor-pointer{class: "inline-flex items-center px-6 py-3 ml-6 border border-transparent rounded-full text-md font-medium text-primary bg-dark focus:outline-none focus:ring-0 hover:bg-primary hover:text-dark ring-1 ring-primary", data: { action: "click->profiles-form#close" }}
+                  = render CustomCheckboxComponent.new(form: form, label: t("profiles_controller.features.#{category}.#{skill}"), key: "skills[#{category}][]", value: skill, checked: params.dig(:skills, category)&.include?(skill))
+        .actions.text-center.p-10.sticky.bottom-0.z-50
+          = form.submit t('labels.search'), class: "btn-primary mr-4 shadow-sm", data: { action: "click->profiles-form#close" }
+          .btn-secondary.shadow-sm{ data: { action: "click->profiles-form#close" }}
             = t('labels.close')
 
     .flex.flex-col.sm:flex-row.justify-between.items-center.text-sm.gap-4.text-sm.text-shadowy-200
       = render SelectComponent.new(key: :form_id, label: t('profiles_controller.search_terms.select_form'), options_for_select: options_for_select(@forms.map { |f| [f.name, f.id] }, selected: params[:form_id]), placeholder: t('labels.all'), form: form, data: {action: 'change->autosave#save'}, style: 'min-width: 250px;')
       = render SelectComponent.new(key: :order_by, label: t('profiles_controller.search_terms.order_by'), options_for_select: options_for_select(Profile::ORDER_BY.keys.map { |order| [t("profiles_controller.search_terms.#{order}"), order] }, params[:order_by]), placeholder: t('profiles_controller.search_terms.select'), form: form, data: {action: 'change->autosave#save'}, style: 'min-width: 250px;')
 
-      .flex.items-center.gap-2{class: 'w-1/2'}
+      .flex.items-center.justify-end.gap-2{class: 'w-1/2'}
         %div{class: 'inline-flex items-center bg-primary rounded-full px-4 py-3 text-md font-semibold text-dark transition duration-200 cursor-pointer hover:bg-dark hover:text-primary hover:ring-1 hover:ring-primary hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary', data: { action: "click->profiles-form#open" } }
           = render BootstrapIconWithTextComponent.new(icon: 'funnel', text: 'Filter', extra_classes: 'text-xl')
-        = link_to manager_profiles_path do
+        = link_to manager_profiles_path, data: { turbo_frame: '_top' } do
           %div{class: 'inline-flex items-center rounded-3xl ring-1 ring-primary bg-dark px-4 py-3 text-md font-medium text-primary transition duration-200 cursor-pointer hover:bg-primary hover:text-dark hover:transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600'}
             = render BootstrapIconWithTextComponent.new(icon: 'arrow-clockwise', text: 'Reset', extra_classes: 'text-xl')
 

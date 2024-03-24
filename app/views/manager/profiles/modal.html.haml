@@ -48,55 +48,55 @@
             = video_tag @profile.video_book, controls: true, class: "object-scale-down h-48 w-48 mx-auto"
 
 
-      - if @profile.agency
-        .mt-4
-          %h3.text-lg.font-semibold.Text-gray-800
-            = t('profile_modal.agency_information')
-          %p.text-sm.text-gray-600= @profile.agent_name if @profile.agent_name.present?
-          %p.text-sm.text-gray-600= @profile.agent_email if @profile.agent_email.present?
-          %p.text-sm.text-gray-600= @profile.agent_phone if @profile.agent_phone.present?
-
-      .mt-4
-        %h3.text-lg.font-semibold.Text-gray-800
-          = t('profile_modal.personal_details')
-
-        - if @profile.birthdate.present?
-          %p.text-sm.text-gray-600= "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
-        - if @profile.gender.present?
-          %p.text-sm.text-gray-600= "Gender: #{@profile.gender}"
-        - if @profile.ethnicity.present?
-          %p.text-sm.text-gray-600= "Ethnicity: #{@profile.ethnicity}"
-        - if @profile.height.present?
-          %p.text-sm.text-gray-600= "Height: #{@profile.height} cm"
-        - if @profile.shirt_size.present?
-          %p.text-sm.text-gray-600= "Shirt Size: #{@profile.shirt_size}"
-        - if @profile.pants_size.present?
-          %p.text-sm.text-gray-600= "Pants Size: #{@profile.pants_size}"
-        - if @profile.shoe_size.present?
-          %p.text-sm.text-gray-600= "Shoe Size: #{@profile.shoe_size}"
-        - if @profile.hair_type.present?
-          %p.text-sm.text-gray-600= "Hair Type: #{@profile.hair_type}"
-        - if @profile.hair_color.present?
-          %p.text-sm.text-gray-600= "Hair Color: #{@profile.hair_color}"
-        - if @profile.eye_color.present?
-          %p.text-sm.text-gray-600= "Eye Color: #{@profile.eye_color}"
-        - if @profile.passport
-          %p.text-sm.text-gray-600 Passport: Yes
-        - if @profile.driving_license
-          %p.text-sm.text-gray-600 Driving License: Yes
-        - if @profile.food_allergies.present?
-          %p.text-sm.text-gray-600= "Food Allergies: #{@profile.food_allergies}"
-
-
-    .mt-6
+  - if @profile.agency
+    .mt-4
       %h3.text-lg.font-semibold.Text-gray-800
-        = 'Skills & Interests'
-      %ul.flex.flex-wrap.mt-2
-        - Form::FEATURES_OPTIONS.each do |category, skills|
-          - skills_selected = @profile.send(category)
-          - if skills_selected.present?
-            %li.bg-gray-200.rounded-full.px-4.py-1.mr-2.mb-2
-              %h4.font-semibold.text-gray-700= t("skills_category.#{category}")
-              %ul.pl-4
-                - skills_selected.each do |skill|
-                  %li.text-sm.text-gray-600= skill
+        = t('profile_modal.agency_information')
+      %p.text-sm.text-gray-600= @profile.agent_name if @profile.agent_name.present?
+      %p.text-sm.text-gray-600= @profile.agent_email if @profile.agent_email.present?
+      %p.text-sm.text-gray-600= @profile.agent_phone if @profile.agent_phone.present?
+
+  .mt-4
+    %h3.text-lg.font-semibold.Text-gray-800
+      = t('profile_modal.personal_details')
+
+    - if @profile.birthdate.present?
+      %p.text-sm.text-gray-600= "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
+    - if @profile.gender.present?
+      %p.text-sm.text-gray-600= "Gender: #{@profile.gender}"
+    - if @profile.ethnicity.present?
+      %p.text-sm.text-gray-600= "Ethnicity: #{@profile.ethnicity}"
+    - if @profile.height.present?
+      %p.text-sm.text-gray-600= "Height: #{@profile.height} cm"
+    - if @profile.shirt_size.present?
+      %p.text-sm.text-gray-600= "Shirt Size: #{@profile.shirt_size}"
+    - if @profile.pants_size.present?
+      %p.text-sm.text-gray-600= "Pants Size: #{@profile.pants_size}"
+    - if @profile.shoe_size.present?
+      %p.text-sm.text-gray-600= "Shoe Size: #{@profile.shoe_size}"
+    - if @profile.hair_type.present?
+      %p.text-sm.text-gray-600= "Hair Type: #{@profile.hair_type}"
+    - if @profile.hair_color.present?
+      %p.text-sm.text-gray-600= "Hair Color: #{@profile.hair_color}"
+    - if @profile.eye_color.present?
+      %p.text-sm.text-gray-600= "Eye Color: #{@profile.eye_color}"
+    - if @profile.passport
+      %p.text-sm.text-gray-600 Passport: Yes
+    - if @profile.driving_license
+      %p.text-sm.text-gray-600 Driving License: Yes
+    - if @profile.food_allergies.present?
+      %p.text-sm.text-gray-600= "Food Allergies: #{@profile.food_allergies}"
+
+
+  .mt-6
+    %h3.text-lg.font-semibold.Text-gray-800
+      = 'Skills & Interests'
+    %ul.flex.flex-wrap.mt-2
+      - Form::FEATURES_OPTIONS.each do |category, skills|
+        - skills_selected = @profile.send(category)
+        - if skills_selected.present?
+          %li.bg-gray-200.rounded-full.px-4.py-1.mr-2.mb-2
+            %h4.font-semibold.text-gray-700= t("skills_category.#{category}")
+            %ul.pl-4
+              - skills_selected.each do |skill|
+                %li.text-sm.text-gray-600= skill

@@ -16,4 +16,9 @@ export default class extends Controller {
     // para asegurarte de que no se muestren datos antiguos si se vuelve a abrir.
     this.containerTarget.innerHTML = "";
   }
+
+  stopPropagation(event) {
+    event.stopPropagation();
+  }
+
 }
