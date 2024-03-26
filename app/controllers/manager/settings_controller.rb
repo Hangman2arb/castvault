@@ -28,7 +28,7 @@ class Manager::SettingsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :language, :time_zone, :profile_photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :language, :time_zone, :profile_photo, :web_link)
   end
 
   def password_change_params

@@ -25,6 +25,8 @@
           = render SelectComponent.new(key: :language, label: t('fields.language'), options_for_select: options_for_select(User::PLATFORM_LANGUAGES.invert, current_user.language), placeholder: false, form: form)
         .col-span-full
           = render SelectComponent.new(key: :time_zone, label: t('fields.time_zone'), options_for_select: options_for_select(ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] }, current_user.time_zone), placeholder: false, form: form)
+        .col-span-full
+          = render InputComponent.new(key: :web_link, label: t('fields.web_link'), model: current_user, form: form)
       .mt-8.flex
         = form.submit t('labels.save'), class: 'btn-primary'
 

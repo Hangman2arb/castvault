@@ -5,9 +5,13 @@
       .text-sm.leading-6.text-shadowy-200.mt-4
         = @form.file_field @attribute, multiple: @multiple, class: 'sr-only', data: { upload_file_component_target: 'input', action: "change->upload-file-component#preview change->#{@extra_actions}", max_size: @max_size_mb }, accept: accepted_types_to_mime
         %label.relative.cursor-pointer.font-semibold.text-primary.focus-within:outline-none.focus-within:ring-2.focus-within:ring-indigo-600.focus-within:ring-offset-2.hover:text-white{for: "#{@model}_#{@attribute}"}
-          %span Upload a file
-        %p.pl-1 or drag and drop
-      %p.text-xs.leading-5.text-shadowy-200= accepted_types_message
+          %span
+            = t('upload_file_component.upload_a_file')
+        %p.pl-1
+          = t('upload_file_component.or_drag_and_drop')
+      %p.text-xs.leading-5.text-shadowy-200
+        = t('upload_file_component.accepted_types_message', types: @accepted_types.join(', ').upcase, max_size: @max_size_mb)
+
 
   - if @label
     = @form.label @attribute, @label, class: 'block text-sm font-medium leading-6 text-gray-900'

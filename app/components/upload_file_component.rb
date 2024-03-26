@@ -19,7 +19,4 @@ class UploadFileComponent < ViewComponent::Base
     @accepted_types.map { |type| "image/#{type}" }.join(', ')
   end
 
-  def accepted_types_message
-    "#{@accepted_types.join(', ').upcase} up to #{@max_size_mb}MB"
-  end
 end

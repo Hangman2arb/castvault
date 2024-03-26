@@ -1,7 +1,7 @@
 class Manager::FormsController < ApplicationController
-  before_action :authenticate_user!, except: [:show_form, :update_show_form]
+  before_action :authenticate_user!, except: [:show_form, :thank_you_page]
 
-  layout 'form', only: [:show_form]
+  layout 'form', only: [:show_form, :thank_you_page]
   def index
     @title = t('forms_controller.index_title')
     @description = t('forms_controller.index_description')
@@ -140,11 +140,10 @@ class Manager::FormsController < ApplicationController
     end
   end
 
-  def update_show_form
+  def thank_you_page
     @form = Form.find_by(token: params[:token])
-    return render plain: t('forms_controller.not_found'), status: :not_found unless @form
+    @home_page_link = @form.user.web_link
   end
-
 
   def destroy
     if form.destroy

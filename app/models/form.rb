@@ -56,10 +56,10 @@ class Form < ApplicationRecord
     agent_email: { type: 'email', section: 'contact_information' },
     agent_phone: { type: 'string', section: 'contact_information' },
 
-    height: { type: 'integer', section: 'measurements' },
-    shirt_size: { type: 'integer', section: 'measurements' },
-    pants_size: { type: 'integer', section: 'measurements' },
-    shoe_size: { type: 'integer', section: 'measurements' },
+    height: { type: 'integer', section: 'measurements', min: 40, max: 220 },
+    shirt_size: { type: 'integer', section: 'measurements', min: 1, max: 74 },
+    pants_size: { type: 'integer', section: 'measurements', min: 1, max: 70 },
+    shoe_size: { type: 'integer', section: 'measurements', min: 16, max: 54 },
 
     passport: { type: 'boolean', section: 'additional_information' },
     driving_license: { type: 'boolean', section: 'additional_information' },
@@ -75,9 +75,9 @@ class Form < ApplicationRecord
     instagram: { type: 'string', section: 'social_media' },
     tik_tok: { type: 'string', section: 'social_media' },
 
-    face_photo: { type: 'image', section: 'pictures_and_media' },
-    body_photo: { type: 'image', section: 'pictures_and_media' },
-    video_book: { type: 'video', section: 'pictures_and_media' }
+    face_photo: { type: 'image', section: 'pictures_and_media', formats: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic'], max_size: 10.megabytes },
+    body_photo: { type: 'image', section: 'pictures_and_media', formats: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic'], max_size: 10.megabytes },
+    video_book: { type: 'video', section: 'pictures_and_media', formats: ['video/mov', 'video/mp4', 'video/avi'], max_size: 100.megabytes },
   }
 
   FIELDS_ORDER = [

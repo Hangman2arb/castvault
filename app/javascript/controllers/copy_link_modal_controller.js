@@ -20,7 +20,13 @@ export default class extends Controller {
     }).then((result) => {
       if (result.isConfirmed) {
         navigator.clipboard.writeText(fullLink).then(() => {
-          Swal.fire(I18n.t[locale]['js']['copy_link_modal']['copied_title'], I18n.t[locale]['js']['copy_link_modal']['copied_message'], 'success');
+          Swal.fire({
+            title: I18n.t[locale]['js']['copy_link_modal']['copied_title'],
+            text: I18n.t[locale]['js']['copy_link_modal']['copied_message'],
+            icon: 'success',
+            timer: 1500, // Cierra la alerta después de 3000ms (3 segundos)
+            showConfirmButton: false, // No muestra el botón de confirmación
+          });
         }).catch(err => {
           console.error(I18n.t[locale]['js']['copy_link_modal']['error_message'], err);
         });

@@ -9,7 +9,7 @@
 
 .container.mx-auto.clear-both
   = form_with model: [:manager, @profile], local: true, class: "space-y-12", data: { controller: 'form-show' } do |form|
-    = form.hidden_field :token, value: params[:token]
+    = hidden_field_tag :token, params[:token]
     - @filtered_admited_form_fields.group_by { |_, field_attrs| field_attrs[:section] }.each do |section, fields|
       .border-b.pb-12{class: 'border-shadowy-200/10'}
         %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.#{section}")
@@ -34,7 +34,7 @@
                                                   multiple: false,
                                                   icon: 'camera',
                                                   accepted_types: %w[png jpg jpeg heic],
-                                                  max_size_mb: 5,
+                                                  max_size_mb: 10,
                                                   extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
               - when 'video'
                 = render UploadFileComponent.new( form: form,
@@ -43,7 +43,7 @@
                                                   multiple: false,
                                                   icon: 'camera-video',
                                                   accepted_types: %w[mov mp4 avi],
-                                                  max_size_mb: 5,
+                                                  max_size_mb: 100,
                                                   extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
     .border-b.pb-12{class: 'border-shadowy-200/10'}
       %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.skills")

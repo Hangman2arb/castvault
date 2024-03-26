@@ -1,5 +1,7 @@
 class Manager::ProfilesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:create]
+
+  layout 'form', only: [:create]
   def index
     @title = t('profiles_controller.title')
     @description = t('profiles_controller.description')
@@ -16,12 +18,34 @@ class Manager::ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params)
+    @form = Form.find_by(token: params[:token])
+    @profile = @form.profiles.new(profile_params)
+
+
+    @filtered_admited_form_fields = {}
+    @filtered_featured_options = {}
+
+    @form.ordered_fields.each do |key, value|
+      if Form::ADMITED_FORM_FIELDS[key.to_sym]
+        if value['include'] == 'true'
+          @filtered_admited_form_fields[key.to_sym] = Form::ADMITED_FORM_FIELDS[key.to_sym]
+        end
+      end
+
+      if Form::FEATURES_OPTIONS[key.to_sym]
+        if value['include'] == 'true'
+          @filtered_featured_options[key.to_sym] = Form::FEATURES_OPTIONS[key.to_sym]
+        end
+      end
+    end
+
+    @profile.user = @form.user
 
     if @profile.save
-      redirect_to manager_profiles_path, notice: t('profiles_controller.profile_created')
+      @form.increment!(:submissions_count)
+      redirect_to thank_you_page_path(token: params[:token])
     else
-      render :new, status: :unprocessable_entity
+      render 'manager/forms/show_form', status: :unprocessable_entity
     end
   end
 

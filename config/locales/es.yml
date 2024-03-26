@@ -201,6 +201,7 @@ es:
     updated_at: Actualizado el
     video_book: Videobook
     web: Sitio Web
+    web_link: Enlace a tu Web
   forms_controller:
     additional_info_placeholder: Mensaje informativo adicional
     description_label: Descripción
@@ -515,7 +516,26 @@ es:
     settings_updated: Los ajustes se actualizaron correctamente.
     title: Ajustes
     unable_to_update_settings: No se pudieron actualizar los ajustes.
+  show_form:
+    errors:
+      cant_be_blank: Este campo es obligatorio
+      file_too_large: El archivo es demasiado grande. El tamaño máximo permitido es %{max_size}.
+      invalid_email: El correo electrónico no es válido
+      invalid_integer: El valor no es un número entero válido
+      invalid_date: La fecha no es válida
+      invalid_format: 'Formato no válido. Los formatos permitidos son: %{formats}.'
+      invalid_string_length: La longitud del texto debe estar entre %{min} y %{max} caracteres
+      invalid_selection: La selección no es válida
+      out_of_range: "Está fuera del rango (debe estar entre %{min} y %{max})"
+  thank_you_page:
+    title: "¡Gracias!"
+    message: "¡Gracias por tu interés! Tu información ha sido enviada satisfactoriamente."
+    home: "Inicio"
   unlock_instructions:
     instruction: Su cuenta ha sido bloqueada debido a una cantidad excesiva de intentos fallidos de inicio de sesión.
     unlock_account_button: Desbloquear mi cuenta
     unlock_account_button_instructions: 'Haga clic en el enlace a continuación para desbloquear su cuenta:'
+  upload_file_component:
+    upload_a_file: Subir un archivo
+    or_drag_and_drop: o arrastrar y soltar
+    accepted_types_message: "%{types} hasta %{max_size}MB"

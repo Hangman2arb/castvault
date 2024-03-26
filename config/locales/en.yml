@@ -201,6 +201,7 @@ en:
     updated_at: Updated At
     video_book: Video Book
     web: Website
+    web_link: Link to your Web
   forms_controller:
     additional_info_placeholder: Additional informational message
     description_label: Description
@@ -515,7 +516,26 @@ en:
     settings_updated: Settings were successfully updated.
     title: Settings
     unable_to_update_settings: Unable to update settings.
+  show_form:
+    errors:
+      cant_be_blank: This field cannot be blank
+      file_too_large: The file is too large. Maximum allowed size is %{max_size}.
+      invalid_email: The email is not valid
+      invalid_integer: The value is not a valid integer
+      invalid_date: The date is not valid
+      invalid_format: "Invalid format. Allowed formats are: %{formats}."
+      invalid_string_length: The length of the text must be between %{min} and %{max} characters
+      invalid_selection: The selection is invalid
+      out_of_range: "Is out of range (must be between %{min} and %{max})"
+  thank_you_page:
+    title: Thank You!
+    message: Thank you for your interest! Your information has been sent successfully.
+    home: Home
   unlock_instructions:
     instruction: Your account has been locked due to an excessive number of failed login attempts.
     unlock_account_button: Unlock my account
     unlock_account_button_instructions: 'Click the link below to unlock your account:'
+  upload_file_component:
+    upload_a_file: Upload a file
+    or_drag_and_drop: or drag and drop
+    accepted_types_message: "%{types} up to %{max_size}MB"

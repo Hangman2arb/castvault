@@ -1,0 +1,17 @@
+.flex.items-center.justify-center.h-screen
+  %div
+    .flex.flex-col.items-center
+      %svg{fill: "none", stroke: "#0ad1c4", "stroke-width" => "2", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg", width: "100px", height: "100px"}
+        %path{d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+
+
+      %h1.text-white.text-4xl.font-bold
+        = t('thank_you_page.title')
+      %p.text-white
+        = t('thank_you_page.message')
+
+      = link_to @home_page_link, class: 'btn-primary mt-6' do
+        %svg.w-3.h-3.mr-2{fill: "none", stroke: "currentColor", "stroke-width" => "2", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+          %path{d: "M7 16l-4-4m0 0l4-4m-4 4h18", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+        %span.text-sm.font-medium
+          = t('thank_you_page.home')

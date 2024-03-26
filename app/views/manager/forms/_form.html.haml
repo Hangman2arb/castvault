@@ -10,7 +10,7 @@
                                         multiple: false,
                                         icon: 'camera',
                                         accepted_types: %w[png jpg jpeg heic],
-                                        max_size_mb: 5 )
+                                        max_size_mb: 10 )
 
     = form.label :description, t('forms_controller.description_label'), class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
     = form.rich_text_area :description, class: 'message-text-area-html mt-4', data: { scheduled_messages_target: 'textHtmlSelector' }
