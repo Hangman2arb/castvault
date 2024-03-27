@@ -1,3 +1,22 @@
 #turbo-progress-bar {
     display: none !important;
 }
+
+.modal-content::-webkit-scrollbar {
+    width: 26px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #156963;
+    margin: 4px;
+    border-radius: 1rem;
+    border: 10px solid #12222A;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: #0EA99F;
+}

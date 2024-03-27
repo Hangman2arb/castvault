@@ -1,8 +1,9 @@
 = render ModalComponent.new() do
-  .flex.items-center.space-x-6.mb-4
-    = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "h-24 w-24 rounded-full object-cover"
-    .name-and-city
-      %h2.text-2xl.font-semibold
+  .flex.items-start.mr-4.gap-6
+    .rounded-xl.overflow-hidden.aspect-square.w-full.max-w-48
+      = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "object-cover mx-auto my-auto h-full w-full"
+    .name-and-city.flex.flex-col.gap-1.5
+      %h2.text-2xl.font-semibold.text-light
         = [@profile.name, @profile.surname].compact.join(' ')
       - if @profile.city.present?
         %p.text-sm.text-gray-500
@@ -17,101 +18,101 @@
         = link_to @profile.web, class: "text-decoration-none", target: "_blank" do
           = render BootstrapIconWithTextComponent.new(icon: 'globe', text: @profile.web)
 
-    - if @profile.twitter.present? || @profile.facebook.present? || @profile.instagram.present? || @profile.tik_tok.present?
-      .flex.items-center.gap-3
-        - if @profile.twitter.present?
-          = link_to "https://twitter.com/#{@profile.twitter.delete_prefix('@')}", class: "text-blue-400 hover:text-blue-500" do
-            %i.bi.bi-twitter
-        - if @profile.facebook.present?
-          = link_to "https://facebook.com/#{@profile.facebook}", class: "text-blue-600 hover:text-blue-700" do
-            %i.bi.bi-facebook
-        - if @profile.instagram.present?
-          = link_to "https://instagram.com/#{@profile.instagram.delete_prefix('@')}", class: "text-pink-600 hover:text-pink-700" do
-            %i.bi.bi-instagram
-        - if @profile.tik_tok.present?
-          = link_to "https://tiktok.com/@#{@profile.tik_tok.delete_prefix('@')}", class: "text-black hover:text-gray-900" do
-            %i.bi.bi-tiktok
+      - if @profile.twitter.present? || @profile.facebook.present? || @profile.instagram.present? || @profile.tik_tok.present?
+        .flex.items-center.gap-3
+          - if @profile.twitter.present?
+            = link_to "https://twitter.com/#{@profile.twitter.delete_prefix('@')}", class: "text-blue-400 hover:text-blue-500" do
+              %i.bi.bi-twitter
+          - if @profile.facebook.present?
+            = link_to "https://facebook.com/#{@profile.facebook}", class: "text-blue-600 hover:text-blue-700" do
+              %i.bi.bi-facebook
+          - if @profile.instagram.present?
+            = link_to "https://instagram.com/#{@profile.instagram.delete_prefix('@')}", class: "text-pink-600 hover:text-pink-700" do
+              %i.bi.bi-instagram
+          - if @profile.tik_tok.present?
+            = link_to "https://tiktok.com/@#{@profile.tik_tok.delete_prefix('@')}", class: "text-white hover:text-shadowy-200" do
+              %i.bi.bi-tiktok
 
   - if @profile.face_photo.attached? || @profile.body_photo.attached? || @profile.video_book.attached?
-    %section.mt-16{ data: { controller: "glightbox" } }
-      %h2.text-2xl.font-semibold.text-center.mb-4
+    %section.mt-6{ data: { controller: "glightbox" } }
+      %h2.text-2xl.font-semibold.text-left.mb-2.text-light
         = t('profile_modal.galery')
-      .flex.items-center.justify-center
+      .flex.items-center.justify-center.rounded-xl.overflow-hidden
         - if @profile.face_photo.attached?
-          %a.glightbox{ href: url_for(@profile.face_photo) }
-            = image_tag @profile.face_photo, alt: "", class: "object-scale-down h-48 w-48 mx-auto"
+          %a.glightbox.aspect-square.w-full{ href: url_for(@profile.face_photo) }
+            = image_tag @profile.face_photo, alt: "", class: "object-cover mx-auto my-auto h-full w-full"
         - if @profile.body_photo.attached?
-          %a.glightbox{ href: url_for(@profile.body_photo) }
-            = image_tag @profile.body_photo, alt: "", class: "object-scale-down h-48 w-48 mx-auto"
+          %a.glightbox.aspect-square.w-full{ href: url_for(@profile.body_photo) }
+            = image_tag @profile.body_photo, alt: "", class: "object-cover mx-auto my-auto h-full w-full"
         - if @profile.video_book.attached?
-          %a.glightbox{ href: url_for(@profile.video_book), data: { type: 'video', source: 'local' } }
-            = video_tag @profile.video_book, controls: true, class: "object-scale-down h-48 w-48 mx-auto"
+          %a.glightbox.aspect-square.w-full{ href: url_for(@profile.video_book), data: { type: 'video', source: 'local' } }
+            = video_tag @profile.video_book, controls: true, class: "object-cover mx-auto my-auto h-full w-full"
 
+  .flex.gap-6.mt-10.justify-items-stretch.w-100
+    .p-0{class:'w-1/2'}
+      - if @profile.agency
+        .p-4.ring-1.ring-primary.rounded-xl
+          %h3.text-lg.font-semibold.text-light
+            = t('profile_modal.agency_information')
+          %p.text-sm.text-shadowy-200.mb-1= @profile.agent_name if @profile.agent_name.present?
+          %p.text-sm.text-shadowy-200.mb-1= @profile.agent_email if @profile.agent_email.present?
+          %p.text-sm.text-shadowy-200.mb-1= @profile.agent_phone if @profile.agent_phone.present?
 
-  - if @profile.agency
-    .mt-4
-      %h3.text-lg.font-semibold.Text-gray-800
-        = t('profile_modal.agency_information')
-      %p.text-sm.text-gray-600= @profile.agent_name if @profile.agent_name.present?
-      %p.text-sm.text-gray-600= @profile.agent_email if @profile.agent_email.present?
-      %p.text-sm.text-gray-600= @profile.agent_phone if @profile.agent_phone.present?
+      .p-4.ring-1.ring-primary.rounded-xl.mt-6
+        %h3.text-lg.font-semibold.text-light
+          = t('fields.skills')
+        %ul.flex.flex-wrap.mt-2.gap-2
+          - Form::FEATURES_OPTIONS.each do |category, skills|
+            - skills_selected = @profile.send(category)
+            - if skills_selected.present?
+              %li.bg-dark.rounded-md.px-4.py-2
+                %h4.font-semibold.text-shadowy-300.text-xs.my-1
+                  = t("profiles_controller.skills_category.#{category}")
+                %ul
+                  - skills_selected.each do |skill|
+                    %li.text-sm.text-shadowy-100.mb-1
+                      = t("profiles_controller.features.#{category}.#{skill}")
 
-  .mt-4
-    %h3.text-lg.font-semibold.Text-gray-800
-      = t('profile_modal.personal_details')
+    .p-4.ring-1.ring-primary.rounded-xl{class:'w-1/2'}
+      %h3.text-lg.font-semibold.text-light
+        = t('profile_modal.personal_details')
 
-    - if @profile.birthdate.present?
-      %p.text-sm.text-gray-600
-        = "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
-    - if @profile.gender.present?
-      %p.text-sm.text-gray-600
-        = "Gender: #{@profile.gender}"
-    - if @profile.ethnicity.present?
-      %p.text-sm.text-gray-600
-        = "Ethnicity: #{@profile.ethnicity}"
-    - if @profile.height.present?
-      %p.text-sm.text-gray-600
-        = "Height: #{@profile.height} cm"
-    - if @profile.shirt_size.present?
-      %p.text-sm.text-gray-600
-        = "Shirt Size: #{@profile.shirt_size}"
-    - if @profile.pants_size.present?
-      %p.text-sm.text-gray-600
-        = "Pants Size: #{@profile.pants_size}"
-    - if @profile.shoe_size.present?
-      %p.text-sm.text-gray-600
-        = "Shoe Size: #{@profile.shoe_size}"
-    - if @profile.hair_type.present?
-      %p.text-sm.text-gray-600
-        = "Hair Type: #{@profile.hair_type}"
-    - if @profile.hair_color.present?
-      %p.text-sm.text-gray-600
-        = "Hair Color: #{@profile.hair_color}"
-    - if @profile.eye_color.present?
-      %p.text-sm.text-gray-600
-        = "Eye Color: #{@profile.eye_color}"
-    - if @profile.passport
-      %p.text-sm.text-gray-600
-        = 'Passport: Yes'
-    - if @profile.driving_license
-      %p.text-sm.text-gray-600
-        = 'Driving License: Yes'
-    - if @profile.food_allergies.present?
-      %p.text-sm.text-gray-600
-        = "Food Allergies: #{@profile.food_allergies}"
-
-
-  .mt-6
-    %h3.text-lg.font-semibold.Text-gray-800
-      = t('fields.skills')
-    %ul.flex.flex-wrap.mt-2
-      - Form::FEATURES_OPTIONS.each do |category, skills|
-        - skills_selected = @profile.send(category)
-        - if skills_selected.present?
-          %li.bg-gray-200.rounded-full.px-4.py-1.mr-2.mb-2
-            %h4.font-semibold.text-gray-700
-              = t("profiles_controller.skills_category.#{category}")
-            %ul.pl-4
-              - skills_selected.each do |skill|
-                %li.text-sm.text-gray-600
-                  = t("profiles_controller.features.#{category}.#{skill}")
+      - if @profile.birthdate.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
+      - if @profile.gender.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Gender: #{@profile.gender}"
+      - if @profile.ethnicity.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Ethnicity: #{@profile.ethnicity}"
+      - if @profile.height.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Height: #{@profile.height} cm"
+      - if @profile.shirt_size.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Shirt Size: #{@profile.shirt_size}"
+      - if @profile.pants_size.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Pants Size: #{@profile.pants_size}"
+      - if @profile.shoe_size.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Shoe Size: #{@profile.shoe_size}"
+      - if @profile.hair_type.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Hair Type: #{@profile.hair_type}"
+      - if @profile.hair_color.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Hair Color: #{@profile.hair_color}"
+      - if @profile.eye_color.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Eye Color: #{@profile.eye_color}"
+      - if @profile.passport
+        %p.text-sm.text-shadowy-200.mb-1
+          = 'Passport: Yes'
+      - if @profile.driving_license
+        %p.text-sm.text-shadowy-200.mb-1
+          = 'Driving License: Yes'
+      - if @profile.food_allergies.present?
+        %p.text-sm.text-shadowy-200.mb-1
+          = "Food Allergies: #{@profile.food_allergies}"

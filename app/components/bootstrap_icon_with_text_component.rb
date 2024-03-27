@@ -1,5 +1,5 @@
 class BootstrapIconWithTextComponent < ViewComponent::Base
-  def initialize(icon: 'exclamation-triangle-fill', text: '', extra_classes: 'text-2xl', icon_position: 'left', text_extra_classes: 'text-sm', button_extra_classes: nil)
+  def initialize(icon: 'exclamation-triangle-fill', text: '', extra_classes: 'text-xl', icon_position: 'left', text_extra_classes: 'text-sm', button_extra_classes: nil)
     @icon = icon
     @text = text
     @extra_classes = extra_classes

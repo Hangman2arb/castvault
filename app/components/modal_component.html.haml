@@ -1,8 +1,7 @@
 %turbo-frame#modal
-  .modal-overlay{ data: { controller: 'modal', modal_target: "overlay", action: "click->modal#closeModal" }, class: "z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" }
-    .modal-container.p-4{ data: { modal_target: "container" }, class: "fixed inset-0 overflow-y-auto flex items-start justify-center" }
-      .modal-content{ data: { modal_target: "content", action: "click->modal#stopPropagation" }, class: "bg-shadowy-700 w-full max-w-100 p-4 rounded-xl shadow-lg space-y-4 overflow-visible text-shadowy-200 relative" }
-        .pr-4.absolute.top-4.right-4.cursor-pointer{ data: { action: "click->modal#closeModal" } }
+  .modal-overlay{ data: { controller: 'modal', modal_target: "overlay", action: "click->modal#closeModal" }, class: "z-50 fixed inset-0 bg-light backdrop-blur bg-opacity-50 flex items-center justify-center" }
+    .modal-container.p-4{ data: { modal_target: "container" }, class: "fixed inset-0 overflow-y-auto flex items-center justify-center h-screen w-screen overflow-hidden" }
+      .modal-content{ data: { modal_target: "content", action: "click->modal#stopPropagation" }, class: "bg-shadowy-700 w-2/6 h-5/6 p-6 pr-1 rounded-2xl shadow-lg overflow-y-scroll text-shadowy-200 relative" }
+        .absolute.top-2.right-2.cursor-pointer{ data: { action: "click->modal#closeModal" } }
           = render BootstrapIconWithTextComponent.new(icon: 'x', button_extra_classes: 'cursor-pointer')
-        .pt-8
-          = content
+        = content
