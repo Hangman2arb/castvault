@@ -1,5 +1,5 @@
 = render ModalComponent.new() do
-  .flex.items-start.mr-4.gap-6
+  .flex.flex-col.md:flex-row.items-start.mr-4.gap-3.md:gap-6
     .rounded-xl.overflow-hidden.aspect-square.w-full.max-w-48
       = image_tag @profile.face_photo.attached? ? @profile.face_photo : image_url('no_profile_photo.svg'), class: "object-cover mx-auto my-auto h-full w-full"
     .name-and-city.flex.flex-col.gap-1.5
@@ -48,7 +48,7 @@
           %a.glightbox.aspect-square.w-full{ href: url_for(@profile.video_book), data: { type: 'video', source: 'local' } }
             = video_tag @profile.video_book, controls: true, class: "object-cover mx-auto my-auto h-full w-full"
 
-  .flex.gap-6.mt-10.justify-items-stretch.w-100
+  .flex.gap-3.md:gap-6.mt-10.justify-items-stretch.w-100
     .p-0{class:'w-1/2'}
       - if @profile.agency
         .p-4.ring-1.ring-primary.rounded-xl
