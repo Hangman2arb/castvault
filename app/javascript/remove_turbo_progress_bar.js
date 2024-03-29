@@ -9,4 +9,13 @@ document.addEventListener('turbo:load', () => {
     Turbo.navigator.adapter.progressBar.hide = function() {
         document.getElementById('loader-overlay').classList.add('hidden');
     };
+
+    document.addEventListener('turbo:before-visit', () => {
+        document.getElementById('loader-overlay').classList.remove('hidden');
+    });
+
+    document.addEventListener('turbo:render', () => {
+        document.getElementById('loader-overlay').classList.add('hidden');
+    });
+
 });

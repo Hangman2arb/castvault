@@ -1,39 +1,24 @@
 .flex.flex-col.justify-center.mt-10.px-6.py-12.lg:px-8
   .sm:mx-auto.sm:w-full.sm:max-w-md
-    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-white Sign up to CastVault
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-white
+      = t('labels.sign_up_to_castvault')
 
   .mt-4.sm:mx-auto.sm:w-full.sm:max-w-md
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |f|
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |registration_form|
       = render "devise/shared/error_messages", resource: resource
 
-      .field
-        %label.block.text-sm.font-medium.leading-6.text-white{for: "user_email"} Email address
-        .mt-2
-          = f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_email"
+      = render InputComponent.new(form: registration_form, key: :email, type: 'email_field', label: t('labels.email'))
 
       .flex.gap-x-4
-        .field.flex-1
-          %label.block.text-sm.font-medium.leading-6.text-white{for: "user_first_name"} First name
-          .mt-2
-            = f.text_field :first_name, required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_first_name"
-        .field.flex-1
-          %label.block.text-sm.font-medium.leading-6.text-white{for: "user_last_name"} Last name
-          .mt-2
-            = f.text_field :last_name, required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_last_name"
+        = render InputComponent.new(form: registration_form, key: :first_name, type: 'text_field', label: t('labels.first_name'))
+        = render InputComponent.new(form: registration_form, key: :last_name, type: 'text_field', label: t('labels.last_name'))
+        
+      = render InputComponent.new(form: registration_form, key: :password, type: 'password_field', label: t('labels.password'))
+      = render InputComponent.new(form: registration_form, key: :password_confirmation, type: 'password_field', label: t('labels.password_confirmation'))
 
-      .field
-        %label.block.text-sm.font-medium.leading-6.text-white{for: "user_password"} Password
-        .mt-2
-          = f.password_field :password, autocomplete: "new-password", required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_password"
-
-      .field
-        %label.block.text-sm.font-medium.leading-6.text-white{for: "user_password_confirmation"} Confirm password
-        .mt-2
-          = f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "block w-full rounded-md border-0 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 bg-white/5 py-1.5 ring-white/10", id: "user_password_confirmation"
-
-      .actions
-        = f.submit "Sign up", class: "flex w-full justify-center rounded-md bg-indigo-500 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 py-1.5"
+      .flex.justify-center
+        = registration_form.submit t('labels.sign_up'), class: "btn-primary"
 
       %p.mt-2.text-center.text-sm.text-gray-600
-        Already have an account?
-        = link_to "Log in", new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500"
+        = t('labels.already_have_an_account')
+        = link_to t('labels.log_in'), new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500"

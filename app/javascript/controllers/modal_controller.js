@@ -12,9 +12,13 @@ export default class extends Controller {
     this.overlayTarget.classList.add("hidden");
     this.containerTarget.classList.add("hidden");
 
-    // Opcionalmente, podrías querer eliminar el contenido del modal
-    // para asegurarte de que no se muestren datos antiguos si se vuelve a abrir.
     this.containerTarget.innerHTML = "";
+  }
+
+
+  close(event) {
+    event.preventDefault();
+    this.element.style.display = 'none';
   }
 
   stopPropagation(event) {

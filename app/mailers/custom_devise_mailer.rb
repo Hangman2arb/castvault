@@ -20,4 +20,9 @@ class CustomDeviseMailer < Devise::Mailer
   def password_change(record, opts = {})
     super
   end
+
+  def invitation_instructions(record, token, opts = {})
+    @name = record.first_name
+    super
+  end
 end

@@ -14,6 +14,21 @@ es:
           attributes:
             name:
               blank: El campo nombre no puede estar vacío
+  clients_controller:
+    status:
+      accepted: Aceptada
+      pending: Pendiente
+    delete_error: No se pudo eliminar al cliente.
+    delete_success: El cliente ha sido eliminado con éxito.
+    destroy: ¿Estás seguro de que quieres eliminar este cliente?
+    description: En esta sección podrás ver e invitar a tus clientes
+    invite_button: Invitar
+    invite_error: Hubo un error al invitar al cliente.
+    invite_success: Cliente invitado con éxito.
+    no_clients_message: Todavía no has invitado a ningún cliente, puedes hacerlo pulsando en el botón de Invitar
+    no_clients_title: Sin Clientes
+    not_found_or_no_permission: El cliente no se encontró o no tienes permiso para eliminarlo.
+    title: Listado de Clientes
   dashboard_controller:
     agency: Agencia
     description: Ten una vista global de todos tus datos.
@@ -38,6 +53,7 @@ es:
     daily_summary: Resumen
     date: Fecha
     first_name: Nombre
+    last_name: Apellidos
     group: Grupo
     group_title: Grupo
     info: Información
@@ -115,6 +131,8 @@ es:
       send_instructions: Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos
       send_paranoid_instructions: Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos
       unlocked: Tu cuenta ha sido desbloqueada. Inicia sesión para continuar.
+  devise_invitations:
+    title: Completa tu registro
   email_changed:
     email_being_changed: Te contactamos para notificarte que tu correo electrónico está siendo cambiado a %{email}.
     email_changed: Te contactamos para notificarte que tu correo electrónico ha sido cambiado a %{email}.
@@ -127,9 +145,14 @@ es:
     email_to_confirm: "Un correo para confirmar un correo. 🤪"
     help_needed: "¿Necesitas ayuda?"
     or_verify_link: 'O verifica usando este enlace:'
-    send_feedback: Por favor envía cualquier comentario o información de errores a <a href="mailto:info@example.com" style="color:#2F67F6">info@example.com</a>
+    send_feedback: Por favor envía cualquier comentario o información de errores a <a href="mailto:info@castvault.com" style="color:#2F67F6">info@example.com</a>
     validate_email: Por favor valida tu dirección de correo electrónico para empezar a usar Metricgram.
     yes_we_know: Sí, lo sabemos.
+  email_invitation:
+    button_text: Aceptar invitación
+    introduction: Has sido invitado por %{name} a unirte a su red, con este acceso podrás ver los álbumes que quiera compartir contigo en Castvault.
+    or_copy_and_past_with_this_link: 'O copia y pega este enlace en tu navegador:'
+    title: Invitación a Castvault
   errors:
     attributes:
       name:
@@ -288,16 +311,25 @@ es:
       confirm_button: Confirmar
       title: Confirmación
   labels:
+    accept_invitation: Aceptar invitación
     all: Todos
+    already_have_an_account: "¿Ya tienes una cuenta?"
     back_button: Atrás
     close: Cerrar
     current_password: Contraseña actual
+    email: Correo electrónico
+    first_name: Nombre
+    last_name: Apellidos
+    log_in: Iniciar sesión
     password: Nueva contraseña
     password_confirmation: Confirmar contraseña
     results: Resultados
     save: Guardar
     search: Buscar
     send: Enviar
+    sign_in: Iniciar sesión
+    sign_up: Registrarse
+    sign_up_to_castvault: Regístrate en CastVault
     update: Actualizar
   landing_pricing_component:
     annually: Anual
@@ -501,6 +533,10 @@ es:
     ignore_message: Si no solicitaste esto, por favor ignora este correo electrónico.
     instruction: Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo a través del enlace a continuación.
     password_change_confirmation: Tu contraseña no cambiará hasta que accedas al enlace anterior y crees una nueva.
+  sessions:
+    forgot_password: "¿Olvidaste tu contraseña?"
+    sign_in_to_your_account: Inicia sesión en tu cuenta
+    sign_up_now: "¡Regístrate ahora!"
   settings_controller:
     delete_account: Eliminar cuenta
     delete_account_confirmation: Sí, eliminar mi cuenta
@@ -520,22 +556,22 @@ es:
     errors:
       cant_be_blank: Este campo es obligatorio
       file_too_large: El archivo es demasiado grande. El tamaño máximo permitido es %{max_size}.
-      invalid_email: El correo electrónico no es válido
-      invalid_integer: El valor no es un número entero válido
       invalid_date: La fecha no es válida
+      invalid_email: El correo electrónico no es válido
       invalid_format: 'Formato no válido. Los formatos permitidos son: %{formats}.'
-      invalid_string_length: La longitud del texto debe estar entre %{min} y %{max} caracteres
+      invalid_integer: El valor no es un número entero válido
       invalid_selection: La selección no es válida
-      out_of_range: "Está fuera del rango (debe estar entre %{min} y %{max})"
+      invalid_string_length: La longitud del texto debe estar entre %{min} y %{max} caracteres
+      out_of_range: Está fuera del rango (debe estar entre %{min} y %{max})
   thank_you_page:
-    title: "¡Gracias!"
+    home: Inicio
     message: "¡Gracias por tu interés! Tu información ha sido enviada satisfactoriamente."
-    home: "Inicio"
+    title: "¡Gracias!"
   unlock_instructions:
     instruction: Su cuenta ha sido bloqueada debido a una cantidad excesiva de intentos fallidos de inicio de sesión.
     unlock_account_button: Desbloquear mi cuenta
     unlock_account_button_instructions: 'Haga clic en el enlace a continuación para desbloquear su cuenta:'
   upload_file_component:
-    upload_a_file: Subir un archivo
-    or_drag_and_drop: o arrastrar y soltar
     accepted_types_message: "%{types} hasta %{max_size}MB"
+    or_drag_and_drop: o arrastrar y soltar
+    upload_a_file: Subir un archivo

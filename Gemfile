@@ -54,6 +54,7 @@ gem "haml-rails", "~> 2.0"
 gem "html2haml"
 
 gem "devise", "~> 4.9"
+gem 'devise_invitable'
 
 # Pagination
 gem "pagy", "~> 6.4"

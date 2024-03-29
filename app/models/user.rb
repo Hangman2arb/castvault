@@ -1,17 +1,19 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
 
   has_many :forms
   has_many :profiles
 
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :client]
   enum plan: [:basic, :pro, :elite]
 
   has_one_attached :profile_photo
+
+  scope :clients, ->(user) { where(invited_by: user) }
 
   PLATFORM_LANGUAGES = {
     'es' => 'Español',

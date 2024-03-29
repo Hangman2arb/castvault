@@ -28,4 +28,10 @@ class DeviseMailerPreview < ActionMailer::Preview
     CustomDeviseMailer.password_change(user)
   end
 
+  def invitation_instructions
+    user = User.first
+    token = user.confirmation_token || 'some_token'
+    CustomDeviseMailer.invitation_instructions(user, token)
+  end
+
 end

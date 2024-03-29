@@ -1,0 +1,19 @@
+.flex.flex-col.justify-center.mt-10.px-6.py-12.lg:px-8
+  .sm:mx-auto.sm:w-full.sm:max-w-md
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-white
+      = t('devise_invitations.title')
+
+  .mt-4.sm:mx-auto.sm:w-full.sm:max-w-md
+    = form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put, class: "space-y-6" }) do |invitation_form|
+      = invitation_form.hidden_field :invitation_token, value: params[:invitation_token]
+      = render "devise/shared/error_messages", resource: resource
+
+      .flex.gap-x-4
+        = render InputComponent.new(form: invitation_form, key: :first_name, type: 'text_field', label: t('labels.first_name'))
+        = render InputComponent.new(form: invitation_form, key: :last_name, type: 'text_field', label: t('labels.last_name'))
+
+      = render InputComponent.new(form: invitation_form, key: :password, type: 'password_field', label: t('labels.password'))
+      = render InputComponent.new(form: invitation_form, key: :password_confirmation, type: 'password_field', label: t('labels.password_confirmation'))
+
+      .flex.justify-center
+        = invitation_form.submit t('labels.accept_invitation'), class: "btn-primary"

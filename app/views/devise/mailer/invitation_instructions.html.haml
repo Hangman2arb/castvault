@@ -1,0 +1,13 @@
+= render EmailCenteredTextComponent.new(font_size: '32px', line_height: 1, extra_styles: 'font-weight:bold;', text: t('email_invitation.title'))
+
+= render EmailCenteredTextComponent.new( text: t('email_invitation.introduction', name: @name) )
+
+= render EmailCenteredButtonComponent.new( text: t('email_invitation.button_text'), url: accept_user_invitation_url(invitation_token: @token) )
+
+= render EmailCenteredTextComponent.new( text: t('email_invitation.or_copy_and_past_with_this_link') )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.confirmation_url', url: accept_user_invitation_url(invitation_token: @token) ) )
+
+= render EmailCenteredTextComponent.new( text: t('email_confirmation.help_needed') )
+
+= render EmailCenteredTextComponent.new( font_size: '14px', text: t('email_confirmation.send_feedback') )
