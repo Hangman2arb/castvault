@@ -379,7 +379,21 @@ en:
   password_change:
     instruction: We are contacting you to notify you that your password has been changed.
   profile_modal:
+    birthdate: "Birthdate: %{birthdate}"
+    gender: "Gender: %{gender}"
+    ethnicity: "Ethnicity: %{ethnicity}"
+    height: "Height: %{height} cm"
+    shirt_size: "Shirt Size: %{shirt_size}"
+    pants_size: "Pants Size: %{pants_size}"
+    shoe_size: "Shoe Size: %{shoe_size}"
+    hair_type: "Hair Type: %{hair_type}"
+    hair_color: "Hair Color: %{hair_color}"
+    eye_color: "Eye Color: %{eye_color}"
+    passport: "Passport: Yes"
+    driving_license: "Driving License: Yes"
+    food_allergies: "Food Allergies: %{food_allergies}"
     agency_information: Agency Information
+    delete_message: You are going to delete this profile permanently. Do you want to continue?
     galery: Galery
     personal_details: Personal Details
   profiles_controller:
@@ -575,3 +589,15 @@ en:
     accepted_types_message: "%{types} up to %{max_size}MB"
     or_drag_and_drop: or drag and drop
     upload_a_file: Upload a file
+  landing_page:
+    simplify_talent_selection: "Simplify talent selection with Castvault"
+    description: "Create customized forms to collect profiles and assist casting directors in finding the ideal talent for their projects. With Castvault, organizing and filtering applications is easier than ever."
+    get_started: "Get started"
+  profile_card_component:
+    no_firstname: "No name"
+    no_surname: "No surname"
+    no_agency: "No agency"
+  nav_component:
+    product: "Product"
+    features: "Features"
+    pricing: "Pricing"

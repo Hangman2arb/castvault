@@ -10,14 +10,7 @@ export default class extends Controller {
     selectedMaxVal: Number
   }
 
-  connect() {
-    // Inicializar con debounce
-    this.handleStartValueInput = debounce(this.handleStartValueInput.bind(this), 500);
-    this.handleEndValueInput = debounce(this.handleEndValueInput.bind(this), 500);
-    this.startTarget.value = this.selectedMinValValue;
-    this.endTarget.value = this.selectedMaxValValue;
-    this.updateSlider();
-  }
+
 
 
   updateStartValue(event) {

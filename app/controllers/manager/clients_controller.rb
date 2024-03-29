@@ -77,9 +77,9 @@ class Manager::ClientsController < ApplicationController
         when :invitation_accepted_at
           case client[key]
           when nil
-            client_data_hash[key] = BadgeComponent.new(t('clients_controller.status.pending'), 'red')
+            client_data_hash[key] = BadgeComponent.new(text: t('clients_controller.status.pending'), type: 'red')
           else
-            client_data_hash[key] = BadgeComponent.new(t('clients_controller.status.accepted'), 'green')
+            client_data_hash[key] = BadgeComponent.new(text: t('clients_controller.status.accepted'), type: 'green')
           end
         when :destroy_link
           client_data_hash[key] = manager_client_path(client)

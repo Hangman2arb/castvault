@@ -379,7 +379,21 @@ es:
   password_change:
     instruction: Nos estamos comunicando con usted para notificarle que su contraseña ha sido cambiada.
   profile_modal:
+    birthdate: "Fecha de nacimiento: %{birthdate}"
+    gender: "Género: %{gender}"
+    ethnicity: "Etnicidad: %{ethnicity}"
+    height: "Altura: %{height} cm"
+    shirt_size: "Talla de camisa: %{shirt_size}"
+    pants_size: "Talla de pantalón: %{pants_size}"
+    shoe_size: "Talla de zapatos: %{shoe_size}"
+    hair_type: "Tipo de cabello: %{hair_type}"
+    hair_color: "Color de cabello: %{hair_color}"
+    eye_color: "Color de ojos: %{eye_color}"
+    passport: "Pasaporte: Sí"
+    driving_license: "Licencia de conducir: Sí"
+    food_allergies: "Alergias alimentarias: %{food_allergies}"
     agency_information: Información de la Agencia
+    delete_message: Vas a eliminar este perfil definitivamente ¿Quieres continuar?
     galery: Galería
     personal_details: Detalles Personales
   profiles_controller:
@@ -575,3 +589,15 @@ es:
     accepted_types_message: "%{types} hasta %{max_size}MB"
     or_drag_and_drop: o arrastrar y soltar
     upload_a_file: Subir un archivo
+  landing_page:
+    simplify_talent_selection: "Simplifica la selección de talentos con Castvault"
+    description: "Crea formularios personalizados para recopilar perfiles y ayuda a los directores de casting a encontrar el talento ideal para sus proyectos. Con Castvault, organizar y filtrar candidaturas es más fácil que nunca."
+    get_started: "Comenzar"
+  profile_card_component:
+    no_firstname: "Nombre no especificado"
+    no_surname: "Apellidos no especificados"
+    no_agency: "Sin Agencia"
+  nav_component:
+    product: "Producto"
+    features: "Características"
+    pricing: "Precios"

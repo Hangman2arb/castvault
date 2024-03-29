@@ -8,7 +8,7 @@ class BadgeComponent < ViewComponent::Base
   #   'indigo'
   #   'purple'
   #   'pink'
-  def initialize(text = 'NO DEFINED', type = 'red' )
+  def initialize(text: 'NO DEFINED', type: 'red' )
     @text = text
     @type = type
   end

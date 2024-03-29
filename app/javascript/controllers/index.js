@@ -10,6 +10,9 @@ application.register("actions-button-component", ActionsButtonComponentControlle
 import AvatarComponentController from "./avatar_component_controller"
 application.register("avatar-component", AvatarComponentController)
 
+import BackToTopComponentController from "./back_to_top_component_controller"
+application.register("back-to-top-component", BackToTopComponentController)
+
 import CopyLinkModalController from "./copy_link_modal_controller"
 application.register("copy-link-modal", CopyLinkModalController)
 

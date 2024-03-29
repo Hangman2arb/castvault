@@ -64,6 +64,20 @@ class Manager::ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @profile = current_user.profiles.find_by(id: params[:id])
+
+    if @profile
+      if @profile.destroy
+        redirect_to manager_clients_path, notice: I18n.t('profiles_controller.delete_success')
+      else
+        redirect_to manager_clients_path, alert: I18n.t('profiles_controller.delete_error')
+      end
+    else
+      redirect_to manager_clients_path, alert: I18n.t('profiles_controller.not_found_or_no_permission')
+    end
+  end
+
   private
 
   def get_all_agencies

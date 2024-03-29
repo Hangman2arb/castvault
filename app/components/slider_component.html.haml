@@ -1,7 +1,7 @@
 
 .w-full.relative.pr-6.my-4{data: {controller: 'range-slider', range_slider_min_val_value: @val_min, range_slider_max_val_value: @val_max, range_slider_selected_min_val_value: @selected_val_min, range_slider_selected_max_val_value: @selected_val_max}, class: 'p-4 bg-dark text-white rounded-xl'}
   %input{type: "range", step: "1", data: {action: "input->range-slider#updateStartValue", range_slider_target: "start"}, class: "absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer", min: @val_min, max: @val_max, value: @selected_val_min}
-  %input{type: "range", step: "1", data: {action: "input->range-slider#updateEndValue", range_slider_target: "end"}, class: "absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer", min: @val_min, max: @val_max, value: @selected_val_max}
+  %input{type: "range", step: "1", data: {action: "input->range-slider#updateEndValue", range_slider_target: "end"}, class: "absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer pr-7", min: @val_min, max: @val_max, value: @selected_val_max}
   .relative.z-10.h-2
     .absolute.z-10.left-0.right-0.bottom-0.top-0.rounded-md.bg-gray-800
     .absolute.z-20.top-0.bottom-0.rounded-md.bg-primary{data: {range_slider_target: "progress"}}

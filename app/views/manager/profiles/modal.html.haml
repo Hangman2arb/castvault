@@ -37,7 +37,7 @@
     %section.mt-6{ data: { controller: "glightbox" } }
       %h2.text-2xl.font-semibold.text-left.mb-2.text-light
         = t('profile_modal.galery')
-      .flex.items-center.justify-center.rounded-xl.overflow-hidden
+      .flex.items-center.justify-center.rounded-xl.overflow-hidden.max-h-60
         - if @profile.face_photo.attached?
           %a.glightbox.aspect-square.w-full{ href: url_for(@profile.face_photo) }
             = image_tag @profile.face_photo, alt: "", class: "object-cover mx-auto my-auto h-full w-full"
@@ -79,40 +79,45 @@
 
       - if @profile.birthdate.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Birthdate: #{@profile.birthdate.strftime('%B %d, %Y')}"
+          = t('profile_modal.birthdate', birthdate: @profile.birthdate.strftime('%B %d, %Y'))
       - if @profile.gender.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Gender: #{@profile.gender}"
+          = t('profile_modal.gender', gender: @profile.gender)
       - if @profile.ethnicity.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Ethnicity: #{@profile.ethnicity}"
+          = t('profile_modal.ethnicity', ethnicity: @profile.ethnicity)
       - if @profile.height.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Height: #{@profile.height} cm"
+          = t('profile_modal.height', height: @profile.height)
       - if @profile.shirt_size.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Shirt Size: #{@profile.shirt_size}"
+          = t('profile_modal.shirt_size', shirt_size: @profile.shirt_size)
       - if @profile.pants_size.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Pants Size: #{@profile.pants_size}"
+          = t('profile_modal.pants_size', pants_size: @profile.pants_size)
       - if @profile.shoe_size.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Shoe Size: #{@profile.shoe_size}"
+          = t('profile_modal.shoe_size', shoe_size: @profile.shoe_size)
       - if @profile.hair_type.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Hair Type: #{@profile.hair_type}"
+          = t('profile_modal.hair_type', hair_type: @profile.hair_type)
       - if @profile.hair_color.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Hair Color: #{@profile.hair_color}"
+          = t('profile_modal.hair_color', hair_color: @profile.hair_color)
       - if @profile.eye_color.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Eye Color: #{@profile.eye_color}"
+          = t('profile_modal.eye_color', eye_color: @profile.eye_color)
       - if @profile.passport
         %p.text-sm.text-shadowy-200.mb-1
-          = 'Passport: Yes'
+          = t('profile_modal.passport')
       - if @profile.driving_license
         %p.text-sm.text-shadowy-200.mb-1
-          = 'Driving License: Yes'
+          = t('profile_modal.driving_license')
       - if @profile.food_allergies.present?
         %p.text-sm.text-shadowy-200.mb-1
-          = "Food Allergies: #{@profile.food_allergies}"
+          = t('profile_modal.food_allergies', food_allergies: @profile.food_allergies)
+
+  .flex.justify-center.pt-4
+    = button_to manager_profile_path(@profile), method: :delete, data: { turbo_confirm: t('profile_modal.delete_message') }, class: "btn-secondary" do
+      = t('actions_button_component.destroy_link')
+

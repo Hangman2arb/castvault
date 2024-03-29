@@ -117,3 +117,5 @@ class Profile < ApplicationRecord
   end
 
 end
+
+

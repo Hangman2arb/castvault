@@ -3,10 +3,10 @@
 class NavbarComponent < ViewComponent::Base
   def initialize
     @links = [
-      { name: "Product", url: "#product" },
-      { name: "Features", url: "#features" },
-      { name: "Marketplace", url: "#marketplace" },
-      { name: "Company", url: "#company" }
+      { name: I18n.t('nav_component.product'), url: "#product" },
+      { name: I18n.t('nav_component.features'), url: "#features" },
+      { name: I18n.t('nav_component.pricing'), url: "#pricing" }
     ]
   end
+
 end

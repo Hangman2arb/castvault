@@ -1,15 +1,17 @@
 .flex.flex-1.flex-col.text-center
   .mx-auto.h-32.w-32.flex-shrink-0.rounded-full.overflow-hidden.flex.items-center.align-middle
-    %img.h-32.w-32.rounded-full.object-cover{alt: "", src: @photo}
+    %img.h-32.w-32.rounded-full.object-cover{alt: "", src: photo}
   %h3.mt-6.text-md.font-medium.text-shadowy-200
-    = @name.blank? ? 'Nombre no especificado' : @name
+    = @name.blank? ? t('profile_card_component.no_firstname') : @name
   %dl.mt-1.flex.flex-grow.flex-col.justify-between
     %dt.sr-only
-      = @surname.blank? ? 'Apellidos no especificados' : @surname
+      = @surname.blank? ? t('profile_card_component.no_surname') : @surname
     %dd.text-md.text-shadowy-200
-      = @surname.blank? ? 'Apellidos no especificados' : @surname
+      = @surname.blank? ? t('profile_card_component.no_surname') : @surname
     %dt.sr-only
-      = @agency.blank? ? 'Agencia no especificada' : @agency
+      = @agency.blank? ? t('profile_card_component.no_agency') : @agency
     %dd.mt-3
-      %span.inline-flex.items-center.rounded-full.bg-green-50.px-2.py-1.text-xs.font-medium.text-third.ring-1.ring-inset{class: "ring-primary"}
-        = @agency.blank? ? 'Agencia no especificada' : @agency
+      - if @agency.blank?
+        = render BadgeComponent.new(text: t('profile_card_component.no_agency'), type: 'red')
+      - else
+        = render BadgeComponent.new(text: @agency, type: 'green')

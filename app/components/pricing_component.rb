@@ -38,7 +38,7 @@ class PricingComponent < ViewComponent::Base
   end
 
   def plan_classes(index)
-    (index == 1) ? 'flex flex-col rounded-3xl px-6 sm:px-8 order-first bg-blue-600 py-8 lg:order-none' : 'flex flex-col rounded-3xl px-6 sm:px-8 lg:py-8'
+    (index == 1) ? 'flex flex-col rounded-3xl px-6 sm:px-8 order-first bg-primary py-8 lg:order-none text-white' : 'flex flex-col rounded-3xl px-6 sm:px-8 lg:py-8'
   end
 
   def link_classes(index)
