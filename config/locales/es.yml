@@ -46,6 +46,11 @@ es:
     total_forms: Total Formularios
     total_profiles: Total Perfiles
   data_table_component:
+    available_until: Disponible hasta
+    available: Disponible
+    unavailable: No disponible
+    on: Encendido
+    off: Apagado
     action: Acciones
     actions: Acciones
     chat_name: Enviar a
@@ -227,6 +232,7 @@ es:
     web_link: Enlace a tu Web
   forms_controller:
     additional_info_placeholder: Mensaje informativo adicional
+    available_until: Disponible hasta
     description_label: Descripción
     destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
     edit_title: Editar Formulario
@@ -601,3 +607,45 @@ es:
     product: "Producto"
     features: "Características"
     pricing: "Precios"
+  sidebar_component:
+    dashboard: "Tablero"
+    profiles: "Perfiles"
+    forms: "Formulario"
+    clients: "Clientes"
+    settings: "Configuraciones"
+  product_section:
+    title: "Revoluciona Tu Proceso de Casting"
+    subtitle: "Agiliza tu casting con formularios Personalizados"
+    description: "Castvault es una plataforma innovadora diseñada para directores de casting y profesionales de la industria, facilitando la creación de formularios personalizados y la gestión eficaz de perfiles de talentos."
+    analytics:
+      title: "Analítica"
+      description: "Obtén análisis detallados y perspectivas en tiempo real para tomar decisiones informadas sobre tus talentos y producciones."
+    customizable:
+      title: "Personalizable"
+      description: "Crea formularios a medida con parámetros específicos que se adaptan a las necesidades únicas de tu casting o proyecto."
+    shareable:
+      title: "Compartible"
+      description: "Facilita la colaboración y compartición de perfiles y álbumes con tu equipo o clientes, mejorando la eficiencia en el proceso de selección."
+  manager:
+    forms:
+      no_date_found: Sin Fecha
+  unavailable_page:
+    title: "Formulario no disponible"
+    message: "Lo sentimos, este formulario ya no está disponible."
+  features_section:
+    title: "Todo lo que necesitas para tu casting"
+    subtitle: "Crea formularios a medida, fácilmente"
+    description: "Personaliza tus formularios de casting, define qué información necesitas y organiza los datos de manera eficiente."
+  features:
+    customization: "Personalización Completa"
+    customization_description: "Personaliza cada formulario eligiendo entre una variedad de campos detallados."
+    media_uploads: "Carga de Medios"
+    media_uploads_description: "Los usuarios pueden subir fotos y videos para crear perfiles más ricos y expresivos."
+    diversity_options: "Opciones de Diversidad"
+    diversity_options_description: "Captura la diversidad de los candidatos con campos para etnicidad, género y más."
+    accessibility: "Accesibilidad"
+    accessibility_description: "Formularios accesibles y fáciles de usar para una recopilación de datos eficiente."
+    dynamic_fields: "Campos Dinámicos"
+    dynamic_fields_description: "Incluye campos que se adaptan a las necesidades específicas de tu casting."
+    profile_management: "Gestión de Perfiles"
+    profile_management_description: "Organiza y gestiona los perfiles de talentos eficientemente en un solo lugar."

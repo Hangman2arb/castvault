@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_28_164617) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_30_060745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_28_164617) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "token"
+    t.date "available_until"
     t.index ["token"], name: "index_forms_on_token", unique: true
     t.index ["user_id"], name: "index_forms_on_user_id"
   end

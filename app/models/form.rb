@@ -11,7 +11,7 @@ class Form < ApplicationRecord
   before_create :generate_unique_token
 
 
-  DATA_FOR_SHOW = [ :id, :name, :submissions_count, :updated_at, :edit_link, :destroy_link, :copy_form_link ] #, :show_link
+  DATA_FOR_SHOW = [ :id, :name, :submissions_count, :available_until, :availability, :edit_link, :destroy_link, :copy_form_link ] #, :show_link
   KEYS_FOR_HIDE = [:id, :edit_link, :destroy_link, :copy_form_link] #, :show_link
   SEARCHABLE_KEYS  = ['name']
   SORTING_KEYS  = ['name']

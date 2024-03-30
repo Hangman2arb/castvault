@@ -3,6 +3,8 @@
   .mb-4.mt-10
     .mb-4.w-80
       = render InputComponent.new(key: :name, label: t('forms_controller.form_name_label'), placeholder: t('forms_controller.form_name_placeholder'), model: @form, form: form)
+    .mb-4.w-80
+      = render InputComponent.new(key: :available_until, label: t('forms_controller.available_until'), model: @form, form: form, datetimepicker: true, time_zone: current_user.time_zone)
     .mb-4.flex.justify-start
       = render UploadFileComponent.new( form: form,
                                         model: :form,

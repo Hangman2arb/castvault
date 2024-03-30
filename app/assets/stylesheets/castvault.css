@@ -25,3 +25,25 @@
 .modal-content::-webkit-scrollbar-thumb:hover {
     background-color: #0EA99F;
 }
+
+.custom-profile-container {
+    margin-top: 24px;
+    display: grid;
+    grid-gap: 24px;
+    justify-content: center;
+}
+
+/* Pantallas pequeñas: mostrar 2 tarjetas */
+@media (max-width: 344px) {
+    .custom-profile-container {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+    }
+}
+
+/* Pantallas más grandes: ajustar según sea necesario */
+@media (min-width: 345px) {
+    .custom-profile-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+

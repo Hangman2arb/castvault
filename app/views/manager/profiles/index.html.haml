@@ -80,8 +80,9 @@
           = @total_count
 
     = turbo_frame_tag "profiles-#{@pagy.page}", class: 'profiles' do
-      %ul.grid.grid-cols-fill.gap-6.mt-6{role: "list"}
+      .custom-profile-container{role: "list"}
         = render partial: 'profile', collection: @profiles
       = turbo_frame_tag "profiles-#{@pagy.next}", class: 'products', src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next
+
 
     = turbo_frame_tag 'profile_modal'

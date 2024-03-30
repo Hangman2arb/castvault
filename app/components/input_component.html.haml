@@ -1,8 +1,12 @@
 .form-group
   - if @label
     = @form.label @key, @label, class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200', id: "label_profile_#{@key}"
-  - form_value = params[@key] || (@form.object.present? ? @form.object.send(@key) : nil)
-  = @form.public_send(@type, @key, value: form_value, class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: @placeholder)
+  - if @datetimepicker
+    - date_value = @form.object.send(@key)&.strftime('%Y-%m-%d %H:%M') || Time.current.strftime('%Y-%m-%d %H:%M')
+    = @form.text_field @key, value: date_value, class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', data: { controller: 'datetimepicker' }
+  - else
+    - form_value = params[@key] || (@form.object.present? ? @form.object.send(@key) : nil)
+    = @form.public_send(@type, @key, value: form_value, class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: @placeholder)
   - if @model&.errors&.[](@key)&.present?
     .text-red-500.text-sm
       = @model.errors[@key].first

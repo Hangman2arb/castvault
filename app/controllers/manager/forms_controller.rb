@@ -1,7 +1,7 @@
 class Manager::FormsController < ApplicationController
   before_action :authenticate_user!, except: [:show_form, :thank_you_page]
 
-  layout 'form', only: [:show_form, :thank_you_page]
+  layout 'form', only: [:show_form, :thank_you_page, :unavailable_page]
   def index
     @title = t('forms_controller.index_title')
     @description = t('forms_controller.index_description')
@@ -121,6 +121,10 @@ class Manager::FormsController < ApplicationController
     @form = Form.find_by(token: params[:token])
     return render plain: t('forms_controller.not_found'), status: :not_found unless @form
 
+    if !@form.available_until.present? || Date.current > @form.available_until
+      return redirect_to unavailable_page_path(token: @form.token)
+    end
+
     @profile = Profile.new
     @filtered_admited_form_fields = {}
     @filtered_featured_options = {}
@@ -144,6 +148,12 @@ class Manager::FormsController < ApplicationController
     @form = Form.find_by(token: params[:token])
     @home_page_link = @form.user.web_link
   end
+
+  def unavailable_page
+    @form = Form.find_by(token: params[:token])
+    @home_page_link = @form.user.web_link
+  end
+
 
   def destroy
     if form.destroy
@@ -180,8 +190,18 @@ class Manager::FormsController < ApplicationController
         #   form_data_hash[key] = manager_form_path(form)
         when :destroy_link
           form_data_hash[key] = manager_form_path(form)
-        when :updated_at
-          form_data_hash[key] = global_date_format(form[key].in_time_zone(current_user.time_zone))
+        when :available_until
+          form_data_hash[key] = form_data_hash[key] = global_date_format(form[key])
+        when :availability
+          if form[:available_until]
+            if form[:available_until].to_date >= Date.today
+              form_data_hash[key] = BadgeComponent.new(text: t('data_table_component.available'), type: 'green')
+            else
+              form_data_hash[key] = BadgeComponent.new(text: t('data_table_component.unavailable'), type: 'red')
+            end
+          else
+            form_data_hash[key] = BadgeComponent.new(text: t('data_table_component.unavailable'), type: 'red')
+          end
         when :name
           image_url = form.description_photo.attached? ? url_for(form.description_photo) : nil
           form_data_hash[key] = AvatarComponent.new(image_url: image_url, size: :large, text: form[key], zoomable: true).render_in(view_context)
@@ -203,7 +223,7 @@ class Manager::FormsController < ApplicationController
 
     fields_params = (params.dig(:form, :fields) || {}).select { |key, _| permitted_keys.include?(key.to_sym) }
 
-    params.require(:form).permit(:name, :description, :description_photo).merge(fields: fields_params).permit!
+    params.require(:form).permit(:name, :description, :description_photo, :available_until).merge(fields: fields_params).permit!
   end
 
 

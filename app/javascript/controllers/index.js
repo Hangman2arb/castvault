@@ -19,6 +19,9 @@ application.register("copy-link-modal", CopyLinkModalController)
 import CustomCheckboxController from "./custom_checkbox_controller"
 application.register("custom-checkbox", CustomCheckboxController)
 
+import DatetimepickerController from "./datetimepicker_controller"
+application.register("datetimepicker", DatetimepickerController)
+
 import FieldCheckboxController from "./field_checkbox_controller"
 application.register("field-checkbox", FieldCheckboxController)
 

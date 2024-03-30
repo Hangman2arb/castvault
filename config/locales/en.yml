@@ -46,6 +46,11 @@ en:
     total_forms: Total Forms
     total_profiles: Total Profiles
   data_table_component:
+    available_until: Available until
+    available: Available
+    unavailable: Unavailable
+    on: On
+    off: Off
     action: Action
     actions: Actions
     chat_name: Send to
@@ -227,6 +232,7 @@ en:
     web_link: Link to your Web
   forms_controller:
     additional_info_placeholder: Additional informational message
+    available_until: Available until
     description_label: Description
     destroy_message: You are going to delete the form and will not be able to recover it.
     edit_title: Edit Form
@@ -601,3 +607,45 @@ en:
     product: "Product"
     features: "Features"
     pricing: "Pricing"
+  sidebar_component:
+    dashboard: "Dashboard"
+    profiles: "Profiles"
+    forms: "Form"
+    clients: "Clients"
+    settings: "Settings"
+  product_section:
+    title: "Revolutionize Your Casting Process"
+    subtitle: "Streamline your casting with Custom forms"
+    description: "Castvault is an innovative platform designed for casting directors and industry professionals, facilitating the creation of customized forms and effective talent profile management."
+    analytics:
+      title: "Analytics"
+      description: "Gain detailed insights and real-time analytics to make informed decisions about your talents and productions."
+    customizable:
+      title: "Customizable"
+      description: "Create tailored forms with specific parameters that suit the unique needs of your casting or project."
+    shareable:
+      title: "Shareable"
+      description: "Enhance collaboration and share profiles and albums with your team or clients, improving efficiency in the selection process."
+  manager:
+    forms:
+      no_date_found: No Date
+  unavailable_page:
+    title: "Form not available"
+    message: "Sorry, this form is no longer available."
+  features_section:
+    title: "Everything you need for your casting"
+    subtitle: "Create custom forms, easily"
+    description: "Customize your casting forms, define the information you need, and organize data efficiently."
+  features:
+    customization: "Complete Customization"
+    customization_description: "Customize each form by choosing from a variety of detailed fields."
+    media_uploads: "Media Uploads"
+    media_uploads_description: "Users can upload photos and videos to create richer, more expressive profiles."
+    diversity_options: "Diversity Options"
+    diversity_options_description: "Capture the diversity of candidates with fields for ethnicity, gender, and more."
+    accessibility: "Accessibility"
+    accessibility_description: "Accessible and easy-to-use forms for efficient data collection."
+    dynamic_fields: "Dynamic Fields"
+    dynamic_fields_description: "Include fields that adapt to the specific needs of your casting."
+    profile_management: "Profile Management"
+    profile_management_description: "Organize and manage talent profiles efficiently in one place."

@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Utilities
   include ApplicationHelper
+  include SetTimeZone
 end

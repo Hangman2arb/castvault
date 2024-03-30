@@ -17,6 +17,7 @@
     "debounce": "^2.0.0",
     "esbuild": "0.16.17",
     "esbuild-plugin-sass": "^1.0.1",
+    "flatpickr": "^4.6.13",
     "glightbox": "^3.3.0",
     "http": "^0.0.1-security",
     "i18n-js": "^4.4.3",

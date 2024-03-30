@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # Outside Links
   get 'forms/thank_you_page', to: 'manager/forms#thank_you_page', as: :thank_you_page
   get 'forms/:token', to: 'manager/forms#show_form', as: :show_form
+  get 'forms/unavailable_page/:token', to: 'manager/forms#unavailable_page', as: :unavailable_page
 
   namespace :manager do
     root 'dashboard#index', menu_option_id: 'dashboard'

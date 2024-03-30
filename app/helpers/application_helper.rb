@@ -12,9 +12,17 @@ module ApplicationHelper
     link_to link_content, request.params.merge(sort: header, direction: direction), class: 'sort-link', remote: true
   end
 
-  def global_date_format(date)
+  def global_datetime_format(date)
     if date
       date.strftime('%d / %m / %Y - %H:%M')
+    else
+      t('.no_date_found')
+    end
+  end
+
+  def global_date_format(date)
+    if date
+      date.strftime('%d / %m / %Y')
     else
       t('.no_date_found')
     end

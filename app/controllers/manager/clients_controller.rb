@@ -84,7 +84,7 @@ class Manager::ClientsController < ApplicationController
         when :destroy_link
           client_data_hash[key] = manager_client_path(client)
         when :created_at
-          client_data_hash[key] = global_date_format(client[key])
+          client_data_hash[key] = global_datetime_format(client[key])
         else
           client_data_hash[key] = client[key]
         end
