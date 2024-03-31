@@ -125,10 +125,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_30_060745) do
     t.boolean "fiction", default: false
     t.boolean "advertising", default: false
     t.bigint "form_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["form_id"], name: "index_profiles_on_form_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -190,5 +191,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_30_060745) do
   add_foreign_key "forms", "users"
   add_foreign_key "profile_tags", "profiles"
   add_foreign_key "profile_tags", "tags"
-  add_foreign_key "profiles", "users", name: "profiles_user_id_fkey"
 end

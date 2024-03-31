@@ -1,15 +1,14 @@
 = turbo_frame_tag 'modal' do
-  .modal-background{data: {controller: 'modal'}}
-    .fixed.inset-0.bg-gray-500.bg-opacity-75.transition-opacity.z-50
-      .modal-container.relative.mx-auto.my-24.w-full.max-w-md.bg-light.rounded-lg.shadow-lg.p-6.z-50
-        %h2.text-lg.font-semibold.text-gray-900
-          Invitar nuevo afiliado
-        = form_with url: invite_manager_clients_path, method: "post", data: { turbo_frame: '_top' } do |form|
-          .form-group.my-6
-            = render InputComponent.new(key: :email, label: t('fields.email'), form: form)
-          .actions.mt-4.flex.justify-end.gap-4
-            %button.btn-primary{type: "submit"}
-              Enviar invitación
-            %button.btn-secondary{"data-action" => "click->modal#close"}
-              Cerrar
+  .fixed.inset-0.bg-light.bg-opacity-50.transition-opacity.z-50.backdrop-blur{data: {controller: 'modal'}}
+    .modal-container.relative.mx-auto.my-24.w-full.max-w-md.bg-shadowy-700.rounded-lg.shadow-lg.p-6.z-50
+      %h2.text-lg.font-semibold.text-white
+        Invitar nuevo afiliado
+      = form_with url: invite_manager_clients_path, method: "post", data: { turbo_frame: '_top' } do |form|
+        .form-group.my-6
+          = render InputComponent.new(key: :email, label: t('fields.email'), form: form)
+        .actions.mt-4.flex.justify-end.gap-4
+          %button.btn-primary{type: "submit"}
+            Enviar invitación
+          %button.btn-secondary{"data-action" => "click->modal#close"}
+            Cerrar
 

@@ -37,25 +37,25 @@
       .mx-auto.mt-16.max-w-2xl.sm:mt-20.lg:mt-24.lg:max-w-none
         %dl.grid.max-w-xl.grid-cols-1.gap-x-8.gap-y-16.lg:max-w-none.lg:grid-cols-3
           .flex.flex-col
-            %dt.text-base.font-semibold.leading-7.text-dark
+            %dt.text-white.font-semibold.leading-7.text-dark
               .mb-6.flex.h-10.w-10.items-center.justify-center.rounded-lg.bg-primary
-                = render BootstrapIconWithTextComponent.new(icon: 'graph-up')
+                = render BootstrapIconWithTextComponent.new(icon: 'graph-up', extra_classes: 'text-dark')
               = t('product_section.analytics.title')
             %dd.mt-1.flex.flex-auto.flex-col.text-base.leading-7.text-gray-300
               %p.flex-auto
                 = t('product_section.analytics.description')
           .flex.flex-col
-            %dt.text-base.font-semibold.leading-7.text-dark
+            %dt.text-white.font-semibold.leading-7.text-dark
               .mb-6.flex.h-10.w-10.items-center.justify-center.rounded-lg.bg-primary
-                = render BootstrapIconWithTextComponent.new(icon: 'sliders')
+                = render BootstrapIconWithTextComponent.new(icon: 'sliders', extra_classes: 'text-dark')
               = t('product_section.customizable.title')
             %dd.mt-1.flex.flex-auto.flex-col.text-base.leading-7.text-gray-300
               %p.flex-auto
                 = t('product_section.customizable.description')
           .flex.flex-col
-            %dt.text-base.font-semibold.leading-7.text-dark
+            %dt.text-white.font-semibold.leading-7.text-dark
               .mb-6.flex.h-10.w-10.items-center.justify-center.rounded-lg.bg-primary
-                = render BootstrapIconWithTextComponent.new(icon: 'share')
+                = render BootstrapIconWithTextComponent.new(icon: 'share', extra_classes: 'text-dark')
               = t('product_section.shareable.title')
 
             %dd.mt-1.flex.flex-auto.flex-col.text-base.leading-7.text-gray-300
