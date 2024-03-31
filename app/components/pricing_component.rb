@@ -1,6 +1,6 @@
 class PricingComponent < ViewComponent::Base
 
-  NUM_OF_FEATURES = 5
+  NUM_OF_FEATURES = 4
 
   def initialize(for_manager: false)
     @prices_monthly = fetch_prices_with_cache('prices_monthly', %w[basic_monthly pro_monthly elite_monthly])
@@ -38,7 +38,7 @@ class PricingComponent < ViewComponent::Base
   end
 
   def plan_classes(index)
-    (index == 1) ? 'flex flex-col rounded-3xl px-6 sm:px-8 order-first bg-primary py-8 lg:order-none text-white' : 'flex flex-col rounded-3xl px-6 sm:px-8 lg:py-8'
+    (index == 1) ? 'flex flex-col rounded-3xl px-6 sm:px-8 order-first bg-primary py-8 lg:order-none text-dark' : 'flex flex-col text-white ring-1 ring-primary rounded-3xl px-6 sm:px-8 lg:py-8'
   end
 
   def link_classes(index)
@@ -46,15 +46,15 @@ class PricingComponent < ViewComponent::Base
   end
 
   def list_text_classes(index)
-    (index == 1) ? 'text-white' : 'text-slate-200'
+    (index == 1) ? 'text-dark' : 'text-white'
   end
 
   def description_text_classes(index)
-    (index == 1) ? 'text-white' : 'text-slate-400'
+    (index == 1) ? 'text-dark' : 'text-light'
   end
 
   def icon_classes(index)
-    (index == 1) ? 'h-6 w-6 flex-none fill-current stroke-current text-white' : 'h-6 w-6 flex-none fill-current stroke-current text-slate-400'
+    (index == 1) ? 'h-6 w-6 flex-none fill-current stroke-current text-dark' : 'h-6 w-6 flex-none fill-current stroke-current text-light'
   end
 
   def rounded_classes(index)

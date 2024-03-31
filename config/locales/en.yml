@@ -338,50 +338,66 @@ en:
     sign_up_to_castvault: Sign up to CastVault
     update: Update
   landing_pricing_component:
+    vat_excluded: "These prices do not include VAT"
     annually: Annually
-    choose_plan: Choose an affordable plan packed with the best features to engage your audience, create customer loyalty, and boost sales.
-    discount_applied: Receive 2 Months for FREE when contracting the Annual plan.
+    choose_plan: Choose an affordable plan packed with top features to attract your audience, create customer loyalty, and boost sales.
+    discount_applied: Get 2 Months totally FREE when you sign up for the Annual plan.
     features:
+      mini:
+        '0': "<b>10 GB</b> of storage to efficiently manage your profiles and projects."
+        '1': "Create custom forms to collect specific data from candidates."
+        '2': "Use an advanced profile viewer with detailed filtering options."
+        '3': "Share profile albums with users within your professional network."
       basic:
-        '0': Manage 1 Telegram Group
-        '1': Advanced metrics and data
-        '2': Group, Permissions, and User Management
-        '3': Automated messages
-        '4': Integrate your own AI ChatBOT
-        '5': Receive daily status and predictive reports
-      elite:
-        '0': Manage 10 Telegram Groups
-        '1': Advanced metrics and data
-        '2': Group, Permissions, and User Management
-        '3': Automated messages
-        '4': Integrate your own AI ChatBOT
-        '5': Receive daily status and predictive reports
+        '0': "<b>50 GB</b> of storage, ideal for freelancers or small productions."
+        '1': "Full access to form creation and customization."
+        '2': "Advanced search to explore and manage profiles effectively."
+        '3': "Ease of sharing albums and collaborating with other industry professionals."
+      standard:
+        '0': "<b>100 GB</b> of storage to handle a larger volume of profiles and data."
+        '1': "Manage multiple projects with the flexibility to customize every aspect."
+        '2': "Leverage advanced functionalities for filtering and selecting candidates."
+        '3': "Share profile albums securely and efficiently with your team or clients."
       pro:
-        '0': Manage 3 Telegram Groups
-        '1': Advanced metrics and data
-        '2': Group, Permissions, and User Management
-        '3': Automated messages
-        '4': Integrate your own AI ChatBOT
-        '5': Receive daily status and predictive reports
+        '0': "<b>250 GB</b> of storage, perfect for growing companies with extensive needs."
+        '1': "Advanced customization capabilities and form management."
+        '2': "Use advanced filtering and search tools to optimize your selections."
+        '3': "Integrate your team in album management and collaborate in real-time."
+      elite:
+        '0': "<b>500 GB</b> of storage for large enterprises and producers with high-volume demands."
+        '1': "Maximum customization capacity and management of large data amounts."
+        '2': "Access all advanced functionalities for optimal selection and filtering."
+        '3': "Share and collaborate on profile albums at a large scale within your organization."
+      enterprise:
+        '0': "Custom storage and capabilities to meet your organization's specific requirements."
+        '1': "Extreme form customization, advanced filtering, and album sharing."
+        '2': "Priority support and custom integration options to align with your existing systems."
+        '3': "Consulting and implementation assistance to ensure a smooth transition and operation."
     for_everyone: for everyone.
     get_a_discount: Get a 15% discount with the annual plan
-    get_started: Get started with the %{product_name} plan for %{price}
+    get_started: Start with the %{product_name} plan for %{price}
     monthly: Monthly
     monthly_description:
-      basic: This plan lets you manage <b>1 group</b> on Telegram. With all the features that make Metricgram the best tool for managing communities on Telegram.
-      elite: This plan lets you manage <b>10 groups</b> on Telegram. Perfect for admin groups managing up to 10 different communities.
-      pro: This plan lets you manage <b>3 groups</b> on Telegram. Perfect for people who have multiple communities on Telegram or a small group of administrators.
+      mini: "Start exploring Castvault with the Mini plan. Ideal for new users or small projects, this plan offers <b>10GB</b> of storage, allowing you to manage your profiles and projects efficiently. Discover casting management efficiency with Castvault."
+      basic: "The Basic plan is perfect for independent professionals or small productions. With <b>50GB</b> of storage, it facilitates the organization and access to a broad talent base, giving you the flexibility to manage your data effectively."
+      standard: "Our Standard plan provides a robust solution with <b>100GB</b> of storage. It's ideal for growing businesses or projects with moderate storage needs, offering ample space to manage your profiles and projects."
+      pro: "Choose the Pro plan if you need more space and flexibility. With <b>250GB</b> of storage, it adapts to large productions or agencies with multiple projects, providing extensive capacity for your data management."
+      elite: "The Elite plan is the ultimate solution for large enterprises and producers, offering <b>500GB</b> of storage. Experience maximum capacity and efficiency in your casting management, with ample space for all your profiles and projects."
+      enterprise: "For specific and customized needs, the Enterprise plan offers tailor-made solutions. Contact us to design a plan that perfectly fits the unique requirements of your organization or project, providing the storage and features you need."
     most_popular: Most Popular
     payment_frequency: Payment Frequency
     per_month: "/month"
     per_year: "/year"
     pricing: Pricing
-    simple_pricing: Simple pricing,
-    size_message: No matter the size of your business, our software will work well for you.
+    simple_pricing: Simple Pricing,
+    size_message: No matter the size of your business, our software will work great for you.
     yearly_description:
-      basic: This plan lets you manage <b>1 group</b> on Telegram. With all the features that make Metricgram the best tool for managing communities on Telegram.
-      elite: This plan lets you manage <b>10 groups</b> on Telegram. Perfect for admin groups managing up to 10 different communities.
-      pro: This plan lets you manage <b>3 groups</b> on Telegram. Perfect for people who have multiple communities on Telegram or a small group of administrators.
+      mini: "Start exploring Castvault with the Mini plan. Ideal for new users or small projects, this plan offers <b>10GB</b> of storage, allowing you to manage your profiles and projects efficiently. Discover casting management efficiency with Castvault."
+      basic: "The Basic plan is perfect for independent professionals or small productions. With <b>50GB</b> of storage, it facilitates the organization and access to a broad talent base, giving you the flexibility to manage your data effectively."
+      standard: "Our Standard plan provides a robust solution with <b>100GB</b> of storage. It's ideal for growing businesses or projects with moderate storage needs, offering ample space to manage your profiles and projects."
+      pro: "Choose the Pro plan if you need more space and flexibility. With <b>250GB</b> of storage, it adapts to large productions or agencies with multiple projects, providing extensive capacity for your data management."
+      elite: "The Elite plan is the ultimate solution for large enterprises and producers, offering <b>500GB</b> of storage. Experience maximum capacity and efficiency in your casting management, with ample space for all your profiles and projects."
+      enterprise: "For specific and customized needs, the Enterprise plan offers tailor-made solutions. Contact us to design a plan that perfectly fits the unique requirements of your organization or project, providing the storage and features you need."
   password_change:
     instruction: We are contacting you to notify you that your password has been changed.
   profile_modal:
@@ -599,6 +615,8 @@ en:
     simplify_talent_selection: "Simplify talent selection with Castvault"
     description: "Create customized forms to collect profiles and assist casting directors in finding the ideal talent for their projects. With Castvault, organizing and filtering applications is easier than ever."
     get_started: "Get started"
+    app_message: "Boost your productivity.<br/>Start using our app today."
+    app_feature_message: "Customize your casting forms with Castvault. Tailor every detail to fit your needs and streamline your selection process.<br/>Start creating your perfect casting environment today."
   profile_card_component:
     no_firstname: "No name"
     no_surname: "No surname"
@@ -649,3 +667,17 @@ en:
     dynamic_fields_description: "Include fields that adapt to the specific needs of your casting."
     profile_management: "Profile Management"
     profile_management_description: "Organize and manage talent profiles efficiently in one place."
+  shared_albums:
+    title: "Shared Albums"
+    subtitle: "A Better Workflow"
+    description: "Discover a more efficient way to share and manage your albums."
+    features:
+      invitation_access:
+        title: "Invitation and Access"
+        description: "Invite other users to access and view your shared albums."
+      album_viewing:
+        title: "Album Viewing"
+        description: "View albums that other users have shared with you."
+      album_management:
+        title: "Album Management"
+        description: "Organize and manage your albums efficiently."

@@ -10,7 +10,9 @@
         %a.text-sm.font-semibold.leading-6.text-white{href: link[:url]}= link[:name]
     .flex.flex-1.items-center.justify-end.gap-x-6
       %a.hidden.lg:block.lg:text-sm.lg:font-semibold.lg:leading-6.lg:text-white{href: "/users/sign_in", "data-turbo" => "false"} Log in
-      %a.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-indigo-500.focus-visible:outline.focus-visible:outline-2.focus-visible:outline-offset-2.focus-visible:outline-indigo-600{href: "/users/sign_up"} Sign up
+      .hidden.lg:block
+        %a.btn-primary{href: "/users/sign_up"}
+          = t('labels.sign_up')
     .flex.lg:hidden
       %button.inline-flex.items-center.justify-center.rounded-md.text-gray-700{class: "-m-2.5 p-2.5", type: "button", data: {action: 'navbar#toggleMobileMenu'}}
         %span.sr-only Open main menu
@@ -25,7 +27,8 @@
         %a{class: "-m-1.5 p-1.5", href: "#"}
           %span.sr-only Castvault
           = image_tag('castvault.png', class: 'w-32 lg:w-48')
-        %a.ml-auto.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm.hover:bg-indigo-500.focus-visible:outline.focus-visible:outline-2.focus-visible:outline-offset-2.focus-visible:outline-indigo-600{href: "#"} Sign up
+        %a.ml-auto.btn-primary{href: "user/sign_up"}
+          = t('labels.sign_up')
         %button.rounded-md.text-white{class: "-m-2.5 p-2.5", type: "button", data: {action: 'navbar#toggleMobileMenu'}}
           %span.sr-only Close menu
           %svg.h-6.w-6{'aria-hidden': "true", fill: "none", stroke: "currentColor", "stroke-width" => "1.5", viewbox: "0 0 24 24"}

@@ -78,8 +78,8 @@
 
 
 -else
-  %section#pricing.py-20.sm:py-32{"aria-label" => t('landing_pricing_component.pricing')}
-    .mx-auto.max-w-7xl.px-4.sm:px-6.lg:px-8{data: {controller: 'periodicity-selector'} }
+  %section#pricing.py-20{class: 'sm:py-32', "aria-label" => t('landing_pricing_component.pricing')}
+    .mx-auto.max-w-7xl.px-4{class: 'sm:px-6 lg:px-8', data: {controller: 'periodicity-selector'} }
       .md:text-center
         %h2.font-display.text-3xl.tracking-tight.text-white.sm:text-4xl
           %span.relative.whitespace-nowrap
@@ -88,46 +88,47 @@
             %span.relative
               = t('landing_pricing_component.simple_pricing')
           = t('landing_pricing_component.for_everyone')
-        %p.mt-4.text-lg.text-slate-400
+        %p.mt-4.text-lg.text-white.slate-400
           = t('landing_pricing_component.size_message')
-        %p.mx-auto.mt-6.max-w-2xl.text-center.text-lg.leading-8.text-white= t('landing_pricing_component.choose_plan')
         .mt-16.flex.justify-center
-          %fieldset.grid.grid-cols-2.gap-x-1.rounded-full.p-1.text-center.text-xs.font-semibold.leading-5.text-white{class: "bg-white/5"}
+          %fieldset.grid.grid-cols-2.gap-x-1.rounded-full.p-1.text-center.text-xs.font-semibold.leading-5{class: "bg-white/5"}
             %legend.sr-only= t('landing_pricing_component.payment_frequency')
-            %label.bg-primary.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out{class: "px-2.5", data: { periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
-              %input.sr-only{name: "frequency", type: "radio", value: "monthly"}
+            %label.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out.text-shadowy-200{class: "px-2.5", data: { periodicity_selector_target: 'labelMonthly', action: 'click->periodicity-selector#priceMonthly' }}
+              %input.sr-only{name: "frequency", type: "radio", value: "monthly", data: { action: "change->periodicity-selector#toggleClass" }}
               %span= t('landing_pricing_component.monthly')
-            %label.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out{class: "px-2.5", data: { periodicity_selector_target: 'label', action: 'click->periodicity-selector#toggleClass' }}
-              %input.sr-only{name: "frequency", type: "radio", value: "annually"}
+            %label.bg-primary.cursor-pointer.rounded-full.py-1.transition-colors.duration-300.ease-in-out{class: "px-2.5", data: { periodicity_selector_target: 'labelYearly', action: 'click->periodicity-selector#priceYearly' }}
+              %input.sr-only{name: "frequency", type: "radio", value: "annually", data: { action: "change->periodicity-selector#toggleClass" }}
               %span= t('landing_pricing_component.annually')
 
-      .-mx-4.mt-16.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8{ data: { periodicity_selector_target: "monthlyPrices" } }
+
+      .hidden.-mx-4.mt-16.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8{ data: { periodicity_selector_target: "monthlyPrices" } }
         - @prices_monthly.each_with_index do |price, index|
           %section{class: plan_classes(index)}
-            %h3.mt-5.font-display.text-lg.text-white
+            %h3.mt-5.font-display.text-lg
               = price.product.name
             %p.mt-2.text-base{class: description_text_classes(index)}
               = price.product.description
-            %p.order-first.font-display.text-5xl.font-light.tracking-tight.text-white
+            %p.order-first.font-display.text-5xl.font-light.tracking-tight
               = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n%u/mes")
             %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(index), role: "list"}
               - @features[price.product.name.downcase].each do |feature|
                 %li.flex
                   = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
-                  %span.ml-4= feature
+                  %span.ml-4
+                    = feature.html_safe
 
-      .hidden{ data: { periodicity_selector_target: "annuallyPrices" } }
-        %p.text-sm.text-green-200.font-semibold.text-center.mt-4
+      %div{ data: { periodicity_selector_target: "annuallyPrices" } }
+        %p.text-sm.text-white.font-semibold.text-center.mt-4
           = t('landing_pricing_component.discount_applied')
         .-mx-4.mt-9.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8
           - @prices_yearly.each_with_index do |price, index|
             %section{class: plan_classes(index)}
               .flex.items-baseline.gap-x-2
-                %span.line-through.text-white
+                %span.line-through
                   = number_to_currency((@prices_monthly[index].unit_amount / 100.0) * 12, unit: '€', format: "%n%u/año")
-                %p.order-first.font-display.text-5xl.font-light.tracking-tight.text-white.ml-2
+                %p.order-first.font-display.text-5xl.font-light.tracking-tight.ml-2
                   = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n%u")
-              %h3.mt-5.font-display.text-lg.text-white
+              %h3.mt-5.font-display.text-lg
                 = price.product.name
               %p.mt-2.text-base{class: description_text_classes(index)}
                 = price.product.description
@@ -136,7 +137,9 @@
                   %li.flex
                     = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
                     %span.ml-4
-                      = feature
+                      = feature.html_safe
+      .flex.justify-center.text-sm.text-white.mt-6
+        = "* #{t('landing_pricing_component.vat_excluded')}"
       .mt-10.flex.justify-center.gap-x-6
-        %a.group.inline-flex.items-center.justify-center.rounded-full.py-2.px-4.text-sm.font-semibold.focus:outline-none.focus-visible:outline-2.focus-visible:outline-offset-2.bg-white.text-slate-900.hover:bg-slate-700.hover:text-slate-100.active:bg-slate-800.active:text-slate-300.focus-visible:outline-slate-900{href: new_user_registration_path}
-          = t('landing_page_controller.call_to_action')
+        %a.btn-primary{href: new_user_registration_path}
+          = t('landing_page.get_started')

@@ -1,35 +1,35 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="periodicity-selector"
 export default class extends Controller {
-  static targets = ["label", "monthlyPrices", "annuallyPrices"];
+  static targets = ["labelMonthly", "labelYearly", "monthlyPrices", "annuallyPrices"];
 
-  toggleClass() {
-    this.labelTargets.forEach((label) => {
-      const input = label.querySelector("input");
-      const isChecked = input.checked;
-      const isForManager = label.dataset.type === 'for_manager';
+  priceMonthly() {
+    this.labelMonthlyTarget.classList.add("bg-primary");
+    this.labelMonthlyTarget.classList.remove("bg-transparent");
+    this.labelMonthlyTarget.classList.add("text-dark");
+    this.labelMonthlyTarget.classList.remove("text-shadowy-200");
 
-      label.classList.toggle("bg-primary", isChecked && isForManager);
-      label.classList.toggle("bg-transparent", !isChecked);
+    this.labelYearlyTarget.classList.remove("bg-primary");
+    this.labelYearlyTarget.classList.add("bg-transparent");
+    this.labelYearlyTarget.classList.remove("text-dark");
+    this.labelYearlyTarget.classList.add("text-shadowy-200");
 
-      if (isForManager) {
-        label.classList.toggle("text-white", isChecked);
-        label.classList.toggle("text-shadowy-200", !isChecked);
-      }
-
-      if (input.value === "monthly") {
-        this.toggleVisibility(isChecked, this.monthlyPricesTarget, this.annuallyPricesTarget);
-      } else if (input.value === "annually") {
-        this.toggleVisibility(isChecked, this.annuallyPricesTarget, this.monthlyPricesTarget);
-      }
-    });
+    this.monthlyPricesTarget.classList.remove("hidden");
+    this.annuallyPricesTarget.classList.add("hidden");
   }
 
-  toggleVisibility(isChecked, toShow, toHide) {
-    if (isChecked) {
-      toShow.classList.remove("hidden");
-      toHide.classList.add("hidden");
-    }
+  priceYearly() {
+    this.labelMonthlyTarget.classList.remove("bg-primary");
+    this.labelMonthlyTarget.classList.add("bg-transparent");
+    this.labelMonthlyTarget.classList.remove("text-dark");
+    this.labelMonthlyTarget.classList.add("text-shadowy-200");
+
+    this.labelYearlyTarget.classList.add("bg-primary");
+    this.labelYearlyTarget.classList.remove("bg-transparent");
+    this.labelYearlyTarget.classList.add("text-dark");
+    this.labelYearlyTarget.classList.remove("text-shadowy-200");
+
+    this.monthlyPricesTarget.classList.add("hidden");
+    this.annuallyPricesTarget.classList.remove("hidden");
   }
 }
