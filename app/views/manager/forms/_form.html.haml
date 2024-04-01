@@ -24,8 +24,10 @@
     = label_tag 'select_all', t('forms_controller.select_all_label'), class: 'ml-2 block text-xl text-shadowy-200'
   - Form::ADMITED_FORM_FIELDS.group_by { |_, field_attrs| field_attrs[:section] }.each do |section, fields|
     .border-b.pb-4.mb-10{class: 'border-shadowy-200/10'}
-      %h2.text-base.font-semibold.leading-7.text-shadowy-200.mt-6= t("forms_controller.section.#{section}")
-      %p.mt-1.text-sm.leading-6.text-gray-400.mb-4= t("forms_controller.section.#{section}_description")
+      %h2.text-base.font-semibold.leading-7.text-shadowy-200.mt-6
+        = t("forms_controller.section.#{section}")
+      %p.mt-1.text-sm.leading-6.text-gray-400.mb-4
+        = t("forms_controller.section.#{section}_description")
       .grid.grid-cols-1.md:grid-cols-3.gap-4
         - fields.each do |column_name, _|
           .p-4.cursor-pointer.bg-shadowy-700.rounded-xl{class: "hover:ring-1 hover:ring-primary #{@form.fields.dig(column_name.to_s, 'include') ? 'ring-1 ring-primary' : ''}", data: { action: "click->field-checkbox#toggleCheckbox", field_checkbox_target: "container" }}
@@ -34,6 +36,9 @@
               = label_tag '', t("fields.#{column_name}"), for: "#{column_name}-include", class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200'
               = render partial: 'shared/toggle_button', locals: {button_data: {field_checkbox_target: 'button'}, span_1_data: {field_checkbox_target: 'span1'}, span_2_data: {field_checkbox_target: 'span2'}, span_3_data: {field_checkbox_target: 'span3'}}
             = text_field_tag "form[fields][#{column_name}][label]", @form['fields'].dig(column_name.to_s, "label"), class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: t('forms_controller.additional_info_placeholder'), id: "form_fields_#{column_name}_label"
+            - if section == 'available_for'
+              = label_tag "form[fields][#{column_name}][available_for]", t("data_table_component.date"), for: "#{column_name}-include", class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200 mt-2'
+              = text_field_tag "form[fields][#{column_name}][available_for]", @form['fields'].dig(column_name.to_s, "available_for") || global_date_format(Time.current), class: 'mt-1 w-full block rounded-full border-gray-300 p-3.5 focus:border-primary focus:ring-primary sm:text-sm', placeholder: t('forms_controller.additional_info_placeholder'), id: "form_fields_#{column_name}_available_for", data: { controller: 'datetimepicker' }
 
   .border-b.pb-4.mb-10{class: 'border-shadowy-200/10'}
     %h2.text-base.font-semibold.leading-7.text-shadowy-200.mt-6= t("forms_controller.section.skills")

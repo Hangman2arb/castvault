@@ -51,14 +51,14 @@
   .flex.gap-3.md:gap-6.mt-10.justify-items-stretch.w-100
     .p-0{class:'w-1/2'}
       - if @profile.agency
-        .p-4.ring-1.ring-primary.rounded-xl
+        .p-4.ring-1.ring-primary.rounded-xl.mb-6
           %h3.text-lg.font-semibold.text-light
             = t('profile_modal.agency_information')
           %p.text-sm.text-shadowy-200.mb-1= @profile.agent_name if @profile.agent_name.present?
           %p.text-sm.text-shadowy-200.mb-1= @profile.agent_email if @profile.agent_email.present?
           %p.text-sm.text-shadowy-200.mb-1= @profile.agent_phone if @profile.agent_phone.present?
 
-      .p-4.ring-1.ring-primary.rounded-xl.mt-6
+      .p-4.ring-1.ring-primary.rounded-xl
         %h3.text-lg.font-semibold.text-light
           = t('fields.skills')
         %ul.flex.flex-wrap.mt-2.gap-2

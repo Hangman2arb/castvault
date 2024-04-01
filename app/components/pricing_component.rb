@@ -3,8 +3,8 @@ class PricingComponent < ViewComponent::Base
   NUM_OF_FEATURES = 4
 
   def initialize(for_manager: false)
-    @prices_monthly = fetch_prices_with_cache('prices_monthly', %w[basic_monthly pro_monthly elite_monthly])
-    @prices_yearly = fetch_prices_with_cache('prices_yearly', %w[basic_yearly pro_yearly elite_yearly])
+    @prices_monthly = fetch_prices_with_cache('prices_monthly', %w[castvault_mini_monthly castvault_basic_monthly castvault_standard_monthly castvault_pro_monthly castvault_elite_monthly])
+    @prices_yearly = fetch_prices_with_cache('prices_yearly', %w[castvault_mini_yearly castvault_basic_yearly castvault_standard_yearly castvault_pro_yearly castvault_elite_yearly])
     @for_manager = for_manager
 
     @prices_monthly.each{ |price| price.product.description = I18n.t("landing_pricing_component.monthly_description.#{price.product.name.downcase}").html_safe }
@@ -18,10 +18,6 @@ class PricingComponent < ViewComponent::Base
         @features[price.product.name.downcase].push I18n.t("landing_pricing_component.features.#{price.product.name.downcase}.#{index}").html_safe
       end
     end
-
-    # Intercambiando los elementos en los arrays
-    @prices_monthly[0], @prices_monthly[1] = @prices_monthly[1], @prices_monthly[0]
-    @prices_yearly[0], @prices_yearly[1] = @prices_yearly[1], @prices_yearly[0]
   end
 
 

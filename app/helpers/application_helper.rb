@@ -16,7 +16,7 @@ module ApplicationHelper
     if date
       date.strftime('%d / %m / %Y - %H:%M')
     else
-      t('.no_date_found')
+      t('application_helper.no_date_found')
     end
   end
 
@@ -24,7 +24,7 @@ module ApplicationHelper
     if date
       date.strftime('%d / %m / %Y')
     else
-      t('.no_date_found')
+      t('application_helper.no_date_found')
     end
   end
 
@@ -32,6 +32,14 @@ module ApplicationHelper
     return '0 €' unless price
 
     number_to_currency(price, unit: '€', separator: ",", delimiter: ".", format: "%n %u")
+  end
+
+  def convert_date(date_string)
+    return date_string if date_string.blank?
+
+    Date.strptime(date_string, '%d / %m / %Y').strftime('%Y-%m-%d')
+  rescue ArgumentError
+    nil
   end
 
   def custom_time_select(form, field)

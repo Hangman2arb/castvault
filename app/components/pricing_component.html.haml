@@ -104,8 +104,12 @@
       .hidden.-mx-4.mt-16.grid.max-w-2xl.grid-cols-1.gap-y-10.sm:mx-auto.lg:-mx-8.lg:max-w-none.lg:grid-cols-3.xl:mx-0.xl:gap-x-8{ data: { periodicity_selector_target: "monthlyPrices" } }
         - @prices_monthly.each_with_index do |price, index|
           %section{class: plan_classes(index)}
-            %h3.mt-5.font-display.text-lg
-              = price.product.name
+            .flex.items-center.justify-start.mt-5
+              %h3.font-display.text-lg
+                = price.product.name
+              - if index == 1
+                %p.rounded-full.py-1.text-xs.font-semibold.leading-5.text-dark.ml-2{class: "bg-dark/10 px-2.5"}
+                  = t('landing_pricing_component.most_popular')
             %p.mt-2.text-base{class: description_text_classes(index)}
               = price.product.description
             %p.order-first.font-display.text-5xl.font-light.tracking-tight
@@ -116,6 +120,20 @@
                   = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
                   %span.ml-4
                     = feature.html_safe
+        %section{class: plan_classes(5)}
+          .flex.items-baseline.gap-x-2
+            %p.order-first.font-display.text-5xl.font-light.tracking-tight.ml-2
+              = 'Custom'
+          %h3.mt-5.font-display.text-lg
+            = 'Enterprise'
+          %p.mt-2.text-base{class: description_text_classes(5)}
+            = t('landing_pricing_component.monthly_description.enterprise')
+          %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(5), role: "list"}
+            - PricingComponent::NUM_OF_FEATURES.times do |index|
+              %li.flex
+                = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(5))
+                %span.ml-4
+                  = t("landing_pricing_component.features.enterprise.#{index}").html_safe
 
       %div{ data: { periodicity_selector_target: "annuallyPrices" } }
         %p.text-sm.text-white.font-semibold.text-center.mt-4
@@ -128,8 +146,12 @@
                   = number_to_currency((@prices_monthly[index].unit_amount / 100.0) * 12, unit: '€', format: "%n%u/año")
                 %p.order-first.font-display.text-5xl.font-light.tracking-tight.ml-2
                   = number_to_currency(price.unit_amount / 100.0, unit: '€', format: "%n%u")
-              %h3.mt-5.font-display.text-lg
-                = price.product.name
+              .flex.items-center.justify-start.mt-5
+                %h3.font-display.text-lg
+                  = price.product.name
+                - if index == 1
+                  %p.rounded-full.py-1.text-xs.font-semibold.leading-5.text-dark.ml-2{class: "bg-dark/10 px-2.5"}
+                    = t('landing_pricing_component.most_popular')
               %p.mt-2.text-base{class: description_text_classes(index)}
                 = price.product.description
               %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(index), role: "list"}
@@ -138,6 +160,20 @@
                     = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(index))
                     %span.ml-4
                       = feature.html_safe
+          %section{class: plan_classes(5)}
+            .flex.items-baseline.gap-x-2
+              %p.order-first.font-display.text-5xl.font-light.tracking-tight.ml-2
+                = 'Custom'
+            %h3.mt-5.font-display.text-lg
+              = 'Enterprise'
+            %p.mt-2.text-base{class: description_text_classes(5)}
+              = t('landing_pricing_component.monthly_description.enterprise')
+            %ul.order-last.mt-10.flex.flex-col.gap-y-3.text-sm{class: list_text_classes(5), role: "list"}
+              - PricingComponent::NUM_OF_FEATURES.times do |index|
+                %li.flex
+                  = render BootstrapIconWithTextComponent.new(icon: 'check-circle', extra_classes: icon_classes(5))
+                  %span.ml-4
+                    = t("landing_pricing_component.features.enterprise.#{index}").html_safe
       .flex.justify-center.text-sm.text-white.mt-6
         = "* #{t('landing_pricing_component.vat_excluded')}"
       .mt-10.flex.justify-center.gap-x-6

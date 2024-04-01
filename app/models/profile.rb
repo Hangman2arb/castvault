@@ -18,6 +18,7 @@ class Profile < ApplicationRecord
 
   ORDER_BY = {
     newest: "created_at DESC",
+    oldest: "created_at ASC",
     age_old: "birthdate DESC",
     age_young: "birthdate ASC"
   }

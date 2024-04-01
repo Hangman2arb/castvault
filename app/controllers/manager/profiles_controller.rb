@@ -12,6 +12,7 @@ class Manager::ProfilesController < ApplicationController
 
     @boolean_options = [[t('profiles_controller.with'), true], [t('profiles_controller.without'), false]]
 
+    params[:order_by] ||= 'newest'
     query = FindProfiles.new(current_user).call(params).load_async
     @total_count = query.count
     @pagy, @profiles = pagy_countless(query, items: 24)

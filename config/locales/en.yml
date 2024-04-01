@@ -1,5 +1,7 @@
 ---
 en:
+  application_helper:
+    no_date_found: No Date
   actions_button_component:
     copy_form_link: Copy Link
     destroy_link: Delete
@@ -270,6 +272,8 @@ en:
     section:
       additional_information: Additional Information
       additional_information_description: Provide any extra details that are relevant to the form.
+      available_for: "Availability"
+      available_for_description: "Select the fields you need for the user's availability for whatever is necessary, in the date field indicate the date on which they would need to be available."
       basic_information: Basic Information
       basic_information_description: Enter the fundamental details required for the form.
       contact_information: Contact Information
@@ -628,7 +632,7 @@ en:
   sidebar_component:
     dashboard: "Dashboard"
     profiles: "Profiles"
-    forms: "Form"
+    forms: "Forms"
     clients: "Clients"
     settings: "Settings"
   product_section:

@@ -2,7 +2,7 @@ class Form < ApplicationRecord
   include Searchable
 
   belongs_to :user
-  has_many :profiles
+  has_many :profiles, dependent: :destroy
 
   has_one_attached :description_photo
 
@@ -78,6 +78,15 @@ class Form < ApplicationRecord
     face_photo: { type: 'image', section: 'pictures_and_media', formats: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic'], max_size: 10.megabytes },
     body_photo: { type: 'image', section: 'pictures_and_media', formats: ['image/png', 'image/jpg', 'image/jpeg', 'image/heic'], max_size: 10.megabytes },
     video_book: { type: 'video', section: 'pictures_and_media', formats: ['video/mov', 'video/mp4', 'video/avi'], max_size: 100.megabytes },
+
+    # shooting: { type: 'availability', section: 'available_for' },
+    # fitting: { type: 'availability', section: 'available_for' },
+    # call_back: { type: 'availability', section: 'available_for' },
+    # travel_day: { type: 'availability', section: 'available_for' },
+    # interview_meeting: { type: 'availability', section: 'available_for' },
+    # custom_availability: { type: 'availability', section: 'available_for' },
+    # other: { type: 'availability', section: 'available_for' },
+
   }
 
   FIELDS_ORDER = [

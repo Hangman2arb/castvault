@@ -55,7 +55,10 @@ class Manager::FormsController < ApplicationController
     @header_buttons = [ { icon: 'save', type: 'submit', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', text: t('labels.save') },
                         { icon: 'arrow-90deg-left', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', link: manager_forms_path, text: t('labels.back_button') } ]
 
-    @form = Form.new(form_params)
+    modified_form_params = form_params
+    modified_form_params[:available_until] = convert_date(modified_form_params[:available_until])
+
+    @form = Form.new(modified_form_params)
     @form.user = current_user
 
     if @form.save
@@ -82,7 +85,10 @@ class Manager::FormsController < ApplicationController
       { icon: 'arrow-90deg-left', class: 'inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-shadowy-300 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50', link: manager_forms_path, text: t('labels.back_button') }
     ]
 
-    if form.update(form_params)
+    modified_form_params = form_params
+    modified_form_params[:available_until] = convert_date(modified_form_params[:available_until])
+
+    if form.update(modified_form_params)
       redirect_to manager_forms_path, notice: t('forms_controller.form_updated')
     else
       render :edit

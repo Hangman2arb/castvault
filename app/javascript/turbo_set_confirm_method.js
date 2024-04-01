@@ -7,7 +7,7 @@ Turbo.setConfirmMethod((message, element) => {
     return new Promise((resolve) => {
         Swal.fire({
             title: getMetaContent('i18n-confirm-title'),
-            text: message,
+            html: message,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: getMetaContent('i18n-confirm-button'),

@@ -3,10 +3,9 @@ import flatpickr from "flatpickr";
 
 export default class extends Controller {
   connect() {
-    console.log('sae')
     flatpickr(this.element, {
       enableTime: false,
-      dateFormat: "Y-m-d",
+      dateFormat: 'd / m / Y',
       minDate: "today",
       defaultDate: this.element.value || new Date()
     });

@@ -1,5 +1,7 @@
 ---
 es:
+  application_helper:
+    no_date_found: Sin Fecha
   actions_button_component:
     copy_form_link: Copiar Enlace
     destroy_link: Eliminar
@@ -234,7 +236,7 @@ es:
     additional_info_placeholder: Mensaje informativo adicional
     available_until: Disponible hasta
     description_label: Descripción
-    destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.
+    destroy_message: Va a eliminar el formulario y ya no lo podrá recuperar.<br><br><span class= 'text-red-500 font-semibold'>Se eliminarán también todos los perfiles asociados a este formulario</span>.<br><br>¿Quiere continuar?
     edit_title: Editar Formulario
     form_created: Formulario creado con éxito!
     form_deleted: Formulario eliminado.
@@ -270,6 +272,8 @@ es:
     section:
       additional_information: Información Adicional
       additional_information_description: Proporciona detalles adicionales que sean relevantes para el formulario.
+      available_for: "Disponibilidad"
+      available_for_description: "Selecciona los campos que necesites para la disponibilidad del usuario para lo que sea necesario, en el campo de fecha indica la fecha en la que tendría que estar disponible."
       basic_information: Información Básica
       basic_information_description: Ingresa los detalles fundamentales requeridos para el formulario.
       contact_information: Información de Contacto
@@ -628,7 +632,7 @@ es:
   sidebar_component:
     dashboard: "Tablero"
     profiles: "Perfiles"
-    forms: "Formulario"
+    forms: "Formularios"
     clients: "Clientes"
     settings: "Configuraciones"
   product_section:

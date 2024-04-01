@@ -1,7 +1,7 @@
 = turbo_frame_tag 'profiles' do
   = render HeaderComponent.new(title: @title, description: @description)
 
-  = form_with url: manager_profiles_path, method: :get, local: true, class: "p-6", data: { controller: 'autosave profiles-form loader', autosave_delay_value: 0 } do |form|
+  = form_with url: manager_profiles_path, method: :get, local: true, class: "mt-16 p-6", data: { controller: 'autosave profiles-form loader', autosave_delay_value: 0 } do |form|
     .modal-overlay{ data: { profiles_form_target: "overlay" }, class: "hidden z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center scroll-m-0" }
       #drawer-profiles{class: "fixed top-0 right-0 w-full md:w-3/6 z-50 h-screen p-4 overflow-y-auto bg-gray-700 dark:bg-gray-800 transition-transform duration-1000 ease-in-out transform translate-x-full", tabindex: "-1", aria: {labelledby: "drawer-profiles-label"}, data: {profiles_form_target: 'modal'}}
         %h5#drawer-profiles-label{class: "text-base font-semibold text-gray-500 dark:text-gray-400"}
