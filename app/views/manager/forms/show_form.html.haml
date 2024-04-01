@@ -19,15 +19,18 @@
           - fields.each do |field_name, field_attrs|
             .sm:col-span-2
               - case field_attrs[:type]
-              - when 'string', 'email', 'integer', 'date'
+              - when 'string', 'email', 'integer'
                 = render InputComponent.new(form: form, key: field_name.to_sym, type: Form::INPUT_TYPES[field_attrs[:type]], label: t("fields.#{field_name}"), model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
+              - when 'date'
+                = render InputComponent.new(form: form, key: field_name.to_sym, type: Form::INPUT_TYPES[field_attrs[:type]], label: t("fields.#{field_name}"), model: @profile, info_message: @form['fields'][field_name.to_s]['label'], datetimepicker: true)
               - when 'select'
-                = render SelectComponent.new(key: field_name.to_sym, label: t("fields.#{field_name}"), options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value ] }, selected: @profile.send(field_name)), form: form, model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
+                = render SelectComponent.new(key: field_name.to_sym, label: t("fields.#{field_name}"), options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [ t("#{field_name.to_s.pluralize}.#{value}"), value ] }, selected: @profile.send(field_name)), form: form, model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'boolean'
                 = render CustomCheckboxComponent.new(form: form, key: field_name, checked: @profile[field_name], value: @profile[field_name], model: @profile, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'multiselect'
                 = render SelectComponent.new( form: form, key: field_name, options_for_select: options_for_select(Form.const_get("#{field_name.upcase}_OPTIONS").map { |value| [t("forms_controller.multiselect_texts.#{field_name}.#{value}"), value] }, @profile.send(field_name)),  model: @profile, label: t("fields.#{field_name}"), multiple: true, info_message: @form['fields'][field_name.to_s]['label'])
               - when 'image'
+                = form.label field_name, t("fields.#{field_name}"), class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200', id: "label_profile_#{field_name}"
                 = render UploadFileComponent.new( form: form,
                                                   model: :profile,
                                                   attribute: field_name.to_sym,
@@ -37,6 +40,7 @@
                                                   max_size_mb: 10,
                                                   extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
               - when 'video'
+                = form.label field_name, t("fields.#{field_name}"), class: 'block text-sm font-medium leading-6 text-sm text-shadowy-200', id: "label_profile_#{field_name}"
                 = render UploadFileComponent.new( form: form,
                                                   model: :profile,
                                                   attribute: field_name.to_sym,
@@ -45,14 +49,15 @@
                                                   accepted_types: %w[mov mp4 avi],
                                                   max_size_mb: 100,
                                                   extra_actions: ['autosave#save'], info_message: @form['fields'][field_name.to_s]['label'] )
-    .border-b.pb-12{class: 'border-shadowy-200/10'}
-      %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.skills")
-      %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.skills_description")
+    - unless @filtered_featured_options.empty?
+      .border-b.pb-12{class: 'border-shadowy-200/10'}
+        %h2.text-base.font-semibold.leading-7.text-shadowy-200= t("forms_controller.section.skills")
+        %p.mt-1.text-sm.leading-6.text-gray-400= t("forms_controller.section.skills_description")
 
-      .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
-        - @filtered_featured_options.each do |key, options|
-          .sm:col-span-2
-            = render SelectComponent.new( form: form, key: key, options_for_select: options_for_select(options.map{|option|[t("fields.#{option}"), option]}, @profile.send(key)),  model: @profile, label: t("fields.#{key}"), multiple: true)
+        .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8.sm:grid-cols-6
+          - @filtered_featured_options.each do |key, options|
+            .sm:col-span-2
+              = render SelectComponent.new( form: form, key: key, options_for_select: options_for_select(options.map{|option|[t("profiles_controller.features.#{key}.#{option}"), option]}, @profile.send(key)),  model: @profile, label: t("profiles_controller.skills_category.#{key}"), multiple: true)
 
 
     .mt-4.text-center

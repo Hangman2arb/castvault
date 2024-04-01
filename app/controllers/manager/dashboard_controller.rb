@@ -28,7 +28,7 @@ class Manager::DashboardController < ApplicationController
       I18n.t("hair_colors.#{key}", default: key.to_s.humanize)
     end
     @eye_color_distribution = @profiles.group(:eye_color).count.transform_keys do |key|
-      I18n.t("eye_colors.#{key}", default: key.capitalize)
+      I18n.t("eye_colors.#{key}", default: key.to_s.capitalize)
     end
 
     @agency_distribution = @profiles.group(:agency).count.transform_keys do |key|
