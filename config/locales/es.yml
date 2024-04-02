@@ -32,6 +32,13 @@ es:
     not_found_or_no_permission: El cliente no se encontró o no tienes permiso para eliminarlo.
     title: Listado de Clientes
   dashboard_controller:
+    loading: "Cargando..."
+    value: "Valor"
+    sections:
+      profile_growth: "Crecimiento de Perfiles"
+      demographics: "Demografía"
+      physical_features: "Características Físicas"
+      agency_and_documentation: "Información de Agencia y Documentación"
     agency: Agencia
     description: Ten una vista global de todos tus datos.
     driving_license: Licencia de Conducir

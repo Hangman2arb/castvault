@@ -1,18 +1,18 @@
 = render HeaderComponent.new(title: @title, description: @description)
 
-.mx-auto.max-w-7xl
-  .grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-4{class: "bg-white/5"}
-    - @cards.each do |label, value|
-      .bg-dark.px-4.py-6.sm:px-6.lg:px-8
-        %p.text-sm.font-medium.leading-6.text-gray-400
-          = t("dashboard_controller.#{label}")
-        %p.mt-2.flex.items-baseline.gap-x-2
-          %span.text-4xl.font-semibold.tracking-tight.text-white
-            = value
+.grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-4{class: "bg-white/5"}
+  - @cards.each do |label, value|
+    .bg-dark.px-4.py-6.sm:px-6.lg:px-8
+      %p.text-sm.font-medium.leading-6.text-gray-400
+        = t("dashboard_controller.#{label}")
+      %p.mt-2.flex.items-baseline.gap-x-2
+        %span.text-4xl.font-semibold.tracking-tight.text-white
+          = value
 
-.mx-auto.max-w-7xl
+- @charts.group_by { |chart| chart[:section] }.each do |section, charts|
+  %h2.text-xl.font-bold.text-white.mb-4= section
   .grid.grid-cols-1.gap-px.sm:grid-cols-2.lg:grid-cols-3
-    - @charts.each do |chart|
+    - charts.each do |chart|
       .bg-dark.px-4.py-6.sm:px-6.lg:px-8.mt-6
         %h3.text-sm.font-medium.leading-6.text-gray-400
           = t("dashboard_controller.#{chart[:key]}")

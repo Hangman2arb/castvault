@@ -32,6 +32,13 @@ en:
     not_found_or_no_permission: The client was not found or you do not have permission to delete it.
     title: Client Listing
   dashboard_controller:
+    loading: "Loading..."
+    value: "Value"
+    sections:
+      profile_growth: "Profile Growth"
+      demographics: "Demographics"
+      physical_features: "Physical Features"
+      agency_and_documentation: "Agency and Documentation"
     agency: Agency
     description: Have a global view of all your data.
     driving_license: Driving License
